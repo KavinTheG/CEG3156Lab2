@@ -1,0 +1,141 @@
+|eightBitSubtractor
+A_i[0] => oneBitSubtractor:LSB.a_i
+A_i[1] => oneBitSubtractor:Bit2.a_i
+A_i[2] => oneBitSubtractor:Bit3.a_i
+A_i[3] => oneBitSubtractor:Bit4.a_i
+A_i[4] => oneBitSubtractor:Bit5.a_i
+A_i[5] => oneBitSubtractor:Bit6.a_i
+A_i[6] => oneBitSubtractor:Bit7.a_i
+A_i[7] => oneBitSubtractor:MSB.a_i
+B_i[0] => oneBitSubtractor:LSB.b_i
+B_i[1] => oneBitSubtractor:Bit2.b_i
+B_i[2] => oneBitSubtractor:Bit3.b_i
+B_i[3] => oneBitSubtractor:Bit4.b_i
+B_i[4] => oneBitSubtractor:Bit5.b_i
+B_i[5] => oneBitSubtractor:Bit6.b_i
+B_i[6] => oneBitSubtractor:Bit7.b_i
+B_i[7] => oneBitSubtractor:MSB.b_i
+C_i => oneBitSubtractor:LSB.c_i
+C_o <= oneBitSubtractor:MSB.cout
+diff[0] <= comb.DB_MAX_OUTPUT_PORT_TYPE
+diff[1] <= diff[1].DB_MAX_OUTPUT_PORT_TYPE
+diff[2] <= diff[2].DB_MAX_OUTPUT_PORT_TYPE
+diff[3] <= diff[3].DB_MAX_OUTPUT_PORT_TYPE
+diff[4] <= diff[4].DB_MAX_OUTPUT_PORT_TYPE
+diff[5] <= diff[5].DB_MAX_OUTPUT_PORT_TYPE
+diff[6] <= diff[6].DB_MAX_OUTPUT_PORT_TYPE
+diff[7] <= diff[7].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|eightBitSubtractor|oneBitSubtractor:MSB
+a_i => diff.IN0
+a_i => cout.IN0
+a_i => cout.IN0
+b_i => diff.IN1
+b_i => cout.IN0
+b_i => cout.IN1
+c_i => diff.IN1
+c_i => cout.IN1
+c_i => cout.IN1
+diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|eightBitSubtractor|oneBitSubtractor:Bit7
+a_i => diff.IN0
+a_i => cout.IN0
+a_i => cout.IN0
+b_i => diff.IN1
+b_i => cout.IN0
+b_i => cout.IN1
+c_i => diff.IN1
+c_i => cout.IN1
+c_i => cout.IN1
+diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|eightBitSubtractor|oneBitSubtractor:Bit6
+a_i => diff.IN0
+a_i => cout.IN0
+a_i => cout.IN0
+b_i => diff.IN1
+b_i => cout.IN0
+b_i => cout.IN1
+c_i => diff.IN1
+c_i => cout.IN1
+c_i => cout.IN1
+diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|eightBitSubtractor|oneBitSubtractor:Bit5
+a_i => diff.IN0
+a_i => cout.IN0
+a_i => cout.IN0
+b_i => diff.IN1
+b_i => cout.IN0
+b_i => cout.IN1
+c_i => diff.IN1
+c_i => cout.IN1
+c_i => cout.IN1
+diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|eightBitSubtractor|oneBitSubtractor:Bit4
+a_i => diff.IN0
+a_i => cout.IN0
+a_i => cout.IN0
+b_i => diff.IN1
+b_i => cout.IN0
+b_i => cout.IN1
+c_i => diff.IN1
+c_i => cout.IN1
+c_i => cout.IN1
+diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|eightBitSubtractor|oneBitSubtractor:Bit3
+a_i => diff.IN0
+a_i => cout.IN0
+a_i => cout.IN0
+b_i => diff.IN1
+b_i => cout.IN0
+b_i => cout.IN1
+c_i => diff.IN1
+c_i => cout.IN1
+c_i => cout.IN1
+diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|eightBitSubtractor|oneBitSubtractor:Bit2
+a_i => diff.IN0
+a_i => cout.IN0
+a_i => cout.IN0
+b_i => diff.IN1
+b_i => cout.IN0
+b_i => cout.IN1
+c_i => diff.IN1
+c_i => cout.IN1
+c_i => cout.IN1
+diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|eightBitSubtractor|oneBitSubtractor:LSB
+a_i => diff.IN0
+a_i => cout.IN0
+a_i => cout.IN0
+b_i => diff.IN1
+b_i => cout.IN0
+b_i => cout.IN1
+c_i => diff.IN1
+c_i => cout.IN1
+c_i => cout.IN1
+diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
