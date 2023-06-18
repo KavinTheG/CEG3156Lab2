@@ -30,7 +30,7 @@ Bit5: oneBitSubtractor port map (A_i(4), B_i(4), c(3), pDiff(4), c(4));
 Bit4: oneBitSubtractor port map (A_i(3), B_i(3), c(2), pDiff(3), c(3));
 Bit3: oneBitSubtractor port map (A_i(2), B_i(2), c(1), pDiff(2), c(2));
 Bit2: oneBitSubtractor port map (A_i(1), B_i(1), c(0), pDiff(1), c(1));
-LSB:  oneBitSubtractor port map (A_i(0), B_i(0), C_i, pDiff(0), c(0));
+LSB:  oneBitSubtractor port map (A_i(0), B_i(0), C_i,  pDiff(0), c(0));
 
 diff <= pDiff;
 
