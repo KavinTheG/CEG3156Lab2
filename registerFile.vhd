@@ -17,7 +17,14 @@ end entity;
 
 architecture structural of registerFile is
 
-	signal notOutputs : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal registerValues0 : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal registerValues1 : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal registerValues2 : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal registerValues3 : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal registerValues4 : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal registerValues5 : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal registerValues6 : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal registerValues7 : STD_LOGIC_VECTOR(7 DOWNTO 0);
 	
 	component eightBitRegister IS
 	port(
@@ -31,13 +38,33 @@ architecture structural of registerFile is
 
 begin
 
-	generate_regs: for i in 0 to 31 generate
-
-		registers : eightBitRegister
-			port map (
-				reset 
-			
-			);
-	end generate generate_regs;
+	reg0: port map (]
+		
+		values => registerValues0,
+		en => regWrite, 
+	
+	);
+	
+	reg: port map (
+	);
+	
+	reg: port map (
+	);
+	
+	reg: port map (
+	);
+	
+	reg: port map (
+	);
+	
+	reg: port map (
+	);
+	
+	reg: port map (
+	);
+	
+	reg: port map (
+	);
+	
 
 end structural;
