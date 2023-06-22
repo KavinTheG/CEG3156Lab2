@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
 
--- DATE "06/21/2023 21:58:46"
+-- DATE "06/22/2023 12:29:30"
 
 -- 
 -- Device: Altera EP4CE115F29C7 Package FBGA780
@@ -31,46 +31,42 @@ LIBRARY IEEE;
 USE CYCLONEIVE.CYCLONEIVE_COMPONENTS.ALL;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY 	eightBitAdder IS
+ENTITY 	controlLogicUnit IS
     PORT (
-	A_i : IN std_logic_vector(7 DOWNTO 0);
-	B_i : IN std_logic_vector(7 DOWNTO 0);
-	C_i : IN std_logic;
-	C_o : OUT std_logic;
-	sum : OUT std_logic_vector(7 DOWNTO 0)
+	op : IN std_logic_vector(5 DOWNTO 0);
+	regDst : OUT std_logic;
+	aluSrc : OUT std_logic;
+	memToReg : OUT std_logic;
+	regWrite : OUT std_logic;
+	memRead : OUT std_logic;
+	memWrite : OUT std_logic;
+	branch : OUT std_logic;
+	jump : OUT std_logic;
+	aluOp1 : OUT std_logic;
+	aluOp0 : OUT std_logic
 	);
-END eightBitAdder;
+END controlLogicUnit;
 
 -- Design Ports Information
--- C_o	=>  Location: PIN_N8,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- sum[0]	=>  Location: PIN_H6,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- sum[1]	=>  Location: PIN_D2,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- sum[2]	=>  Location: PIN_L2,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- sum[3]	=>  Location: PIN_U4,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- sum[4]	=>  Location: PIN_L1,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- sum[5]	=>  Location: PIN_M5,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- sum[6]	=>  Location: PIN_R2,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- sum[7]	=>  Location: PIN_R3,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- A_i[6]	=>  Location: PIN_M7,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- B_i[6]	=>  Location: PIN_R1,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- A_i[4]	=>  Location: PIN_R6,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- B_i[4]	=>  Location: PIN_R7,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- A_i[2]	=>  Location: PIN_P1,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- B_i[2]	=>  Location: PIN_N4,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- A_i[0]	=>  Location: PIN_E3,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- B_i[0]	=>  Location: PIN_G5,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- C_i	=>  Location: PIN_F3,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- B_i[1]	=>  Location: PIN_G6,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- A_i[1]	=>  Location: PIN_H7,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- B_i[3]	=>  Location: PIN_L7,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- A_i[3]	=>  Location: PIN_P2,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- B_i[5]	=>  Location: PIN_M2,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- A_i[5]	=>  Location: PIN_M8,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- B_i[7]	=>  Location: PIN_M1,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- A_i[7]	=>  Location: PIN_N3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- regDst	=>  Location: PIN_AA4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- aluSrc	=>  Location: PIN_W1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- memToReg	=>  Location: PIN_AB3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- regWrite	=>  Location: PIN_AD3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- memRead	=>  Location: PIN_U6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- memWrite	=>  Location: PIN_AC1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- branch	=>  Location: PIN_T8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- jump	=>  Location: PIN_Y3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- aluOp1	=>  Location: PIN_AA3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- aluOp0	=>  Location: PIN_U5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- op[2]	=>  Location: PIN_AD1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- op[1]	=>  Location: PIN_AD2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- op[0]	=>  Location: PIN_AC2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- op[3]	=>  Location: PIN_Y4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- op[4]	=>  Location: PIN_W2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- op[5]	=>  Location: PIN_AC3,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
-ARCHITECTURE structure OF eightBitAdder IS
+ARCHITECTURE structure OF controlLogicUnit IS
 SIGNAL gnd : std_logic := '0';
 SIGNAL vcc : std_logic := '1';
 SIGNAL unknown : std_logic := 'X';
@@ -80,705 +76,396 @@ SIGNAL devpor : std_logic := '1';
 SIGNAL ww_devoe : std_logic;
 SIGNAL ww_devclrn : std_logic;
 SIGNAL ww_devpor : std_logic;
-SIGNAL ww_A_i : std_logic_vector(7 DOWNTO 0);
-SIGNAL ww_B_i : std_logic_vector(7 DOWNTO 0);
-SIGNAL ww_C_i : std_logic;
-SIGNAL ww_C_o : std_logic;
-SIGNAL ww_sum : std_logic_vector(7 DOWNTO 0);
-SIGNAL \C_o~output_o\ : std_logic;
-SIGNAL \sum[0]~output_o\ : std_logic;
-SIGNAL \sum[1]~output_o\ : std_logic;
-SIGNAL \sum[2]~output_o\ : std_logic;
-SIGNAL \sum[3]~output_o\ : std_logic;
-SIGNAL \sum[4]~output_o\ : std_logic;
-SIGNAL \sum[5]~output_o\ : std_logic;
-SIGNAL \sum[6]~output_o\ : std_logic;
-SIGNAL \sum[7]~output_o\ : std_logic;
-SIGNAL \B_i[7]~input_o\ : std_logic;
-SIGNAL \B_i[6]~input_o\ : std_logic;
-SIGNAL \A_i[6]~input_o\ : std_logic;
-SIGNAL \Bit7|o_CarryOut~0_combout\ : std_logic;
-SIGNAL \A_i[5]~input_o\ : std_logic;
-SIGNAL \A_i[4]~input_o\ : std_logic;
-SIGNAL \B_i[4]~input_o\ : std_logic;
-SIGNAL \Bit5|o_CarryOut~0_combout\ : std_logic;
-SIGNAL \B_i[5]~input_o\ : std_logic;
-SIGNAL \A_i[3]~input_o\ : std_logic;
-SIGNAL \B_i[3]~input_o\ : std_logic;
-SIGNAL \A_i[2]~input_o\ : std_logic;
-SIGNAL \B_i[2]~input_o\ : std_logic;
-SIGNAL \B_i[1]~input_o\ : std_logic;
-SIGNAL \A_i[0]~input_o\ : std_logic;
-SIGNAL \B_i[0]~input_o\ : std_logic;
-SIGNAL \LSB|o_CarryOut~0_combout\ : std_logic;
-SIGNAL \A_i[1]~input_o\ : std_logic;
-SIGNAL \C_i~input_o\ : std_logic;
-SIGNAL \LSB|o_CarryOut~1_combout\ : std_logic;
-SIGNAL \Bit2|o_CarryOut~0_combout\ : std_logic;
-SIGNAL \Bit3|o_CarryOut~1_combout\ : std_logic;
-SIGNAL \Bit3|o_CarryOut~0_combout\ : std_logic;
-SIGNAL \Bit4|o_CarryOut~0_combout\ : std_logic;
-SIGNAL \Bit5|o_CarryOut~1_combout\ : std_logic;
-SIGNAL \Bit6|o_CarryOut~0_combout\ : std_logic;
-SIGNAL \Bit7|o_CarryOut~1_combout\ : std_logic;
-SIGNAL \A_i[7]~input_o\ : std_logic;
-SIGNAL \MSB|o_CarryOut~0_combout\ : std_logic;
-SIGNAL \LSB|o_Sum~0_combout\ : std_logic;
-SIGNAL \Bit2|o_Sum~combout\ : std_logic;
-SIGNAL \Bit3|o_Sum~0_combout\ : std_logic;
-SIGNAL \Bit4|o_Sum~combout\ : std_logic;
-SIGNAL \Bit5|o_Sum~0_combout\ : std_logic;
-SIGNAL \Bit6|o_Sum~combout\ : std_logic;
-SIGNAL \Bit7|o_Sum~0_combout\ : std_logic;
-SIGNAL \MSB|o_Sum~combout\ : std_logic;
+SIGNAL ww_op : std_logic_vector(5 DOWNTO 0);
+SIGNAL ww_regDst : std_logic;
+SIGNAL ww_aluSrc : std_logic;
+SIGNAL ww_memToReg : std_logic;
+SIGNAL ww_regWrite : std_logic;
+SIGNAL ww_memRead : std_logic;
+SIGNAL ww_memWrite : std_logic;
+SIGNAL ww_branch : std_logic;
+SIGNAL ww_jump : std_logic;
+SIGNAL ww_aluOp1 : std_logic;
+SIGNAL ww_aluOp0 : std_logic;
+SIGNAL \regDst~output_o\ : std_logic;
+SIGNAL \aluSrc~output_o\ : std_logic;
+SIGNAL \memToReg~output_o\ : std_logic;
+SIGNAL \regWrite~output_o\ : std_logic;
+SIGNAL \memRead~output_o\ : std_logic;
+SIGNAL \memWrite~output_o\ : std_logic;
+SIGNAL \branch~output_o\ : std_logic;
+SIGNAL \jump~output_o\ : std_logic;
+SIGNAL \aluOp1~output_o\ : std_logic;
+SIGNAL \aluOp0~output_o\ : std_logic;
+SIGNAL \op[1]~input_o\ : std_logic;
+SIGNAL \op[2]~input_o\ : std_logic;
+SIGNAL \op[0]~input_o\ : std_logic;
+SIGNAL \op[3]~input_o\ : std_logic;
+SIGNAL \op[5]~input_o\ : std_logic;
+SIGNAL \op[4]~input_o\ : std_logic;
+SIGNAL \beq~0_combout\ : std_logic;
+SIGNAL \rFormat~0_combout\ : std_logic;
+SIGNAL \sw~0_combout\ : std_logic;
+SIGNAL \sw~1_combout\ : std_logic;
+SIGNAL \int_regWrite~0_combout\ : std_logic;
+SIGNAL \sw~2_combout\ : std_logic;
+SIGNAL \beq~1_combout\ : std_logic;
+SIGNAL \jmp~0_combout\ : std_logic;
+SIGNAL \ALT_INV_rFormat~0_combout\ : std_logic;
 
 BEGIN
 
-ww_A_i <= A_i;
-ww_B_i <= B_i;
-ww_C_i <= C_i;
-C_o <= ww_C_o;
-sum <= ww_sum;
+ww_op <= op;
+regDst <= ww_regDst;
+aluSrc <= ww_aluSrc;
+memToReg <= ww_memToReg;
+regWrite <= ww_regWrite;
+memRead <= ww_memRead;
+memWrite <= ww_memWrite;
+branch <= ww_branch;
+jump <= ww_jump;
+aluOp1 <= ww_aluOp1;
+aluOp0 <= ww_aluOp0;
 ww_devoe <= devoe;
 ww_devclrn <= devclrn;
 ww_devpor <= devpor;
+\ALT_INV_rFormat~0_combout\ <= NOT \rFormat~0_combout\;
 
--- Location: IOOBUF_X0_Y42_N9
-\C_o~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y19_N2
+\regDst~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \MSB|o_CarryOut~0_combout\,
+	i => \ALT_INV_rFormat~0_combout\,
 	devoe => ww_devoe,
-	o => \C_o~output_o\);
+	o => \regDst~output_o\);
 
--- Location: IOOBUF_X0_Y64_N2
-\sum[0]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y25_N16
+\aluSrc~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \LSB|o_Sum~0_combout\,
+	i => \sw~1_combout\,
 	devoe => ww_devoe,
-	o => \sum[0]~output_o\);
+	o => \aluSrc~output_o\);
 
--- Location: IOOBUF_X0_Y68_N2
-\sum[1]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y21_N23
+\memToReg~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \Bit2|o_Sum~combout\,
+	i => \sw~1_combout\,
 	devoe => ww_devoe,
-	o => \sum[1]~output_o\);
+	o => \memToReg~output_o\);
 
--- Location: IOOBUF_X0_Y44_N2
-\sum[2]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y22_N16
+\regWrite~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \Bit3|o_Sum~0_combout\,
+	i => \int_regWrite~0_combout\,
 	devoe => ww_devoe,
-	o => \sum[2]~output_o\);
+	o => \regWrite~output_o\);
 
--- Location: IOOBUF_X0_Y34_N16
-\sum[3]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y25_N23
+\memRead~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \Bit4|o_Sum~combout\,
+	i => \sw~1_combout\,
 	devoe => ww_devoe,
-	o => \sum[3]~output_o\);
+	o => \memRead~output_o\);
 
--- Location: IOOBUF_X0_Y44_N9
-\sum[4]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y23_N16
+\memWrite~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \Bit5|o_Sum~0_combout\,
+	i => \sw~2_combout\,
 	devoe => ww_devoe,
-	o => \sum[4]~output_o\);
+	o => \memWrite~output_o\);
 
--- Location: IOOBUF_X0_Y47_N2
-\sum[5]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y20_N16
+\branch~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \Bit6|o_Sum~combout\,
+	i => \beq~1_combout\,
 	devoe => ww_devoe,
-	o => \sum[5]~output_o\);
+	o => \branch~output_o\);
 
--- Location: IOOBUF_X0_Y35_N2
-\sum[6]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y24_N16
+\jump~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \Bit7|o_Sum~0_combout\,
+	i => \jmp~0_combout\,
 	devoe => ww_devoe,
-	o => \sum[6]~output_o\);
+	o => \jump~output_o\);
 
--- Location: IOOBUF_X0_Y34_N23
-\sum[7]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y19_N9
+\aluOp1~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \MSB|o_Sum~combout\,
+	i => \ALT_INV_rFormat~0_combout\,
 	devoe => ww_devoe,
-	o => \sum[7]~output_o\);
+	o => \aluOp1~output_o\);
 
--- Location: IOIBUF_X0_Y44_N22
-\B_i[7]~input\ : cycloneive_io_ibuf
+-- Location: IOOBUF_X0_Y24_N2
+\aluOp0~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => \beq~1_combout\,
+	devoe => ww_devoe,
+	o => \aluOp0~output_o\);
+
+-- Location: IOIBUF_X0_Y22_N22
+\op[1]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_B_i(7),
-	o => \B_i[7]~input_o\);
+	i => ww_op(1),
+	o => \op[1]~input_o\);
 
--- Location: IOIBUF_X0_Y35_N8
-\B_i[6]~input\ : cycloneive_io_ibuf
+-- Location: IOIBUF_X0_Y21_N15
+\op[2]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_B_i(6),
-	o => \B_i[6]~input_o\);
+	i => ww_op(2),
+	o => \op[2]~input_o\);
 
--- Location: IOIBUF_X0_Y45_N22
-\A_i[6]~input\ : cycloneive_io_ibuf
+-- Location: IOIBUF_X0_Y24_N22
+\op[0]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_A_i(6),
-	o => \A_i[6]~input_o\);
+	i => ww_op(0),
+	o => \op[0]~input_o\);
 
--- Location: LCCOMB_X1_Y42_N8
-\Bit7|o_CarryOut~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \Bit7|o_CarryOut~0_combout\ = (\B_i[6]~input_o\ & \A_i[6]~input_o\)
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1111000000000000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datac => \B_i[6]~input_o\,
-	datad => \A_i[6]~input_o\,
-	combout => \Bit7|o_CarryOut~0_combout\);
-
--- Location: IOIBUF_X0_Y45_N15
-\A_i[5]~input\ : cycloneive_io_ibuf
+-- Location: IOIBUF_X0_Y24_N8
+\op[3]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_A_i(5),
-	o => \A_i[5]~input_o\);
+	i => ww_op(3),
+	o => \op[3]~input_o\);
 
--- Location: IOIBUF_X0_Y34_N1
-\A_i[4]~input\ : cycloneive_io_ibuf
+-- Location: IOIBUF_X0_Y23_N22
+\op[5]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_A_i(4),
-	o => \A_i[4]~input_o\);
+	i => ww_op(5),
+	o => \op[5]~input_o\);
 
--- Location: IOIBUF_X0_Y35_N15
-\B_i[4]~input\ : cycloneive_io_ibuf
+-- Location: IOIBUF_X0_Y26_N15
+\op[4]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_B_i(4),
-	o => \B_i[4]~input_o\);
+	i => ww_op(4),
+	o => \op[4]~input_o\);
 
--- Location: LCCOMB_X1_Y42_N18
-\Bit5|o_CarryOut~0\ : cycloneive_lcell_comb
+-- Location: LCCOMB_X1_Y24_N0
+\beq~0\ : cycloneive_lcell_comb
 -- Equation(s):
--- \Bit5|o_CarryOut~0_combout\ = (\A_i[4]~input_o\ & \B_i[4]~input_o\)
+-- \beq~0_combout\ = (!\op[0]~input_o\ & (!\op[3]~input_o\ & (!\op[5]~input_o\ & !\op[4]~input_o\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100000011000000",
+	lut_mask => "0000000000000001",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datab => \A_i[4]~input_o\,
-	datac => \B_i[4]~input_o\,
-	combout => \Bit5|o_CarryOut~0_combout\);
+	dataa => \op[0]~input_o\,
+	datab => \op[3]~input_o\,
+	datac => \op[5]~input_o\,
+	datad => \op[4]~input_o\,
+	combout => \beq~0_combout\);
 
--- Location: IOIBUF_X0_Y44_N15
-\B_i[5]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_B_i(5),
-	o => \B_i[5]~input_o\);
-
--- Location: IOIBUF_X0_Y43_N15
-\A_i[3]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_A_i(3),
-	o => \A_i[3]~input_o\);
-
--- Location: IOIBUF_X0_Y47_N15
-\B_i[3]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_B_i(3),
-	o => \B_i[3]~input_o\);
-
--- Location: IOIBUF_X0_Y42_N1
-\A_i[2]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_A_i(2),
-	o => \A_i[2]~input_o\);
-
--- Location: IOIBUF_X0_Y46_N15
-\B_i[2]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_B_i(2),
-	o => \B_i[2]~input_o\);
-
--- Location: IOIBUF_X0_Y67_N15
-\B_i[1]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_B_i(1),
-	o => \B_i[1]~input_o\);
-
--- Location: IOIBUF_X0_Y66_N15
-\A_i[0]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_A_i(0),
-	o => \A_i[0]~input_o\);
-
--- Location: IOIBUF_X0_Y67_N22
-\B_i[0]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_B_i(0),
-	o => \B_i[0]~input_o\);
-
--- Location: LCCOMB_X1_Y67_N24
-\LSB|o_CarryOut~0\ : cycloneive_lcell_comb
+-- Location: LCCOMB_X1_Y24_N26
+\rFormat~0\ : cycloneive_lcell_comb
 -- Equation(s):
--- \LSB|o_CarryOut~0_combout\ = (\A_i[0]~input_o\ & \B_i[0]~input_o\)
+-- \rFormat~0_combout\ = (\op[1]~input_o\) # ((\op[2]~input_o\) # (!\beq~0_combout\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111000000000000",
+	lut_mask => "1111110011111111",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datac => \A_i[0]~input_o\,
-	datad => \B_i[0]~input_o\,
-	combout => \LSB|o_CarryOut~0_combout\);
+	datab => \op[1]~input_o\,
+	datac => \op[2]~input_o\,
+	datad => \beq~0_combout\,
+	combout => \rFormat~0_combout\);
 
--- Location: IOIBUF_X0_Y68_N15
-\A_i[1]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_A_i(1),
-	o => \A_i[1]~input_o\);
-
--- Location: IOIBUF_X0_Y66_N22
-\C_i~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_C_i,
-	o => \C_i~input_o\);
-
--- Location: LCCOMB_X1_Y67_N2
-\LSB|o_CarryOut~1\ : cycloneive_lcell_comb
+-- Location: LCCOMB_X1_Y24_N12
+\sw~0\ : cycloneive_lcell_comb
 -- Equation(s):
--- \LSB|o_CarryOut~1_combout\ = (\C_i~input_o\ & ((\A_i[0]~input_o\) # (\B_i[0]~input_o\)))
+-- \sw~0_combout\ = (\op[0]~input_o\ & (\op[1]~input_o\ & (!\op[2]~input_o\ & !\op[4]~input_o\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1010101010100000",
+	lut_mask => "0000000000001000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \C_i~input_o\,
-	datac => \A_i[0]~input_o\,
-	datad => \B_i[0]~input_o\,
-	combout => \LSB|o_CarryOut~1_combout\);
+	dataa => \op[0]~input_o\,
+	datab => \op[1]~input_o\,
+	datac => \op[2]~input_o\,
+	datad => \op[4]~input_o\,
+	combout => \sw~0_combout\);
 
--- Location: LCCOMB_X1_Y67_N20
-\Bit2|o_CarryOut~0\ : cycloneive_lcell_comb
+-- Location: LCCOMB_X1_Y24_N30
+\sw~1\ : cycloneive_lcell_comb
 -- Equation(s):
--- \Bit2|o_CarryOut~0_combout\ = (\B_i[1]~input_o\ & ((\LSB|o_CarryOut~0_combout\) # ((\A_i[1]~input_o\) # (\LSB|o_CarryOut~1_combout\)))) # (!\B_i[1]~input_o\ & (\A_i[1]~input_o\ & ((\LSB|o_CarryOut~0_combout\) # (\LSB|o_CarryOut~1_combout\))))
+-- \sw~1_combout\ = (\op[5]~input_o\ & \sw~0_combout\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111101011101000",
+	lut_mask => "1010101000000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \B_i[1]~input_o\,
-	datab => \LSB|o_CarryOut~0_combout\,
-	datac => \A_i[1]~input_o\,
-	datad => \LSB|o_CarryOut~1_combout\,
-	combout => \Bit2|o_CarryOut~0_combout\);
+	dataa => \op[5]~input_o\,
+	datad => \sw~0_combout\,
+	combout => \sw~1_combout\);
 
--- Location: LCCOMB_X1_Y42_N14
-\Bit3|o_CarryOut~1\ : cycloneive_lcell_comb
+-- Location: LCCOMB_X1_Y24_N8
+\int_regWrite~0\ : cycloneive_lcell_comb
 -- Equation(s):
--- \Bit3|o_CarryOut~1_combout\ = (\Bit2|o_CarryOut~0_combout\ & ((\A_i[2]~input_o\) # (\B_i[2]~input_o\)))
+-- \int_regWrite~0_combout\ = (\sw~1_combout\) # ((!\op[1]~input_o\ & (!\op[2]~input_o\ & \beq~0_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1110000011100000",
+	lut_mask => "1010101110101010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \A_i[2]~input_o\,
-	datab => \B_i[2]~input_o\,
-	datac => \Bit2|o_CarryOut~0_combout\,
-	combout => \Bit3|o_CarryOut~1_combout\);
+	dataa => \sw~1_combout\,
+	datab => \op[1]~input_o\,
+	datac => \op[2]~input_o\,
+	datad => \beq~0_combout\,
+	combout => \int_regWrite~0_combout\);
 
--- Location: LCCOMB_X1_Y42_N20
-\Bit3|o_CarryOut~0\ : cycloneive_lcell_comb
+-- Location: LCCOMB_X1_Y24_N18
+\sw~2\ : cycloneive_lcell_comb
 -- Equation(s):
--- \Bit3|o_CarryOut~0_combout\ = (\A_i[2]~input_o\ & \B_i[2]~input_o\)
+-- \sw~2_combout\ = (\op[5]~input_o\ & (\op[3]~input_o\ & \sw~0_combout\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1010000010100000",
+	lut_mask => "1000100000000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \A_i[2]~input_o\,
-	datac => \B_i[2]~input_o\,
-	combout => \Bit3|o_CarryOut~0_combout\);
+	dataa => \op[5]~input_o\,
+	datab => \op[3]~input_o\,
+	datad => \sw~0_combout\,
+	combout => \sw~2_combout\);
 
--- Location: LCCOMB_X1_Y42_N24
-\Bit4|o_CarryOut~0\ : cycloneive_lcell_comb
+-- Location: LCCOMB_X1_Y24_N28
+\beq~1\ : cycloneive_lcell_comb
 -- Equation(s):
--- \Bit4|o_CarryOut~0_combout\ = (\A_i[3]~input_o\ & ((\B_i[3]~input_o\) # ((\Bit3|o_CarryOut~1_combout\) # (\Bit3|o_CarryOut~0_combout\)))) # (!\A_i[3]~input_o\ & (\B_i[3]~input_o\ & ((\Bit3|o_CarryOut~1_combout\) # (\Bit3|o_CarryOut~0_combout\))))
+-- \beq~1_combout\ = (!\op[1]~input_o\ & (\op[2]~input_o\ & \beq~0_combout\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1110111011101000",
+	lut_mask => "0011000000000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \A_i[3]~input_o\,
-	datab => \B_i[3]~input_o\,
-	datac => \Bit3|o_CarryOut~1_combout\,
-	datad => \Bit3|o_CarryOut~0_combout\,
-	combout => \Bit4|o_CarryOut~0_combout\);
+	datab => \op[1]~input_o\,
+	datac => \op[2]~input_o\,
+	datad => \beq~0_combout\,
+	combout => \beq~1_combout\);
 
--- Location: LCCOMB_X1_Y42_N2
-\Bit5|o_CarryOut~1\ : cycloneive_lcell_comb
+-- Location: LCCOMB_X1_Y24_N14
+\jmp~0\ : cycloneive_lcell_comb
 -- Equation(s):
--- \Bit5|o_CarryOut~1_combout\ = (\Bit4|o_CarryOut~0_combout\ & ((\A_i[4]~input_o\) # (\B_i[4]~input_o\)))
+-- \jmp~0_combout\ = (\op[1]~input_o\ & (!\op[2]~input_o\ & \beq~0_combout\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111110000000000",
+	lut_mask => "0000110000000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datab => \A_i[4]~input_o\,
-	datac => \B_i[4]~input_o\,
-	datad => \Bit4|o_CarryOut~0_combout\,
-	combout => \Bit5|o_CarryOut~1_combout\);
+	datab => \op[1]~input_o\,
+	datac => \op[2]~input_o\,
+	datad => \beq~0_combout\,
+	combout => \jmp~0_combout\);
 
--- Location: LCCOMB_X1_Y42_N12
-\Bit6|o_CarryOut~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \Bit6|o_CarryOut~0_combout\ = (\A_i[5]~input_o\ & ((\Bit5|o_CarryOut~0_combout\) # ((\B_i[5]~input_o\) # (\Bit5|o_CarryOut~1_combout\)))) # (!\A_i[5]~input_o\ & (\B_i[5]~input_o\ & ((\Bit5|o_CarryOut~0_combout\) # (\Bit5|o_CarryOut~1_combout\))))
+ww_regDst <= \regDst~output_o\;
 
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1111101011101000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \A_i[5]~input_o\,
-	datab => \Bit5|o_CarryOut~0_combout\,
-	datac => \B_i[5]~input_o\,
-	datad => \Bit5|o_CarryOut~1_combout\,
-	combout => \Bit6|o_CarryOut~0_combout\);
+ww_aluSrc <= \aluSrc~output_o\;
 
--- Location: LCCOMB_X1_Y42_N22
-\Bit7|o_CarryOut~1\ : cycloneive_lcell_comb
--- Equation(s):
--- \Bit7|o_CarryOut~1_combout\ = (\Bit6|o_CarryOut~0_combout\ & ((\A_i[6]~input_o\) # (\B_i[6]~input_o\)))
+ww_memToReg <= \memToReg~output_o\;
 
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1111110000000000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \A_i[6]~input_o\,
-	datac => \B_i[6]~input_o\,
-	datad => \Bit6|o_CarryOut~0_combout\,
-	combout => \Bit7|o_CarryOut~1_combout\);
+ww_regWrite <= \regWrite~output_o\;
 
--- Location: IOIBUF_X0_Y46_N22
-\A_i[7]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_A_i(7),
-	o => \A_i[7]~input_o\);
+ww_memRead <= \memRead~output_o\;
 
--- Location: LCCOMB_X1_Y42_N16
-\MSB|o_CarryOut~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \MSB|o_CarryOut~0_combout\ = (\B_i[7]~input_o\ & ((\Bit7|o_CarryOut~0_combout\) # ((\Bit7|o_CarryOut~1_combout\) # (\A_i[7]~input_o\)))) # (!\B_i[7]~input_o\ & (\A_i[7]~input_o\ & ((\Bit7|o_CarryOut~0_combout\) # (\Bit7|o_CarryOut~1_combout\))))
+ww_memWrite <= \memWrite~output_o\;
 
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1111111010101000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \B_i[7]~input_o\,
-	datab => \Bit7|o_CarryOut~0_combout\,
-	datac => \Bit7|o_CarryOut~1_combout\,
-	datad => \A_i[7]~input_o\,
-	combout => \MSB|o_CarryOut~0_combout\);
+ww_branch <= \branch~output_o\;
 
--- Location: LCCOMB_X1_Y67_N22
-\LSB|o_Sum~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \LSB|o_Sum~0_combout\ = \C_i~input_o\ $ (\A_i[0]~input_o\ $ (\B_i[0]~input_o\))
+ww_jump <= \jump~output_o\;
 
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1010010101011010",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \C_i~input_o\,
-	datac => \A_i[0]~input_o\,
-	datad => \B_i[0]~input_o\,
-	combout => \LSB|o_Sum~0_combout\);
+ww_aluOp1 <= \aluOp1~output_o\;
 
--- Location: LCCOMB_X1_Y67_N0
-\Bit2|o_Sum\ : cycloneive_lcell_comb
--- Equation(s):
--- \Bit2|o_Sum~combout\ = \B_i[1]~input_o\ $ (\A_i[1]~input_o\ $ (((\LSB|o_CarryOut~0_combout\) # (\LSB|o_CarryOut~1_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1010010110010110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \B_i[1]~input_o\,
-	datab => \LSB|o_CarryOut~0_combout\,
-	datac => \A_i[1]~input_o\,
-	datad => \LSB|o_CarryOut~1_combout\,
-	combout => \Bit2|o_Sum~combout\);
-
--- Location: LCCOMB_X1_Y42_N10
-\Bit3|o_Sum~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \Bit3|o_Sum~0_combout\ = \A_i[2]~input_o\ $ (\B_i[2]~input_o\ $ (\Bit2|o_CarryOut~0_combout\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1001011010010110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \A_i[2]~input_o\,
-	datab => \B_i[2]~input_o\,
-	datac => \Bit2|o_CarryOut~0_combout\,
-	combout => \Bit3|o_Sum~0_combout\);
-
--- Location: LCCOMB_X1_Y42_N28
-\Bit4|o_Sum\ : cycloneive_lcell_comb
--- Equation(s):
--- \Bit4|o_Sum~combout\ = \A_i[3]~input_o\ $ (\B_i[3]~input_o\ $ (((\Bit3|o_CarryOut~1_combout\) # (\Bit3|o_CarryOut~0_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1001100110010110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \A_i[3]~input_o\,
-	datab => \B_i[3]~input_o\,
-	datac => \Bit3|o_CarryOut~1_combout\,
-	datad => \Bit3|o_CarryOut~0_combout\,
-	combout => \Bit4|o_Sum~combout\);
-
--- Location: LCCOMB_X1_Y42_N6
-\Bit5|o_Sum~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \Bit5|o_Sum~0_combout\ = \A_i[4]~input_o\ $ (\B_i[4]~input_o\ $ (\Bit4|o_CarryOut~0_combout\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100001100111100",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \A_i[4]~input_o\,
-	datac => \B_i[4]~input_o\,
-	datad => \Bit4|o_CarryOut~0_combout\,
-	combout => \Bit5|o_Sum~0_combout\);
-
--- Location: LCCOMB_X1_Y42_N0
-\Bit6|o_Sum\ : cycloneive_lcell_comb
--- Equation(s):
--- \Bit6|o_Sum~combout\ = \A_i[5]~input_o\ $ (\B_i[5]~input_o\ $ (((\Bit5|o_CarryOut~0_combout\) # (\Bit5|o_CarryOut~1_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1010010110010110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \A_i[5]~input_o\,
-	datab => \Bit5|o_CarryOut~0_combout\,
-	datac => \B_i[5]~input_o\,
-	datad => \Bit5|o_CarryOut~1_combout\,
-	combout => \Bit6|o_Sum~combout\);
-
--- Location: LCCOMB_X1_Y42_N26
-\Bit7|o_Sum~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \Bit7|o_Sum~0_combout\ = \A_i[6]~input_o\ $ (\B_i[6]~input_o\ $ (\Bit6|o_CarryOut~0_combout\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100001100111100",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \A_i[6]~input_o\,
-	datac => \B_i[6]~input_o\,
-	datad => \Bit6|o_CarryOut~0_combout\,
-	combout => \Bit7|o_Sum~0_combout\);
-
--- Location: LCCOMB_X1_Y42_N4
-\MSB|o_Sum\ : cycloneive_lcell_comb
--- Equation(s):
--- \MSB|o_Sum~combout\ = \B_i[7]~input_o\ $ (\A_i[7]~input_o\ $ (((\Bit7|o_CarryOut~0_combout\) # (\Bit7|o_CarryOut~1_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1010100101010110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \B_i[7]~input_o\,
-	datab => \Bit7|o_CarryOut~0_combout\,
-	datac => \Bit7|o_CarryOut~1_combout\,
-	datad => \A_i[7]~input_o\,
-	combout => \MSB|o_Sum~combout\);
-
-ww_C_o <= \C_o~output_o\;
-
-ww_sum(0) <= \sum[0]~output_o\;
-
-ww_sum(1) <= \sum[1]~output_o\;
-
-ww_sum(2) <= \sum[2]~output_o\;
-
-ww_sum(3) <= \sum[3]~output_o\;
-
-ww_sum(4) <= \sum[4]~output_o\;
-
-ww_sum(5) <= \sum[5]~output_o\;
-
-ww_sum(6) <= \sum[6]~output_o\;
-
-ww_sum(7) <= \sum[7]~output_o\;
+ww_aluOp0 <= \aluOp0~output_o\;
 END structure;
 
 
