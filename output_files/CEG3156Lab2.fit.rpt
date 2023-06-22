@@ -1,5 +1,5 @@
 Fitter report for CEG3156Lab2
-Sun Jun 18 19:37:24 2023
+Wed Jun 21 21:58:38 2023
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Fitter Summary                                                                  ;
 +------------------------------------+--------------------------------------------+
-; Fitter Status                      ; Successful - Sun Jun 18 19:37:24 2023      ;
+; Fitter Status                      ; Successful - Wed Jun 21 21:58:38 2023      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; CEG3156Lab2                                ;
 ; Top-level Entity Name              ; eightBitAdder                              ;
@@ -157,7 +157,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------+-------------------------------+
 ; Pin Name ; Reason                        ;
 +----------+-------------------------------+
-; cout     ; Incomplete set of assignments ;
+; C_o      ; Incomplete set of assignments ;
 ; sum[0]   ; Incomplete set of assignments ;
 ; sum[1]   ; Incomplete set of assignments ;
 ; sum[2]   ; Incomplete set of assignments ;
@@ -378,7 +378,7 @@ The pin-out file can be found in C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/o
 +--------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
 ; Name   ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Output Register ; Output Enable Register ; Power Up High ; Slew Rate ; PCI I/O Enabled ; Open Drain ; TRI Primitive ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Termination                       ; Termination Control Block ; Output Buffer Pre-emphasis ; Voltage Output Differential ; Location assigned by ; Output Enable Source ; Output Enable Group ;
 +--------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
-; cout   ; N8    ; 1        ; 0            ; 42           ; 7            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; Fitter               ; -                    ; -                   ;
+; C_o    ; N8    ; 1        ; 0            ; 42           ; 7            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; Fitter               ; -                    ; -                   ;
 ; sum[0] ; H6    ; 1        ; 0            ; 64           ; 0            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; Fitter               ; -                    ; -                   ;
 ; sum[1] ; D2    ; 1        ; 0            ; 68           ; 0            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; Fitter               ; -                    ; -                   ;
 ; sum[2] ; L2    ; 1        ; 0            ; 44           ; 0            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; Fitter               ; -                    ; -                   ;
@@ -996,7 +996,7 @@ The pin-out file can be found in C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/o
 ; N5       ;            ; 1        ; VCCIO1                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
 ; N6       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; N7       ; 56         ; 1        ; ~ALTERA_DATA0~ / RESERVED_INPUT_WITH_WEAK_PULLUP          ; input  ; 2.5 V        ;         ; Row I/O    ; N               ; no       ; On           ;
-; N8       ; 54         ; 1        ; cout                                                      ; output ; 2.5 V        ;         ; Row I/O    ; N               ; no       ; Off          ;
+; N8       ; 54         ; 1        ; C_o                                                       ; output ; 2.5 V        ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; N9       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; N10      ;            ;          ; VCCINT                                                    ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
 ; N11      ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
@@ -1223,13 +1223,13 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ; Compilation Hierarchy Node ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M9Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name             ; Library Name ;
 +----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+---------------------------------+--------------+
 ; |eightBitAdder             ; 20 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 26   ; 0            ; 20 (0)       ; 0 (0)             ; 0 (0)            ; |eightBitAdder                  ; work         ;
-;    |oneBitAdder:Bit1|      ; 3 (3)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; |eightBitAdder|oneBitAdder:Bit1 ; work         ;
 ;    |oneBitAdder:Bit2|      ; 2 (2)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; |eightBitAdder|oneBitAdder:Bit2 ; work         ;
 ;    |oneBitAdder:Bit3|      ; 3 (3)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; |eightBitAdder|oneBitAdder:Bit3 ; work         ;
 ;    |oneBitAdder:Bit4|      ; 2 (2)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; |eightBitAdder|oneBitAdder:Bit4 ; work         ;
 ;    |oneBitAdder:Bit5|      ; 3 (3)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; |eightBitAdder|oneBitAdder:Bit5 ; work         ;
 ;    |oneBitAdder:Bit6|      ; 2 (2)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; |eightBitAdder|oneBitAdder:Bit6 ; work         ;
 ;    |oneBitAdder:Bit7|      ; 3 (3)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; |eightBitAdder|oneBitAdder:Bit7 ; work         ;
+;    |oneBitAdder:LSB|       ; 3 (3)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; |eightBitAdder|oneBitAdder:LSB  ; work         ;
 ;    |oneBitAdder:MSB|       ; 2 (2)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; |eightBitAdder|oneBitAdder:MSB  ; work         ;
 +----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+---------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -1240,7 +1240,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+----------+---------------+---------------+-----------------------+-----+------+
 ; Name   ; Pin Type ; Pad to Core 0 ; Pad to Core 1 ; Pad to Input Register ; TCO ; TCOE ;
 +--------+----------+---------------+---------------+-----------------------+-----+------+
-; cout   ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; C_o    ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; sum[0] ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; sum[1] ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; sum[2] ; Output   ; --            ; --            ; --                    ; --  ; --   ;
@@ -1299,16 +1299,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - oneBitAdder:Bit3|o_CarryOut~1 ; 0                 ; 6       ;
 ;      - oneBitAdder:Bit3|o_Sum~0      ; 0                 ; 6       ;
 ; A_i[0]                               ;                   ;         ;
-;      - oneBitAdder:Bit1|o_CarryOut~0 ; 1                 ; 6       ;
-;      - oneBitAdder:Bit1|o_CarryOut~1 ; 1                 ; 6       ;
-;      - oneBitAdder:Bit1|o_Sum~0      ; 1                 ; 6       ;
+;      - oneBitAdder:LSB|o_CarryOut~0  ; 1                 ; 6       ;
+;      - oneBitAdder:LSB|o_CarryOut~1  ; 1                 ; 6       ;
+;      - oneBitAdder:LSB|o_Sum~0       ; 1                 ; 6       ;
 ; B_i[0]                               ;                   ;         ;
-;      - oneBitAdder:Bit1|o_CarryOut~0 ; 1                 ; 6       ;
-;      - oneBitAdder:Bit1|o_CarryOut~1 ; 1                 ; 6       ;
-;      - oneBitAdder:Bit1|o_Sum~0      ; 1                 ; 6       ;
+;      - oneBitAdder:LSB|o_CarryOut~0  ; 1                 ; 6       ;
+;      - oneBitAdder:LSB|o_CarryOut~1  ; 1                 ; 6       ;
+;      - oneBitAdder:LSB|o_Sum~0       ; 1                 ; 6       ;
 ; C_i                                  ;                   ;         ;
-;      - oneBitAdder:Bit1|o_CarryOut~1 ; 1                 ; 6       ;
-;      - oneBitAdder:Bit1|o_Sum~0      ; 1                 ; 6       ;
+;      - oneBitAdder:LSB|o_CarryOut~1  ; 1                 ; 6       ;
+;      - oneBitAdder:LSB|o_Sum~0       ; 1                 ; 6       ;
 ; B_i[1]                               ;                   ;         ;
 ;      - oneBitAdder:Bit2|o_CarryOut~0 ; 0                 ; 6       ;
 ;      - oneBitAdder:Bit2|o_Sum        ; 0                 ; 6       ;
@@ -1364,8 +1364,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; oneBitAdder:Bit4|o_CarryOut~0 ; 2       ;
 ; oneBitAdder:Bit3|o_CarryOut~1 ; 2       ;
 ; oneBitAdder:Bit2|o_CarryOut~0 ; 2       ;
-; oneBitAdder:Bit1|o_CarryOut~1 ; 2       ;
-; oneBitAdder:Bit1|o_CarryOut~0 ; 2       ;
+; oneBitAdder:LSB|o_CarryOut~1  ; 2       ;
+; oneBitAdder:LSB|o_CarryOut~0  ; 2       ;
 ; oneBitAdder:Bit3|o_CarryOut~0 ; 2       ;
 ; oneBitAdder:Bit5|o_CarryOut~0 ; 2       ;
 ; oneBitAdder:Bit7|o_CarryOut~0 ; 2       ;
@@ -1376,7 +1376,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; oneBitAdder:Bit4|o_Sum        ; 1       ;
 ; oneBitAdder:Bit3|o_Sum~0      ; 1       ;
 ; oneBitAdder:Bit2|o_Sum        ; 1       ;
-; oneBitAdder:Bit1|o_Sum~0      ; 1       ;
+; oneBitAdder:LSB|o_Sum~0       ; 1       ;
 ; oneBitAdder:MSB|o_CarryOut~0  ; 1       ;
 +-------------------------------+---------+
 
@@ -1544,7 +1544,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Total Unchecked    ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ;
 ; Total Inapplicable ; 26           ; 26           ; 26           ; 26           ; 26           ; 0         ; 26           ; 26           ; 0         ; 0         ; 26           ; 17           ; 26           ; 26           ; 9            ; 26           ; 17           ; 9            ; 26           ; 26           ; 26           ; 17           ; 26           ; 26           ; 26           ; 26           ; 26           ; 0         ; 26           ; 26           ;
 ; Total Fail         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ;
-; cout               ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; C_o                ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; sum[0]             ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; sum[1]             ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; sum[2]             ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
@@ -1638,7 +1638,7 @@ Info (169124): Fitter converted 5 user pins into dedicated programming pins
     Info (169125): Pin ~ALTERA_nCEO~ is reserved at location P28
 Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Assignment Warnings report for details
 Critical Warning (169085): No exact pin location assignment(s) for 26 pins of 26 total pins
-    Info (169086): Pin cout not assigned to an exact location on the device
+    Info (169086): Pin C_o not assigned to an exact location on the device
     Info (169086): Pin sum[0] not assigned to an exact location on the device
     Info (169086): Pin sum[1] not assigned to an exact location on the device
     Info (169086): Pin sum[2] not assigned to an exact location on the device
@@ -1700,7 +1700,7 @@ Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 0.05 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.02 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -1708,10 +1708,10 @@ Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
 Info (144001): Generated suppressed messages file C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/output_files/CEG3156Lab2.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 5131 megabytes
-    Info: Processing ended: Sun Jun 18 19:37:24 2023
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:08
+    Info: Peak virtual memory: 5127 megabytes
+    Info: Processing ended: Wed Jun 21 21:58:38 2023
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:06
 
 
 +----------------------------+
