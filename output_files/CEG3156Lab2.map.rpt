@@ -1,6 +1,6 @@
 Analysis & Synthesis report for CEG3156Lab2
-Wed Jun 21 16:49:14 2023
-Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Wed Jun 21 20:59:33 2023
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
 ---------------------
@@ -33,24 +33,24 @@ applicable agreement for further details.
 
 
 
-+---------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                    ;
-+------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Wed Jun 21 16:49:13 2023          ;
-; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
-; Revision Name                      ; CEG3156Lab2                                ;
-; Top-level Entity Name              ; aluControlUnit                             ;
-; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; N/A until Partition Merge                  ;
-;     Total combinational functions  ; N/A until Partition Merge                  ;
-;     Dedicated logic registers      ; N/A until Partition Merge                  ;
-; Total registers                    ; N/A until Partition Merge                  ;
-; Total pins                         ; N/A until Partition Merge                  ;
-; Total virtual pins                 ; N/A until Partition Merge                  ;
-; Total memory bits                  ; N/A until Partition Merge                  ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                  ;
-; Total PLLs                         ; N/A until Partition Merge                  ;
-+------------------------------------+--------------------------------------------+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Failed - Wed Jun 21 20:59:33 2023               ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; CEG3156Lab2                                     ;
+; Top-level Entity Name              ; CEG3156Lab2                                     ;
+; Family                             ; Cyclone IV E                                    ;
+; Total logic elements               ; N/A until Partition Merge                       ;
+;     Total combinational functions  ; N/A until Partition Merge                       ;
+;     Dedicated logic registers      ; N/A until Partition Merge                       ;
+; Total registers                    ; N/A until Partition Merge                       ;
+; Total pins                         ; N/A until Partition Merge                       ;
+; Total virtual pins                 ; N/A until Partition Merge                       ;
+; Total memory bits                  ; N/A until Partition Merge                       ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                       ;
+; Total PLLs                         ; N/A until Partition Merge                       ;
++------------------------------------+-------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------+
@@ -59,7 +59,7 @@ applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                                      ; aluControlUnit     ; CEG3156Lab2        ;
+; Top-level entity name                                                      ; CEG3156Lab2        ; CEG3156Lab2        ;
 ; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -146,7 +146,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 8      ;
+; Number detected on machine ; 32     ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
@@ -156,60 +156,63 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
-    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Wed Jun 21 16:49:13 2023
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Wed Jun 21 20:59:32 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CEG3156Lab2 -c CEG3156Lab2
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 2 design units, including 1 entities, in source file dff_2.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file enASdFF.vhd
+    Info (12022): Found design unit 1: enASdFF-rtl
+    Info (12023): Found entity 1: enASdFF
+Info (12021): Found 2 design units, including 1 entities, in source file enARdFF_2.vhd
+    Info (12022): Found design unit 1: enARdFF_2-rtl
+    Info (12023): Found entity 1: enARdFF_2
+Info (12021): Found 2 design units, including 1 entities, in source file oneBitSubtractor.vhd
+    Info (12022): Found design unit 1: oneBitSubtractor-rtl
+    Info (12023): Found entity 1: oneBitSubtractor
+Info (12021): Found 2 design units, including 1 entities, in source file shiftLeft2Unit.vhd
+    Info (12022): Found design unit 1: shiftLeft2Unit-rtl
+    Info (12023): Found entity 1: shiftLeft2Unit
+Info (12021): Found 2 design units, including 1 entities, in source file signExtendUnit.vhd
+    Info (12022): Found design unit 1: signExtendUnit-rtl
+    Info (12023): Found entity 1: signExtendUnit
+Info (12021): Found 2 design units, including 1 entities, in source file eightBitRegister.vhd
+    Info (12022): Found design unit 1: eightBitRegister-structural
+    Info (12023): Found entity 1: eightBitRegister
+Info (12021): Found 2 design units, including 1 entities, in source file registerFile.vhd
+    Info (12022): Found design unit 1: registerFile-structural
+    Info (12023): Found entity 1: registerFile
+Info (12021): Found 2 design units, including 1 entities, in source file eightBitSubtractor.vhd
+    Info (12022): Found design unit 1: eightBitSubtractor-structural
+    Info (12023): Found entity 1: eightBitSubtractor
+Info (12021): Found 2 design units, including 1 entities, in source file eightBitAdder.vhd
+    Info (12022): Found design unit 1: eightBitAdder-structural
+    Info (12023): Found entity 1: eightBitAdder
+Info (12021): Found 2 design units, including 1 entities, in source file mux2x1.vhd
+    Info (12022): Found design unit 1: mux2x1-rtl
+    Info (12023): Found entity 1: mux2x1
+Info (12021): Found 2 design units, including 1 entities, in source file pcAdder8Bit.vhd
+    Info (12022): Found design unit 1: pcAdder8Bit-structural
+    Info (12023): Found entity 1: pcAdder8Bit
+Info (12021): Found 2 design units, including 1 entities, in source file aluControlUnit.vhd
+    Info (12022): Found design unit 1: aluControlUnit-rtl
+    Info (12023): Found entity 1: aluControlUnit
+Info (12021): Found 2 design units, including 1 entities, in source file dFF_2.vhd
     Info (12022): Found design unit 1: dFF_2-rtl
     Info (12023): Found entity 1: dFF_2
 Info (12021): Found 2 design units, including 1 entities, in source file onebitadder.vhd
     Info (12022): Found design unit 1: oneBitAdder-rtl
     Info (12023): Found entity 1: oneBitAdder
-Info (12021): Found 2 design units, including 1 entities, in source file pcadder8bit.vhd
-    Info (12022): Found design unit 1: pcAdder8Bit-structural
-    Info (12023): Found entity 1: pcAdder8Bit
-Info (12021): Found 2 design units, including 1 entities, in source file enardff_2.vhd
-    Info (12022): Found design unit 1: enARdFF_2-rtl
-    Info (12023): Found entity 1: enARdFF_2
-Info (12021): Found 2 design units, including 1 entities, in source file enasdff.vhd
-    Info (12022): Found design unit 1: enASdFF-rtl
-    Info (12023): Found entity 1: enASdFF
-Info (12021): Found 2 design units, including 1 entities, in source file mux2x1.vhd
-    Info (12022): Found design unit 1: mux2x1-rtl
-    Info (12023): Found entity 1: mux2x1
-Info (12021): Found 2 design units, including 1 entities, in source file signextendunit.vhd
-    Info (12022): Found design unit 1: signExtendUnit-rtl
-    Info (12023): Found entity 1: signExtendUnit
-Info (12021): Found 2 design units, including 1 entities, in source file shiftleft2unit.vhd
-    Info (12022): Found design unit 1: shiftLeft2Unit-rtl
-    Info (12023): Found entity 1: shiftLeft2Unit
-Info (12021): Found 2 design units, including 1 entities, in source file onebitsubtractor.vhd
-    Info (12022): Found design unit 1: oneBitSubtractor-rtl
-    Info (12023): Found entity 1: oneBitSubtractor
-Info (12021): Found 2 design units, including 1 entities, in source file eightbitsubtractor.vhd
-    Info (12022): Found design unit 1: eightBitSubtractor-structural
-    Info (12023): Found entity 1: eightBitSubtractor
-Info (12021): Found 2 design units, including 1 entities, in source file eightbitadder.vhd
-    Info (12022): Found design unit 1: eightBitAdder-structural
-    Info (12023): Found entity 1: eightBitAdder
-Error (10500): VHDL syntax error at eightBitRegister.vhd(12) near text ")";  expecting an identifier, or "constant", or "file", or "signal", or "variable" File: C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/eightBitRegister.vhd Line: 12
-Error (10500): VHDL syntax error at eightBitRegister.vhd(20) near text "component";  expecting an identifier ("component" is a reserved keyword), or "constant", or "file", or "signal", or "variable" File: C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/eightBitRegister.vhd Line: 20
-Error (10500): VHDL syntax error at eightBitRegister.vhd(27) near text "component";  expecting ";", or an identifier ("component" is a reserved keyword), or "entity" File: C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/eightBitRegister.vhd Line: 27
-Error (10396): VHDL syntax error at eightBitRegister.vhd(40): name used in construct must match previously specified name "eightBitRegister" File: C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/eightBitRegister.vhd Line: 40
-Error (10523): Ignored construct eightBitRegister at eightBitRegister.vhd(4) due to previous errors File: C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/eightBitRegister.vhd Line: 4
-Info (12021): Found 0 design units, including 0 entities, in source file eightbitregister.vhd
-Error (10500): VHDL syntax error at registerFile.vhd(15) near text ")";  expecting an identifier, or "constant", or "file", or "signal", or "variable" File: C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/registerFile.vhd Line: 15
-Error (10500): VHDL syntax error at registerFile.vhd(22) near text "component";  expecting an identifier ("component" is a reserved keyword), or "constant", or "file", or "signal", or "variable" File: C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/registerFile.vhd Line: 22
-Error (10500): VHDL syntax error at registerFile.vhd(29) near text ")";  expecting an identifier, or "constant", or "file", or "signal", or "variable" File: C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/registerFile.vhd Line: 29
-Info (12021): Found 0 design units, including 0 entities, in source file registerfile.vhd
-Info (12021): Found 2 design units, including 1 entities, in source file alucontrolunit.vhd
-    Info (12022): Found design unit 1: aluControlUnit-rtl
-    Info (12023): Found entity 1: aluControlUnit
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 8 errors, 1 warning
-    Error: Peak virtual memory: 4646 megabytes
-    Error: Processing ended: Wed Jun 21 16:49:14 2023
+Info (12021): Found 2 design units, including 1 entities, in source file threeToEightDecoder.vhd
+    Info (12022): Found design unit 1: threeToEightDecoder-Structural
+    Info (12023): Found entity 1: threeToEightDecoder
+Info (12021): Found 2 design units, including 1 entities, in source file mux8x1EightBit.vhd
+    Info (12022): Found design unit 1: mux8x1EightBit-Structural
+    Info (12023): Found entity 1: mux8x1EightBit
+Error (12007): Top-level design entity "CEG3156Lab2" is undefined
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 1 error, 1 warning
+    Error: Peak virtual memory: 571 megabytes
+    Error: Processing ended: Wed Jun 21 20:59:33 2023
     Error: Elapsed time: 00:00:01
-    Error: Total CPU time (on all processors): 00:00:01
+    Error: Total CPU time (on all processors): 00:00:00
 
 
