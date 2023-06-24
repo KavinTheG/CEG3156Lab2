@@ -1,34 +1,87 @@
-|controlLogicUnit
-op[0] => lw.IN1
-op[0] => sw.IN1
-op[0] => rFormat.IN1
-op[0] => beq.IN1
-op[0] => jmp.IN1
-op[1] => lw.IN1
-op[1] => sw.IN1
-op[1] => jmp.IN1
-op[1] => rFormat.IN1
-op[1] => beq.IN1
-op[2] => beq.IN1
-op[2] => rFormat.IN1
-op[2] => lw.IN1
-op[2] => lw.IN1
-op[2] => sw.IN1
-op[3] => sw.IN1
-op[3] => rFormat.IN1
-op[4] => rFormat.IN0
-op[4] => lw.IN0
-op[5] => lw.IN1
-op[5] => rFormat.IN1
-regDst <= rFormat.DB_MAX_OUTPUT_PORT_TYPE
-aluSrc <= int_aluSrc.DB_MAX_OUTPUT_PORT_TYPE
-memToReg <= lw.DB_MAX_OUTPUT_PORT_TYPE
-regWrite <= int_regWrite.DB_MAX_OUTPUT_PORT_TYPE
-memRead <= lw.DB_MAX_OUTPUT_PORT_TYPE
-memWrite <= sw.DB_MAX_OUTPUT_PORT_TYPE
-branch <= beq.DB_MAX_OUTPUT_PORT_TYPE
-jump <= jmp.DB_MAX_OUTPUT_PORT_TYPE
-aluOp1 <= rFormat.DB_MAX_OUTPUT_PORT_TYPE
-aluOp0 <= beq.DB_MAX_OUTPUT_PORT_TYPE
+|mux7x7
+sel => mux2x1:msb.sel
+sel => mux2x1:bit6.sel
+sel => mux2x1:bit5.sel
+sel => mux2x1:bit4.sel
+sel => mux2x1:bit3.sel
+sel => mux2x1:bit2.sel
+sel => mux2x1:lsb.sel
+a_i[0] => mux2x1:lsb.a_i
+a_i[1] => mux2x1:bit2.a_i
+a_i[2] => mux2x1:bit3.a_i
+a_i[3] => mux2x1:bit4.a_i
+a_i[4] => mux2x1:bit5.a_i
+a_i[5] => mux2x1:bit6.a_i
+a_i[6] => mux2x1:msb.a_i
+b_i[0] => mux2x1:lsb.b_i
+b_i[1] => mux2x1:bit2.b_i
+b_i[2] => mux2x1:bit3.b_i
+b_i[3] => mux2x1:bit4.b_i
+b_i[4] => mux2x1:bit5.b_i
+b_i[5] => mux2x1:bit6.b_i
+b_i[6] => mux2x1:msb.b_i
+o_m[0] << mux2x1:lsb.o_m
+o_m[1] << mux2x1:bit2.o_m
+o_m[2] << mux2x1:bit3.o_m
+o_m[3] << mux2x1:bit4.o_m
+o_m[4] << mux2x1:bit5.o_m
+o_m[5] << mux2x1:bit6.o_m
+o_m[6] << mux2x1:msb.o_m
+
+
+|mux7x7|mux2x1:msb
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mux7x7|mux2x1:bit6
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mux7x7|mux2x1:bit5
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mux7x7|mux2x1:bit4
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mux7x7|mux2x1:bit3
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mux7x7|mux2x1:bit2
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mux7x7|mux2x1:lsb
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 

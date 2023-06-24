@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+component LPM_RAM_DQ
+
+        generic (LPM_WIDTH : natural;    -- MUST be greater than 0
+
+                               LPM_WIDTHAD : natural;    -- MUST be greater than 0
+
+                               LPM_NUMWORDS : natural := 0;
+
+                               LPM_INDATA : string := "REGISTERED";
+
+                               LPM_ADDRESS_CONTROL: string := "REGISTERED";
+
+                               LPM_OUTDATA : string := "REGISTERED";
+
+                               LPM_FILE : string := "UNUSED";
+
+                               LPM_TYPE : string := L_RAM_DQ;
+
+                           USE_EAB  : string := "ON";
+
+                               INTENDED_DEVICE_FAMILY  : string := "UNUSED";
+
+                               LPM_HINT : string := "UNUSED");
+
+              port (DATA : in std_logic_vector(LPM_WIDTH-1 downto 0);
+
+                               ADDRESS : in std_logic_vector(LPM_WIDTHAD-1 downto 0);
+
+                               INCLOCK : in std_logic := '0';
+
+                               OUTCLOCK : in std_logic := '0';
+
+                               WE : in std_logic;
+
+                               Q : out std_logic_vector(LPM_WIDTH-1 downto 0));
+
+end component;
