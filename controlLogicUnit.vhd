@@ -11,6 +11,7 @@ entity controlLogicUnit is
 		memRead: out std_logic;
 		memWrite: out std_logic;
 		branch: out std_logic;
+		branchNotEqual: out std_logic;
 		jump: out std_logic;
 		aluOp1: out std_logic;
 		aluOp0: out std_logic
@@ -18,7 +19,7 @@ entity controlLogicUnit is
 end entity;
 
 architecture rtl of controlLogicUnit is
-	signal rFormat, lw, sw, beq, jmp : std_logic;
+	signal rFormat, lw, sw, beq, bne, jmp : std_logic;
 	signal int_aluSrc, int_regWrite, int_aluOp0, int_aluOp1: std_logic;
 	
 	begin
@@ -27,6 +28,7 @@ architecture rtl of controlLogicUnit is
 		lw <= op(5) and not(op(4)) and not(op(2)) and not(op(2)) and op(1) and op(0);
 		sw <= op(5) and not(op(4)) and op(3) and not(op(2)) and op(1) and op(0);
 		beq <= not(op(5)) and not(op(4)) and not(op(3)) and op(2) and not(op(1)) and not(op(0));
+		bne <= not(op(5)) and not(op(4)) and not(op(3)) and op(2) and op(1) and not(op(0));
 		jmp <= not(op(5)) and not(op(4)) and not(op(3)) and not(op(2)) and op(1) and not(op(0));
 		
 		
@@ -34,7 +36,7 @@ architecture rtl of controlLogicUnit is
 		int_aluSrc <= lw or sw;
 		int_regWrite <= rFormat or lw;
 		int_aluOp1 <= rFormat;
-		int_aluOp0 <= beq;
+		int_aluOp0 <= beq or bne;
 		
 		
 		--output values
@@ -45,6 +47,7 @@ architecture rtl of controlLogicUnit is
 		memRead <= lw;
 		memWrite <= sw;
 		branch <= beq;
+		branchNotEqual <= bne;
 		jump <= jmp;
 		aluOp1 <= int_aluOp1;
 		aluOp0 <= int_aluOp0;
