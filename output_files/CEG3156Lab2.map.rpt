@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CEG3156Lab2
-Tue Jun 27 11:57:24 2023
+Tue Jun 27 19:54:29 2023
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -50,7 +50,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Jun 27 11:57:24 2023      ;
+; Analysis & Synthesis Status        ; Successful - Tue Jun 27 19:54:29 2023      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; CEG3156Lab2                                ;
 ; Top-level Entity Name              ; pcRegister                                 ;
@@ -160,20 +160,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 8      ;
+; Number detected on machine ; 32     ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                              ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                       ; Library ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------------+---------+
-; enARdFF_2.vhd                    ; yes             ; User VHDL File  ; C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/enARdFF_2.vhd        ;         ;
-; eightBitRegister.vhd             ; yes             ; User VHDL File  ; C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/eightBitRegister.vhd ;         ;
-; pcRegister.vhd                   ; yes             ; User VHDL File  ; C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/pcRegister.vhd       ;         ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                               ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                        ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------+---------+
+; enARdFF_2.vhd                    ; yes             ; User VHDL File  ; /home/kavin/Github/CEG3156Lab2/enARdFF_2.vhd        ;         ;
+; eightBitRegister.vhd             ; yes             ; User VHDL File  ; /home/kavin/Github/CEG3156Lab2/eightBitRegister.vhd ;         ;
+; pcRegister.vhd                   ; yes             ; User VHDL File  ; /home/kavin/Github/CEG3156Lab2/pcRegister.vhd       ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------+---------+
 
 
 +---------------------------------------------------------+
@@ -336,64 +336,64 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Tue Jun 27 11:57:23 2023
+    Info: Processing started: Tue Jun 27 19:54:28 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CEG3156Lab2 -c CEG3156Lab2
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 2 design units, including 1 entities, in source file enasdff.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file enASdFF.vhd
     Info (12022): Found design unit 1: enASdFF-rtl
     Info (12023): Found entity 1: enASdFF
-Info (12021): Found 2 design units, including 1 entities, in source file enardff_2.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file enARdFF_2.vhd
     Info (12022): Found design unit 1: enARdFF_2-rtl
     Info (12023): Found entity 1: enARdFF_2
-Info (12021): Found 2 design units, including 1 entities, in source file onebitsubtractor.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file oneBitSubtractor.vhd
     Info (12022): Found design unit 1: oneBitSubtractor-rtl
     Info (12023): Found entity 1: oneBitSubtractor
-Info (12021): Found 2 design units, including 1 entities, in source file shiftleft2unit.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file shiftLeft2Unit.vhd
     Info (12022): Found design unit 1: shiftLeft2Unit-rtl
     Info (12023): Found entity 1: shiftLeft2Unit
-Info (12021): Found 2 design units, including 1 entities, in source file signextendunit.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file signExtendUnit.vhd
     Info (12022): Found design unit 1: signExtendUnit-rtl
     Info (12023): Found entity 1: signExtendUnit
-Info (12021): Found 2 design units, including 1 entities, in source file eightbitregister.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file eightBitRegister.vhd
     Info (12022): Found design unit 1: eightBitRegister-structural
     Info (12023): Found entity 1: eightBitRegister
-Info (12021): Found 2 design units, including 1 entities, in source file registerfile.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file registerFile.vhd
     Info (12022): Found design unit 1: registerFile-structural
     Info (12023): Found entity 1: registerFile
-Info (12021): Found 2 design units, including 1 entities, in source file eightbitsubtractor.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file eightBitSubtractor.vhd
     Info (12022): Found design unit 1: eightBitSubtractor-structural
     Info (12023): Found entity 1: eightBitSubtractor
-Info (12021): Found 2 design units, including 1 entities, in source file eightbitadder.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file eightBitAdder.vhd
     Info (12022): Found design unit 1: eightBitAdder-structural
     Info (12023): Found entity 1: eightBitAdder
 Info (12021): Found 2 design units, including 1 entities, in source file mux2x1.vhd
     Info (12022): Found design unit 1: mux2x1-rtl
     Info (12023): Found entity 1: mux2x1
-Info (12021): Found 2 design units, including 1 entities, in source file pcadder8bit.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file pcAdder8Bit.vhd
     Info (12022): Found design unit 1: pcAdder8Bit-structural
     Info (12023): Found entity 1: pcAdder8Bit
-Info (12021): Found 2 design units, including 1 entities, in source file alucontrolunit.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file aluControlUnit.vhd
     Info (12022): Found design unit 1: aluControlUnit-rtl
     Info (12023): Found entity 1: aluControlUnit
-Info (12021): Found 2 design units, including 1 entities, in source file dff_2.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file dFF_2.vhd
     Info (12022): Found design unit 1: dFF_2-rtl
     Info (12023): Found entity 1: dFF_2
 Info (12021): Found 2 design units, including 1 entities, in source file onebitadder.vhd
     Info (12022): Found design unit 1: oneBitAdder-rtl
     Info (12023): Found entity 1: oneBitAdder
-Info (12021): Found 2 design units, including 1 entities, in source file threetoeightdecoder.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file threeToEightDecoder.vhd
     Info (12022): Found design unit 1: threeToEightDecoder-Structural
     Info (12023): Found entity 1: threeToEightDecoder
-Info (12021): Found 2 design units, including 1 entities, in source file mux8x1eightbit.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file mux8x1EightBit.vhd
     Info (12022): Found design unit 1: mux8x1EightBit-Structural
     Info (12023): Found entity 1: mux8x1EightBit
-Info (12021): Found 2 design units, including 1 entities, in source file controllogicunit.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file controlLogicUnit.vhd
     Info (12022): Found design unit 1: controlLogicUnit-rtl
     Info (12023): Found entity 1: controlLogicUnit
-Info (12021): Found 2 design units, including 1 entities, in source file instructionmemory.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file instructionMemory.vhd
     Info (12022): Found design unit 1: instructionMemory-structural
     Info (12023): Found entity 1: instructionMemory
-Info (12021): Found 2 design units, including 1 entities, in source file datamemory.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file dataMemory.vhd
     Info (12022): Found design unit 1: dataMemory-structural
     Info (12023): Found entity 1: dataMemory
 Info (12021): Found 2 design units, including 1 entities, in source file mux7x7.vhd
@@ -405,18 +405,21 @@ Info (12021): Found 2 design units, including 1 entities, in source file mux8x8.
 Info (12021): Found 2 design units, including 1 entities, in source file mux5x5.vhd
     Info (12022): Found design unit 1: mux5x5-structural
     Info (12023): Found entity 1: mux5x5
-Info (12021): Found 2 design units, including 1 entities, in source file alumain.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file ALUmain.vhd
     Info (12022): Found design unit 1: ALUmain-structural
     Info (12023): Found entity 1: ALUmain
 Info (12021): Found 2 design units, including 1 entities, in source file onebitcomparator.vhd
     Info (12022): Found design unit 1: oneBitComparator-rtl
     Info (12023): Found entity 1: oneBitComparator
-Info (12021): Found 2 design units, including 1 entities, in source file eightbitcomparator.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file eightBitComparator.vhd
     Info (12022): Found design unit 1: eighBitComparator-rtl
     Info (12023): Found entity 1: eighBitComparator
-Info (12021): Found 2 design units, including 1 entities, in source file pcregister.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file pcRegister.vhd
     Info (12022): Found design unit 1: pcRegister-structural
     Info (12023): Found entity 1: pcRegister
+Info (12021): Found 2 design units, including 1 entities, in source file singleCycleTopLevel.vhd
+    Info (12022): Found design unit 1: singleCycleTopLevel-structural
+    Info (12023): Found entity 1: singleCycleTopLevel
 Info (12127): Elaborating entity "pcRegister" for the top level hierarchy
 Info (12128): Elaborating entity "eightBitRegister" for hierarchy "eightBitRegister:pcVal"
 Warning (10036): Verilog HDL or VHDL warning at eightBitRegister.vhd(16): object "notOutputs" assigned a value but never read
@@ -429,8 +432,8 @@ Info (21057): Implemented 26 device resources after synthesis - the final resour
     Info (21059): Implemented 8 output pins
     Info (21061): Implemented 8 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4656 megabytes
-    Info: Processing ended: Tue Jun 27 11:57:24 2023
+    Info: Peak virtual memory: 671 megabytes
+    Info: Processing ended: Tue Jun 27 19:54:29 2023
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

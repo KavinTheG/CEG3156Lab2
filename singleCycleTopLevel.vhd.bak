@@ -166,15 +166,6 @@ component controlLogicUnit is
 	);
 end component;
 
--- Multiplexor Output
-component mux8x1EightBit is
-port(
-		a0, a1, a2, a3, a4, a5, a6, a7: in std_logic_vector(7 downto 0);
-		s : in std_logic_vector(2 downto 0);
-		o : out std_logic_vector(7 downto 0)
-		);
-end component;
-
 begin
 
 pcRegisterVal: pcRegister port map(GReset, GClock1, pcInput_conn, pcOutput_conn);
@@ -218,8 +209,6 @@ branchSel1_conn <= branch_conn and zero_conn;
 branchSel2_conn <= branchNE_conn and not(zero_conn);
 branchSelect_conn <= branchSel1_conn or branchSel2_conn;
 
-jumpAddr_conn <= instructionOut_conn(7 downto 0);
-
 instructionOut <= instructionOut_conn;
 branchOut <= branch_conn;
 zeroOut <= zero_conn;
@@ -228,9 +217,8 @@ regWriteOut <= regWrite_conn;
 --STILL NEED TO DO THE MUX OUT VALUE;
 
 
--- PC, ALUResult, ReadData1, ReadData2, WriteData, , RegDst, ALUOp ,  memtoReg
-outputVal: mux8x1EightBit port map(pcOutput_conn, aluResultToData_conn, readDataOne_conn, readDataTwo_conn, writeRegisterIn_conn,
-											  "0000000" & regDst_conn, "000000" & aluOp_conn, "0000000" & memToReg_conn, valueSelect, muxOut);
+
+
 
 
   
