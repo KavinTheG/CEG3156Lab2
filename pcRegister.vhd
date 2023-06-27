@@ -1,0 +1,35 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+
+entity pcRegister is
+	port(
+	reset	:	IN STD_LOGIC;
+	clk : IN STD_LOGIC;
+	PC_input: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	PC_output : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+end entity;
+
+architecture structural of pcRegister is
+
+signal output: STD_LOGIC_VECTOR(7 downto 0);
+
+component eightBitRegister is
+	port(
+	reset	:	IN STD_LOGIC;
+	values : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	en : IN STD_LOGIC;
+	clk : IN STD_LOGIC;
+	outputs : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+end component;
+
+begin
+
+pcVal: eightBitRegister port map(reset, pc_input, '1', clk, output);
+
+--output value
+PC_output <= output;
+
+end structural;
