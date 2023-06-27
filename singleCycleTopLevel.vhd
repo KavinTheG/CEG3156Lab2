@@ -1,0 +1,235 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+entity singleCycleTopLevel is
+	port(
+		GClock1, GClock2: in std_logic;
+		GReset: in std_logic;
+		valueSelect: in std_logic_vector(2 downto 0);
+		muxOut: out std_logic_vector(7 downto 0);
+		instructionOut: out std_logic_vector(31 downto 0);
+		branchOut: out std_logic;
+		zeroOut: out std_logic;
+		memWriteOut: out std_logic;
+		regWriteOut: out std_logic
+	);
+end entity;
+
+architecture structural of singleCycleTopLevel is
+
+--SIGNAL DECLARATION
+
+--wire connections
+signal pcInput_conn, pcOutput_conn, junpAddress_conn, muxOutputBranch_conn, pcAdderOut_conn, aluResultToMux_conn, shiftLeftTwoOutput_conn, shiftLeftOneOutput_conn, muxToMux_conn, jumpAddr_conn: std_logic_vector(7 downto 0);
+signal readDataOne_conn, readDataTwo_conn, readDataTwoMuxOut_conn, aluResultToData_conn, dataMemoryOutput_conn, writeBackInput_conn, aluInputfromMux_conn: std_logic_vector(7 downto 0);
+
+--signal values from control unit
+signal regDst_conn, jump_conn, branchNE_conn, branch_conn, memRead_conn, memtoReg_conn, memWrite_conn, aluSrc_conn, regWrite_conn : std_logic;
+
+--zero alu value
+signal zero_conn: std_logic;
+
+--control unit signal value
+signal aluOp_conn: std_logic_vector(1 downto 0);
+
+--to branch if BNE or BRANCH is active
+signal branchSel1_conn, branchSel2_conn, branchSelect_conn: std_logic;
+
+
+signal aluControl_conn: std_logic_vector(2 downto 0);
+
+signal writeRegisterIn_conn: std_logic_vector(4 downto 0);
+ 
+signal instructionOut_conn, signExtendOut_conn: std_logic_vector(31 downto 0);
+
+
+--COMPONENT DECLARATION
+
+component pcRegister is
+	port(
+	reset	:	IN STD_LOGIC;
+	clk : IN STD_LOGIC;
+	PC_input: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	PC_output : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+end component;
+
+component eightBitAdder is
+	port(
+		A_i, B_i : in std_logic_vector (7 downto 0);
+		C_i : in std_logic;
+		C_o : out std_logic;
+		sum: out std_logic_vector (7 downto 0)
+		);
+end component;
+
+component instructionMemory is
+	port (	
+			inclock                 : in  STD_LOGIC;
+			outclock 	            : in  STD_LOGIC;
+			readAddress             : in  STD_LOGIC_VECTOR(7 downto 0);
+			instruction_out			: out STD_LOGIC_VECTOR(31 downto 0)
+			);
+end component;
+
+component mux5x5 is
+	port (
+		sel : in std_logic;
+		a_i, b_i : in std_logic_vector(4 downto 0);
+		o_m : out std_logic_vector(4 downto 0)
+	);
+end component;
+
+
+component registerFile is
+	port(
+	reset : IN STD_LOGIC;
+	clk : IN STD_LOGIC;
+	readReg1 : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+	readReg2 : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+	writeReg : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+	writeData : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	regWrite : IN STD_LOGIC;
+	
+	readData1 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	readData2 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)	
+	);
+end component;
+
+
+component signExtendUnit is
+	port (
+	sign_input : in std_logic_vector(15 downto 0);
+	sign_output : out std_logic_vector(31 downto 0)
+	);
+end component;
+
+component mux8x8 is
+port (
+		sel : in std_logic;
+		a_i, b_i : in std_logic_vector(7 downto 0);
+		o_m : out std_logic_vector(7 downto 0)
+	);
+end component;
+
+component ALUmain is
+port (
+		input1 : IN STD_logic_vector(7 downto 0);
+		input2 : in std_logic_vector(7 downto 0);
+		sel : in std_logic_vector(2 downto 0);
+		
+		zero : out std_logic;
+		aluResult : out std_logic_vector(7 downto 0)
+	);
+end component;
+
+component shiftLeft2Unit is
+port(
+	shift_input : in std_logic_vector(7 downto 0);
+	shift_output: out std_logic_vector(7 downto 0));
+end component;
+
+component dataMemory IS
+	PORT (	
+			inclock                 : IN  STD_LOGIC;
+			outclock 	            : IN  STD_LOGIC;
+			memWrite						: IN  STD_LOGIC;
+			memRead						: IN  STD_LOGIC;
+			address                 : IN  STD_LOGIC_VECTOR(7 downto 0);
+			writeData               : IN  STD_LOGIC_VECTOR(7 downto 0);
+			readData			         : OUT STD_LOGIC_VECTOR(7 downto 0)
+			);
+END component;
+
+component aluControlUnit is
+	port(
+		aluOp: in std_logic_vector (1 downto 0);
+		instructionIn: in std_logic_vector (5 downto 0);
+		aluCntrlOut: out std_logic_vector (2 downto 0)	
+	);
+end component;
+
+component controlLogicUnit is
+	port(
+		op: in std_logic_vector (5 downto 0);
+		regDst: out std_logic;
+		aluSrc: out std_logic;
+		memToReg: out std_logic;
+		regWrite: out std_logic;
+		memRead: out std_logic;
+		memWrite: out std_logic;
+		branch: out std_logic;
+		branchNotEqual: out std_logic;
+		jump: out std_logic;
+		aluOp1: out std_logic;
+		aluOp0: out std_logic
+	);
+end component;
+
+begin
+
+pcRegisterVal: pcRegister port map(GReset, GClock1, pcInput_conn, pcOutput_conn);
+
+instructionMem: instructionMemory port map(GClock2, Gclock1, pcOutput_conn, instructionOut_conn);
+
+mux5x5Out: mux5x5 port map(regDst_conn, instructionOut_conn(20 downto 16), instructionOut_conn(15 downto 11), writeRegisterIn_conn);
+
+regFile: registerFile port map(GReset, GClock1, instructionOut_conn(25 downto 21), instructionOut_conn(20 downto 16), writeRegisterIn_conn, writeBackInput_conn, regWrite_conn, readDataOne_conn, readDataTwo_conn);
+
+signExt: signExtendUnit port map(instructionOut_conn(15 downto 0), signExtendOut_conn);
+
+aluCont: aluControlUnit port map(aluOp_conn, instructionOut_conn(5 downto 0), aluControl_conn);
+
+mux8Bit: mux8x8 port map(aluSrc_conn, readDataTwo_conn, signExtendOut_conn(7 downto 0), aluInputfromMux_conn);
+
+alu: ALUmain port map(readDataOne_conn, aluInputfromMux_conn, aluControl_conn, zero_conn, aluResultToData_conn);
+
+dataMem: dataMemory port map(GClock2, GClock1, memWrite_conn, memRead_conn, aluResultToData_conn, readDataTwo_conn,dataMemoryOutput_conn);
+
+mux8BitData: mux8x8 port map(memtoReg_conn, aluResultToData_conn, dataMemoryOutput_conn, writeBackInput_conn);
+
+controlUnit: controlLogicUnit port map(instructionOut_conn(31 downto 26), regDst_conn, aluSrc_conn, memtoReg_conn, regWrite_conn, memRead_conn, memWrite_conn, branch_conn, branchNE_conn, jump_conn, aluOp_conn(1), aluOp_conn(0));
+
+pcPlus4Adder: eightBitAdder port map(pcOutput_conn, "00000100", '0', open, pcAdderOut_conn);
+
+shiftLeftBranch: shiftLeft2Unit port map(signExtendOut_conn(7 downto 0), shiftLeftOneOutput_conn);
+
+branchAdder: eightBitAdder port map(pcAdderOut_conn, shiftLeftOneOutput_conn, '0', open, aluResultToMux_conn);
+
+branchMux: mux8x8 port map(branchSelect_conn, pcAdderOut_conn, aluInputfromMux_conn, muxToMux_conn);
+
+--NOTE: FIGURE OUT HOW TO OBTAIN THE JUMP ADDESS FOR 8 BITS (jumpAddr_conn)
+jumpBranchSel: mux8x8 port map(jump_conn, muxToMux_conn, jumpAddr_conn, pcInput_conn);
+
+
+--COMPONENTS LEFT TO DO: SHIFTLEFT2 for jump address and multiplexor to get valueSelect outputs (may already have with mux 8x1, but need to modify);
+
+
+branchSel1_conn <= branch_conn and zero_conn;
+branchSel2_conn <= branchNE_conn and not(zero_conn);
+branchSelect_conn <= branchSel1_conn or branchSel2_conn;
+
+instructionOut <= instructionOut_conn;
+branchOut <= branch_conn;
+zeroOut <= zero_conn;
+memWriteOut <= memWrite_conn;
+regWriteOut <= regWrite_conn;
+--STILL NEED TO DO THE MUX OUT VALUE;
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+end structural;
+ 
+
