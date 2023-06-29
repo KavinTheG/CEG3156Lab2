@@ -18,7 +18,9 @@ architecture structural of ALUmain is
 	signal andResult, orResult, addResult, diffResult : std_logic_vector(7 downto 0);
 	signal carryOut : std_logic;
 	signal stlResult : std_logic;
-	 
+	signal stlOutput : std_logic_vector(7 downto 0);
+	signal sigAluResult : std_logic_vector(7 downto 0);
+	
 	component eightBitAdder is
 		port(
 			A_i, B_i : in std_logic_vector (7 downto 0);
@@ -62,19 +64,25 @@ begin
 	andResult(6) <= input1(6) and input2(6);
 	andResult(7) <= input1(7) and input2(7);
 	
-	orResult(0) <= input1(0) and input2(0);
-	orResult(1) <= input1(1) and input2(1);
-	orResult(2) <= input1(2) and input2(2);
-	orResult(3) <= input1(3) and input2(3);
-	orResult(4) <= input1(4) and input2(4);
-	orResult(5) <= input1(5) and input2(5);
-	orResult(6) <= input1(6) and input2(6);
-	orResult(7) <= input1(7) and input2(7);
+	orResult(0) <= input1(0) or input2(0);
+	orResult(1) <= input1(1) or input2(1);
+	orResult(2) <= input1(2) or input2(2);
+	orResult(3) <= input1(3) or input2(3);
+	orResult(4) <= input1(4) or input2(4);
+	orResult(5) <= input1(5) or input2(5);
+	orResult(6) <= input1(6) or input2(6);
+	orResult(7) <= input1(7) or input2(7);
 	
 	adder: eightBitAdder port map (input1, input2, '0', carryOut, addResult);
 	subtractor: eightBitSubtractor port map (input1, input2, '0', carryOut, diffResult);
 	stl: eighBitComparator port map (input1, input2, stlResult);
+
+	stlOutput <= "0000000" & stlResult;
 	
-	ALUMux: mux8x1EightBit port map (andResult, orResult, addResult, diffResult, "0000000" & stlResult, "00000000", "00000000", "00000000", sel, aluResult);
+	ALUMux: mux8x1EightBit port map (andResult, orResult, addResult, diffResult, stlOutput, "00000000", "00000000", "00000000", sel, sigAluResult);
+	
+	zero <= not(sigAluResult(0)) and not(sigAluResult(1)) and not(sigAluResult(2)) and not(sigAluResult(3)) and
+		not(sigAluResult(4)) and not(sigAluResult(5)) and not(sigAluResult(6)) and not(sigAluResult(7));
+	aluResult <= sigAluResult;
 
 end structural;

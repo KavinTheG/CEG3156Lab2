@@ -1,0 +1,648 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/kavin/Github/CEG3156Lab2
+Ealumain
+Z1 w1687991993
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 587
+R0
+Z4 8/home/kavin/Github/CEG3156Lab2/ALUmain.vhd
+Z5 F/home/kavin/Github/CEG3156Lab2/ALUmain.vhd
+l0
+L5 1
+VCBmSlXFIc`XLLDgbDlk7I1
+!s100 `U^>`>W3c[VD^oPjlbBOV3
+Z6 OV;C;2020.1;71
+32
+Z7 !s110 1687997542
+!i10b 1
+Z8 !s108 1687997542.000000
+Z9 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/ALUmain.vhd|
+Z10 !s107 /home/kavin/Github/CEG3156Lab2/ALUmain.vhd|
+!i113 1
+Z11 o-work work -2002 -explicit
+Z12 tExplicit 1 CvgOpt 0
+Astructural
+R2
+R3
+DEx4 work 7 alumain 0 22 CBmSlXFIc`XLLDgbDlk7I1
+!i122 587
+l56
+L16 73
+VQ]H1EFz5=597k<aRGSGAk0
+!s100 V8MQmH^JC>zX;DB11R`Vk2
+R6
+32
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+R12
+Eeighbitcomparator
+Z13 w1687660758
+R2
+R3
+!i122 590
+R0
+Z14 8/home/kavin/Github/CEG3156Lab2/eightBitComparator.vhd
+Z15 F/home/kavin/Github/CEG3156Lab2/eightBitComparator.vhd
+l0
+L4 1
+VoE]^iR8I;5X^^RB@K<1dG0
+!s100 1=cM2eg[Y1>:lBI^60JnI2
+R6
+32
+R7
+!i10b 1
+R8
+Z16 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/eightBitComparator.vhd|
+Z17 !s107 /home/kavin/Github/CEG3156Lab2/eightBitComparator.vhd|
+!i113 1
+R11
+R12
+Artl
+R2
+R3
+DEx4 work 17 eighbitcomparator 0 22 oE]^iR8I;5X^^RB@K<1dG0
+!i122 590
+l21
+L10 26
+V>2IhC^A2jiQaK^R:UaEJi3
+!s100 <Ua<8X`V:^B@8d]Sf?=8m3
+R6
+32
+R7
+!i10b 1
+R8
+R16
+R17
+!i113 1
+R11
+R12
+Eeightbitadder
+Z18 w1687399504
+R2
+R3
+!i122 589
+R0
+Z19 8/home/kavin/Github/CEG3156Lab2/eightBitAdder.vhd
+Z20 F/home/kavin/Github/CEG3156Lab2/eightBitAdder.vhd
+l0
+L4 1
+VZFWdc93645I=UiRNzn>Bl0
+!s100 ^m_OfonF1Z0e0MQUI`G]:3
+R6
+32
+R7
+!i10b 1
+R8
+Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/eightBitAdder.vhd|
+Z22 !s107 /home/kavin/Github/CEG3156Lab2/eightBitAdder.vhd|
+!i113 1
+R11
+R12
+Astructural
+R2
+R3
+DEx4 work 13 eightbitadder 0 22 ZFWdc93645I=UiRNzn>Bl0
+!i122 589
+l24
+Z23 L13 25
+VFmMh6eh==Ro^U_9]EVU[@2
+!s100 97zCUhcGAVJ1e`[9U]NE11
+R6
+32
+R7
+!i10b 1
+R8
+R21
+R22
+!i113 1
+R11
+R12
+Eeightbitregister
+Z24 w1687394651
+R2
+R3
+!i122 597
+R0
+Z25 8/home/kavin/Github/CEG3156Lab2/eightBitRegister.vhd
+Z26 F/home/kavin/Github/CEG3156Lab2/eightBitRegister.vhd
+l0
+L4 1
+VkRCa^c_aE75Ml:nE82fWm3
+!s100 _dNR6SjDNQK<licHb3V;93
+R6
+32
+R7
+!i10b 1
+R8
+Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/eightBitRegister.vhd|
+Z28 !s107 /home/kavin/Github/CEG3156Lab2/eightBitRegister.vhd|
+!i113 1
+R11
+R12
+Astructural
+R2
+R3
+DEx4 work 16 eightbitregister 0 22 kRCa^c_aE75Ml:nE82fWm3
+!i122 597
+l27
+L14 25
+VjDEXjiN2zZH`FUn>ZUHIb3
+!s100 LKGXBQblf:]DeKY6MJY4S0
+R6
+32
+R7
+!i10b 1
+R8
+R27
+R28
+!i113 1
+R11
+R12
+Eeightbitsubtractor
+Z29 w1687133791
+R2
+R3
+!i122 591
+R0
+Z30 8/home/kavin/Github/CEG3156Lab2/eightBitSubtractor.vhd
+Z31 F/home/kavin/Github/CEG3156Lab2/eightBitSubtractor.vhd
+l0
+L4 1
+V>P;5_AY34UTNGzWk`4<QO2
+!s100 i;I@P?P8Cc7QaeQVZ286T0
+R6
+32
+R7
+!i10b 1
+R8
+Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/eightBitSubtractor.vhd|
+Z33 !s107 /home/kavin/Github/CEG3156Lab2/eightBitSubtractor.vhd|
+!i113 1
+R11
+R12
+Astructural
+R2
+R3
+DEx4 work 18 eightbitsubtractor 0 22 >P;5_AY34UTNGzWk`4<QO2
+!i122 591
+l24
+R23
+VVkd8OeifGZ]mHCHL=[[l82
+!s100 bac_29IFe8gdW6n9f5o1b1
+R6
+32
+R7
+!i10b 1
+R8
+R32
+R33
+!i113 1
+R11
+R12
+Emux8x1eightbit
+Z34 w1687660378
+R2
+R3
+!i122 585
+R0
+Z35 8/home/kavin/Github/CEG3156Lab2/mux8x1EightBit.vhd
+Z36 F/home/kavin/Github/CEG3156Lab2/mux8x1EightBit.vhd
+l0
+L4 1
+VdZJnd9>hR0aIk[=oACIT>1
+!s100 _:D]>koIgeL_VfiL55d]f0
+R6
+32
+R7
+!i10b 1
+R8
+Z37 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/mux8x1EightBit.vhd|
+Z38 !s107 /home/kavin/Github/CEG3156Lab2/mux8x1EightBit.vhd|
+!i113 1
+R11
+R12
+Astructural
+R2
+R3
+DEx4 work 14 mux8x1eightbit 0 22 dZJnd9>hR0aIk[=oACIT>1
+!i122 585
+l14
+L12 77
+V[hTD5]n]^laGLGUQ@;Xi?2
+!s100 WBWXQ[SaZkOKkTXAg3K743
+R6
+32
+R7
+!i10b 1
+R8
+R37
+R38
+!i113 1
+R11
+R12
+Eonebitadder
+Z39 w1687040660
+R2
+R3
+!i122 592
+R0
+Z40 8/home/kavin/Github/CEG3156Lab2/onebitadder.vhd
+Z41 F/home/kavin/Github/CEG3156Lab2/onebitadder.vhd
+l0
+Z42 L31 1
+VLCKJjkb>]6NOk^<CG;>fJ1
+!s100 [`EgG?i:M9<fGR2X>OQ753
+R6
+32
+R7
+!i10b 1
+R8
+Z43 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/onebitadder.vhd|
+Z44 !s107 /home/kavin/Github/CEG3156Lab2/onebitadder.vhd|
+!i113 1
+R11
+R12
+Artl
+R2
+R3
+DEx4 work 11 onebitadder 0 22 LCKJjkb>]6NOk^<CG;>fJ1
+!i122 592
+l41
+L38 15
+VikM80W3]@KS6fB6<8fYe61
+!s100 I<?zL<Q3:FmhORWckSTMb1
+R6
+32
+R7
+!i10b 1
+R8
+R43
+R44
+!i113 1
+R11
+R12
+Eonebitcomparator
+Z45 w1190736474
+R2
+R3
+!i122 593
+R0
+Z46 8/home/kavin/Github/CEG3156Lab2/onebitcomparator.vhd
+Z47 F/home/kavin/Github/CEG3156Lab2/onebitcomparator.vhd
+l0
+R42
+VA=4<b>Jd[3WKBG[O[F]O_3
+!s100 OIMXD]_0?UDl@z23fl];40
+R6
+32
+R7
+!i10b 1
+R8
+Z48 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/onebitcomparator.vhd|
+Z49 !s107 /home/kavin/Github/CEG3156Lab2/onebitcomparator.vhd|
+!i113 1
+R11
+R12
+Artl
+R2
+R3
+DEx4 work 16 onebitcomparator 0 22 A=4<b>Jd[3WKBG[O[F]O_3
+!i122 593
+l42
+L38 19
+VXTa5RIbU^PjTdPoNUIlf21
+!s100 6Gn:X7^Y^[GARBBYkJ<h90
+R6
+32
+R7
+!i10b 1
+R8
+R48
+R49
+!i113 1
+R11
+R12
+Eonebitsubtractor
+R29
+R2
+R3
+!i122 594
+R0
+Z50 8/home/kavin/Github/CEG3156Lab2/oneBitSubtractor.vhd
+Z51 F/home/kavin/Github/CEG3156Lab2/oneBitSubtractor.vhd
+l0
+L4 1
+V1zAAiZQ09RIf=63QibQA61
+!s100 L9eIU[hMT_lA4j8QK?TKN3
+R6
+32
+R7
+!i10b 1
+R8
+Z52 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/oneBitSubtractor.vhd|
+Z53 !s107 /home/kavin/Github/CEG3156Lab2/oneBitSubtractor.vhd|
+!i113 1
+R11
+R12
+Artl
+R2
+R3
+DEx4 work 16 onebitsubtractor 0 22 1zAAiZQ09RIf=63QibQA61
+!i122 594
+l12
+L11 7
+VYLEM;N?zf`dT[dZUo6Z7S2
+!s100 83gAN>UjBOg]kWo?A6e_>2
+R6
+32
+R7
+!i10b 1
+R8
+R52
+R53
+!i113 1
+R11
+R12
+Eregisterfile
+Z54 w1687997539
+R2
+R3
+!i122 595
+R0
+Z55 8/home/kavin/Github/CEG3156Lab2/registerFile.vhd
+Z56 F/home/kavin/Github/CEG3156Lab2/registerFile.vhd
+l0
+L4 1
+VJ3Cj0iT]3UJG=WCI[AJQa3
+!s100 FTQGdBOBE?TW3PGXzS2Gi3
+R6
+32
+R7
+!i10b 1
+R8
+Z57 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/registerFile.vhd|
+Z58 !s107 /home/kavin/Github/CEG3156Lab2/registerFile.vhd|
+!i113 1
+R11
+R12
+Astructural
+R2
+R3
+DEx4 work 12 registerfile 0 22 J3Cj0iT]3UJG=WCI[AJQa3
+!i122 595
+l58
+L19 124
+VI7[Y^m@ZCC5i?6UH2V:[A0
+!s100 JChQ2nj3:L9YL;<l0?l6M1
+R6
+32
+R7
+!i10b 1
+R8
+R57
+R58
+!i113 1
+R11
+R12
+Etb_alumain
+Z59 w1687990293
+R2
+R3
+!i122 588
+R0
+Z60 8/home/kavin/Github/CEG3156Lab2/tb_ALUMain.vhd
+Z61 F/home/kavin/Github/CEG3156Lab2/tb_ALUMain.vhd
+l0
+L6 1
+VF2maA05R@K8?1KXgV?H_n2
+!s100 WQ^1[L7W;99_d;9fbgd>l2
+R6
+32
+R7
+!i10b 1
+R8
+Z62 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/tb_ALUMain.vhd|
+Z63 !s107 /home/kavin/Github/CEG3156Lab2/tb_ALUMain.vhd|
+!i113 1
+R11
+R12
+Abehavioral
+R2
+R3
+DEx4 work 10 tb_alumain 0 22 F2maA05R@K8?1KXgV?H_n2
+!i122 588
+l28
+L9 85
+V^B5nd7U7QTC2I]3Oi0kG12
+!s100 OX_GWN[9bfX=BR579CbZW0
+R6
+32
+R7
+!i10b 1
+R8
+R62
+R63
+!i113 1
+R11
+R12
+Etb_mux8x1eightbit
+Z64 w1687987649
+R2
+R3
+!i122 586
+R0
+Z65 8/home/kavin/Github/CEG3156Lab2/tb_mux8x1EightBit.vhd
+Z66 F/home/kavin/Github/CEG3156Lab2/tb_mux8x1EightBit.vhd
+l0
+L7 1
+VH06]X8^LTDMTj@d3VF5ee0
+!s100 Dn]hPgWof8Mch[Ddk3^152
+R6
+32
+R7
+!i10b 1
+R8
+Z67 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/tb_mux8x1EightBit.vhd|
+Z68 !s107 /home/kavin/Github/CEG3156Lab2/tb_mux8x1EightBit.vhd|
+!i113 1
+R11
+R12
+Abehavioral
+R2
+R3
+DEx4 work 17 tb_mux8x1eightbit 0 22 H06]X8^LTDMTj@d3VF5ee0
+!i122 586
+l25
+L10 51
+V@h;H?bZf6Sdo7Xzzf9E4h0
+!s100 n28Vb=BSWn4Q;<^k7dR=43
+R6
+32
+R7
+!i10b 1
+R8
+R67
+R68
+!i113 1
+R11
+R12
+Etb_mux_8x1
+w1687987454
+R2
+R3
+!i122 3
+R0
+R65
+R66
+l0
+L6 1
+VTdVI[Q=DNE:W`I@i18Ujl0
+!s100 1Pczb42;:gU8mPnmnfHzn3
+R6
+32
+!s110 1687987457
+!i10b 1
+!s108 1687987457.000000
+R67
+R68
+!i113 1
+R11
+R12
+Etb_registerfile
+Z69 w1687996800
+R2
+R3
+!i122 598
+R0
+Z70 8/home/kavin/Github/CEG3156Lab2/tb_registerFile.vhd
+Z71 F/home/kavin/Github/CEG3156Lab2/tb_registerFile.vhd
+l0
+L4 1
+V4bV>KndJzi5K<_UREIEf]1
+!s100 PkXSQd]XjU]k1fzPCLB[a0
+R6
+32
+R7
+!i10b 1
+R8
+Z72 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/tb_registerFile.vhd|
+Z73 !s107 /home/kavin/Github/CEG3156Lab2/tb_registerFile.vhd|
+!i113 1
+R11
+R12
+Abehavioral
+R2
+R3
+DEx4 work 15 tb_registerfile 0 22 4bV>KndJzi5K<_UREIEf]1
+!i122 598
+l30
+L7 84
+VY3SfJ?TF3dQPzH<i;^?F51
+!s100 A<URHUQCC<3=zW;jc9j5O3
+R6
+32
+R7
+!i10b 1
+R8
+R72
+R73
+!i113 1
+R11
+R12
+Etb_threetoeightdecoder
+Z74 w1687996743
+R2
+R3
+!i122 599
+R0
+Z75 8/home/kavin/Github/CEG3156Lab2/tb_threeToEightDecoder.vhd
+Z76 F/home/kavin/Github/CEG3156Lab2/tb_threeToEightDecoder.vhd
+l0
+L4 1
+VE4U[P`m4zei:Y]lgf?WET2
+!s100 hA3P84zFGR2<n[=R7W_G50
+R6
+32
+R7
+!i10b 1
+R8
+Z77 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/tb_threeToEightDecoder.vhd|
+Z78 !s107 /home/kavin/Github/CEG3156Lab2/tb_threeToEightDecoder.vhd|
+!i113 1
+R11
+R12
+Abehavioral
+R2
+R3
+Z79 DEx4 work 22 tb_threetoeightdecoder 0 22 E4U[P`m4zei:Y]lgf?WET2
+!i122 599
+l22
+Z80 L7 46
+Z81 V^31BL:ZzZEW;ELGz00DN12
+Z82 !s100 mV6SjYF:B3<zNn3`U2Ai]1
+R6
+32
+R7
+!i10b 1
+R8
+R77
+R78
+!i113 1
+R11
+R12
+Ethreetoeightdecoder
+Z83 w1687995511
+R2
+R3
+!i122 596
+R0
+Z84 8/home/kavin/Github/CEG3156Lab2/threeToEightDecoder.vhd
+Z85 F/home/kavin/Github/CEG3156Lab2/threeToEightDecoder.vhd
+l0
+L4 1
+V7NYg<VLS@?eYGVQXP5jo?2
+!s100 ]oo?CMn:gQnhVW>`fAcCK1
+R6
+32
+R7
+!i10b 1
+R8
+Z86 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/kavin/Github/CEG3156Lab2/threeToEightDecoder.vhd|
+Z87 !s107 /home/kavin/Github/CEG3156Lab2/threeToEightDecoder.vhd|
+!i113 1
+R11
+R12
+Astructural
+R2
+R3
+DEx4 work 19 threetoeightdecoder 0 22 7NYg<VLS@?eYGVQXP5jo?2
+!i122 596
+l12
+L11 11
+Va<01eOgfAZ>ZO=<MWZd1S2
+!s100 j41m>bQlkbnSjlI1H18?T2
+R6
+32
+R7
+!i10b 1
+R8
+R86
+R87
+!i113 1
+R11
+R12

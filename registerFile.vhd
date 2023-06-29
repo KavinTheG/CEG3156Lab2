@@ -77,11 +77,11 @@ begin
 	);
 	
 	reg1: eightBitRegister port map (
-		reset => reset,
-		values => writeData,
-		en => enWReg(1), 
-		clk => clk,
-		outputs => registerValues1
+		reset,
+		writeData,
+		enWReg(1), 
+		clk,
+		registerValues1
 	);
 	
 	reg2: eightBitRegister port map (
@@ -132,11 +132,11 @@ begin
 		outputs => registerValues7
 	);
 	
-	readRegister1: mux8x1EightBit port map (registerValues0, registerValues1, registerValues2, registerValues3, 
-														 registerValues4, registerValues5, registerValues6, registerValues7,
-														 readReg1(2 downto 0), readData1 );
+	readRegister1: mux8x1EightBit port map (a0 => registerValues0 , a1 => registerValues1, a2 => registerValues2, a3 => registerValues3, 
+														 a4 => registerValues4, a5 => registerValues5, a6=> registerValues6, a7=> registerValues7,
+														 s => readReg1(2 downto 0), o => readData1 );
 	readRegister2: mux8x1EightBit port map (registerValues0, registerValues1, registerValues2, registerValues3, 
 														 registerValues4, registerValues5, registerValues6, registerValues7,
-														 readReg2(2 downto 0), readData2 );
+														 readReg2(2 downto 0), o => readData2 );
 
 end structural;
