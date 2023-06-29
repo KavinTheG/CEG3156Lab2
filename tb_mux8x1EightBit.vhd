@@ -41,17 +41,69 @@ begin
   -- Stimulus process
   process
   begin
-    -- Test case 1: Select input a3 (s = "011")
-    a3_tb <= "10101010";
-    s_tb <= "011";
-    wait for 10 ns;
 
-    -- Test case 2: Select input a7 (s = "111")
-    a7_tb <= "11001100";
-    s_tb <= "111";
-    wait for 10 ns;
+	a0_tb <= "00000001";
+	s_tb <= "000";
+	wait for 10ns; 
 
-    -- Add more test cases as needed
+	assert(o_tb = "00000001")
+	report "Test for read data 0 failed" severity error;
+
+
+	a1_tb <= "00000010";
+	s_tb <= "001";
+	wait for 10ns; 
+
+	assert(o_tb = "000000010")
+	report "Test for read data 1 failed" severity error;
+
+
+	a2_tb <= "00000100";
+	s_tb <= "010";
+	wait for 10ns; 
+
+	assert(o_tb = "00000100")
+	report "Test for read data 2 failed" severity error;
+
+
+	a3_tb <= "00001000";
+	s_tb <= "011";
+	wait for 10ns; 
+
+	assert(o_tb = "00001000")
+	report "Test for read data 3 failed" severity error;
+
+
+	a4_tb <= "00010000";
+	s_tb <= "100";
+	wait for 10ns; 
+
+	assert(o_tb = "00000001")
+	report "Test for read data 4 failed" severity error;
+
+
+	a5_tb <= "00100000";
+	s_tb <= "101";
+	wait for 10ns; 
+
+	assert(o_tb = "00100000")
+	report "Test for read data 5 failed" severity error;
+
+
+	a6_tb <= "01000000";
+	s_tb <= "110";
+	wait for 10ns; 
+
+	assert(o_tb = "01000000")
+	report "Test for read data 6 failed" severity error;
+
+
+	a7_tb <= "10000000";
+	s_tb <= "111";
+	wait for 10ns; 
+
+	assert(o_tb = "10000000")
+	report "Test for read data 7 failed" severity error;
 
     -- End the simulation
     wait;

@@ -12,7 +12,12 @@ entity registerFile is
 	regWrite : IN STD_LOGIC;
 	
 	readData1 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-	readData2 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)	
+	readData2 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+	enableRegister : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+	readRegD1 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	readRegD4 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
 	);
 end entity;
 
@@ -29,6 +34,8 @@ architecture structural of registerFile is
 	signal registerValues5 : STD_LOGIC_VECTOR(7 DOWNTO 0);
 	signal registerValues6 : STD_LOGIC_VECTOR(7 DOWNTO 0);
 	signal registerValues7 : STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+	signal regWriteExtended : STD_LOGIC_VECTOR(7 DOWNTO 0);
 	
 	component eightBitRegister IS
 		port(
@@ -56,17 +63,13 @@ architecture structural of registerFile is
 	end component;
 
 begin
+	
+	regWriteExtended <= (others => regWrite);
 
 	writeDecoder: threeToEightDecoder port map(writeReg(2 downto 0), writeDecoderOutput);
 
-	enWReg(0) <= regWrite and writeDecoderOutput(0);
-	enWReg(1) <= regWrite and writeDecoderOutput(1);
-	enWReg(2) <= regWrite and writeDecoderOutput(2);
-	enWReg(3) <= regWrite and writeDecoderOutput(3);
-	enWReg(4) <= regWrite and writeDecoderOutput(4);
-	enWReg(5) <= regWrite and writeDecoderOutput(5);
-	enWReg(6) <= regWrite and writeDecoderOutput(6);
-	enWReg(7) <= regWrite and writeDecoderOutput(7);
+	enWReg <= regWriteExtended and writeDecoderOutput;
+	enableRegister <= enWReg;
 
 	reg0: eightBitRegister port map (
 		reset => reset,
@@ -134,9 +137,10 @@ begin
 	
 	readRegister1: mux8x1EightBit port map (a0 => registerValues0 , a1 => registerValues1, a2 => registerValues2, a3 => registerValues3, 
 														 a4 => registerValues4, a5 => registerValues5, a6=> registerValues6, a7=> registerValues7,
-														 s <+ readReg1(2 downto 0), o => readData1 );
+														 s => readReg1(2 downto 0), o => readData1 );
 	readRegister2: mux8x1EightBit port map (registerValues0, registerValues1, registerValues2, registerValues3, 
 														 registerValues4, registerValues5, registerValues6, registerValues7,
 														 readReg2(2 downto 0), o => readData2 );
-
+	readRegD1 <= registerValues1;
+	readRegD4 <= registerValues4;
 end structural;
