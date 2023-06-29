@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Tue Jun 27 19:54:29 2023
+Analysis & Synthesis Status : Successful - Wed Jun 28 23:41:51 2023
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
 Revision Name : CEG3156Lab2
-Top-level Entity Name : pcRegister
+Top-level Entity Name : singleCycleTopLevel
 Family : Cyclone IV E
-Total logic elements : 8
-    Total combinational functions : 0
-    Dedicated logic registers : 8
-Total registers : 8
-Total pins : 18
+Total logic elements : 322
+    Total combinational functions : 266
+    Dedicated logic registers : 72
+Total registers : 72
+Total pins : 50
 Total virtual pins : 0
-Total memory bits : 0
+Total memory bits : 10,240
 Embedded Multiplier 9-bit elements : 0
 Total PLLs : 0

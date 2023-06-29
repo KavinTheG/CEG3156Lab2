@@ -229,7 +229,7 @@ regWriteOut <= regWrite_conn;
 
 
 -- PC, ALUResult, ReadData1, ReadData2, WriteData, , RegDst, ALUOp ,  memtoReg
-outputVal: mux8x1EightBit port map(pcOutput_conn, aluResultToData_conn, readDataOne_conn, readDataTwo_conn, writeRegisterIn_conn,
+outputVal: mux8x1EightBit port map(pcOutput_conn, aluResultToData_conn, readDataOne_conn, readDataTwo_conn, "000" & writeRegisterIn_conn,
 											  "0000000" & regDst_conn, "000000" & aluOp_conn, "0000000" & memToReg_conn, valueSelect, muxOut);
 
 
