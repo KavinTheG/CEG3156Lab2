@@ -65,7 +65,7 @@ dataMem: lpm_ram_dq
 				LPM_WIDTH => 8,
 				LPM_WIDTHAD => 8,
 				LPM_NUMWORDS => 256,
-				LPM_FILE => "dataMemory.mif")
+				LPM_FILE => "C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dataMemory.mif")
 				
 	PORT MAP (	
 				DATA => writeData,

@@ -42,6 +42,11 @@ signal writeRegisterIn_conn: std_logic_vector(4 downto 0);
  
 signal instructionOut_conn, signExtendOut_conn: std_logic_vector(31 downto 0);
 
+signal writeRegisterIn_conn8Bit : std_logic_vector(7 downto 0);
+signal regDst_conn8Bit : std_logic_vector(7 downto 0);
+signal aluOp_conn8Bit : std_logic_vector(7 downto 0);
+signal memToReg_conn8Bit : std_logic_vector(7 downto 0);
+
 
 --COMPONENT DECLARATION
 
@@ -227,10 +232,14 @@ memWriteOut <= memWrite_conn;
 regWriteOut <= regWrite_conn;
 --STILL NEED TO DO THE MUX OUT VALUE;
 
+writeRegisterIn_conn8Bit <= "000" & writeRegisterIn_conn;
+regDst_conn8Bit <= "0000000" & regDst_conn;
+aluOp_conn8Bit <= "000000" & aluOp_conn;
+memToReg_conn8Bit <= "0000000" & memToReg_conn;
 
 -- PC, ALUResult, ReadData1, ReadData2, WriteData, , RegDst, ALUOp ,  memtoReg
-outputVal: mux8x1EightBit port map(pcOutput_conn, aluResultToData_conn, readDataOne_conn, readDataTwo_conn, "000" & writeRegisterIn_conn,
-											  "0000000" & regDst_conn, "000000" & aluOp_conn, "0000000" & memToReg_conn, valueSelect, muxOut);
+outputVal: mux8x1EightBit port map(pcOutput_conn, aluResultToData_conn, readDataOne_conn, readDataTwo_conn, writeRegisterIn_conn8Bit,
+                                   regDst_conn8Bit, aluOp_conn8Bit, memToReg_conn8Bit, valueSelect, muxOut);
 
 
   

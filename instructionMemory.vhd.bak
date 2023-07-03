@@ -5,7 +5,7 @@ USE lpm.lpm_components.ALL;
 
 ENTITY instructionMemory IS
 	PORT (	
-			inclock,              : IN STD_LOGIC;
+			inclock                 : IN STD_LOGIC;
 			outclock 	            : IN  STD_LOGIC;
 			readAddress             : IN  STD_LOGIC_VECTOR(7 downto 0);
 			instruction_out			: OUT STD_LOGIC_VECTOR(31 downto 0)
@@ -14,7 +14,7 @@ END instructionMemory;
 
 ARCHITECTURE structural OF instructionMemory IS
 
---Compoent declaration from intel.com
+--Component declaration from intel.com
 COMPONENT LPM_ROM
 
         GENERIC (	
@@ -38,8 +38,6 @@ COMPONENT LPM_ROM
 			
 END COMPONENT;
 
---CONSTANT initializationFile : STRING := "instructionMemory.mif"; --Instructions are stored here
-
 SIGNAL instructionValue : STD_LOGIC_VECTOR(31 downto 0);
 
 BEGIN
@@ -58,7 +56,7 @@ instructionMem: LPM_ROM
 				MEMENAB => '1',
 				Q => instructionValue);
 
-	--Output driver
+	--Output
 	instruction_out <= instructionValue;
 								
 end structural;

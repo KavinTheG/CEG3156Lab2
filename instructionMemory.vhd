@@ -47,7 +47,7 @@ instructionMem: LPM_ROM
             LPM_WIDTH => 32,
 				LPM_WIDTHAD => 8,
 				LPM_NUMWORDS => 256,
-				LPM_FILE => "instructionMemory.mif")
+				LPM_FILE => "C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.mif")
 				
 	PORT MAP (		
             ADDRESS => readAddress,
