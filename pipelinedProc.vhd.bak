@@ -1,0 +1,22 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+entity pipelinedProc is
+	port(
+		GClock1, GClock2: in std_logic;
+		GReset: in std_logic;
+		valueSelect: in std_logic_vector(2 downto 0);
+		instrSelect: in std_logic_vector(2 downto 0);
+		muxOut: out std_logic_vector(7 downto 0);
+		instructionOut: out std_logic_vector(31 downto 0);
+		branchOut: out std_logic;
+		zeroOut: out std_logic;
+		memWriteOut: out std_logic;
+		regWriteOut: out std_logic;
+		
+		
+		-- TESTING
+		pcInput : out std_logic_vector(7 downto 0);
+		pcOutput : out std_logic_vector(7 downto 0)
+	);
+end entity;

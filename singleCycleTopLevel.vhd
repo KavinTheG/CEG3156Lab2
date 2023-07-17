@@ -11,7 +11,12 @@ entity singleCycleTopLevel is
 		branchOut: out std_logic;
 		zeroOut: out std_logic;
 		memWriteOut: out std_logic;
-		regWriteOut: out std_logic
+		regWriteOut: out std_logic;
+		
+		
+		-- TESTING
+		pcInput : out std_logic_vector(7 downto 0);
+		pcOutput : out std_logic_vector(7 downto 0)
 	);
 end entity;
 
@@ -20,32 +25,34 @@ architecture structural of singleCycleTopLevel is
 --SIGNAL DECLARATION
 
 --wire connections
-signal pcInput_conn, pcOutput_conn, junpAddress_conn, muxOutputBranch_conn, pcAdderOut_conn, aluResultToMux_conn, shiftLeftTwoOutput_conn, shiftLeftOneOutput_conn, muxToMux_conn, jumpAddr_conn: std_logic_vector(7 downto 0);
-signal readDataOne_conn, readDataTwo_conn, readDataTwoMuxOut_conn, aluResultToData_conn, dataMemoryOutput_conn, writeBackInput_conn, aluInputfromMux_conn: std_logic_vector(7 downto 0);
+signal pcInput_conn, pcOutput_conn, junpAddress_conn, muxOutputBranch_conn, pcAdderOut_conn, aluResultToMux_conn, shiftLeftTwoOutput_conn, shiftLeftOneOutput_conn, muxToMux_conn, jumpAddr_conn: std_logic_vector(7 downto 0) := "00000000";
+signal readDataOne_conn, readDataTwo_conn, readDataTwoMuxOut_conn, aluResultToData_conn, dataMemoryOutput_conn, writeBackInput_conn, aluInputfromMux_conn: std_logic_vector(7 downto 0) := "00000000";
 
 --signal values from control unit
-signal regDst_conn, jump_conn, branchNE_conn, branch_conn, memRead_conn, memtoReg_conn, memWrite_conn, aluSrc_conn, regWrite_conn : std_logic;
+signal regDst_conn, jump_conn, branchNE_conn, branch_conn, memRead_conn, memtoReg_conn, memWrite_conn, aluSrc_conn, regWrite_conn : std_logic := '0';
 
 --zero alu value
-signal zero_conn: std_logic;
+signal zero_conn: std_logic := '0' ;
 
 --control unit signal value
-signal aluOp_conn: std_logic_vector(1 downto 0);
+signal aluOp_conn: std_logic_vector(1 downto 0) := "00" ;
 
 --to branch if BNE or BRANCH is active
-signal branchSel1_conn, branchSel2_conn, branchSelect_conn: std_logic;
+signal branchSel1_conn, branchSel2_conn, branchSelect_conn: std_logic :='0' ;
 
 
-signal aluControl_conn: std_logic_vector(2 downto 0);
+signal aluControl_conn: std_logic_vector(2 downto 0) :="000" ;
 
-signal writeRegisterIn_conn: std_logic_vector(4 downto 0);
+signal writeRegisterIn_conn: std_logic_vector(4 downto 0) := "00000";
  
-signal instructionOut_conn, signExtendOut_conn: std_logic_vector(31 downto 0);
+signal instructionOut_conn, signExtendOut_conn: std_logic_vector(31 downto 0) := "00000000000000000000000000000000";
+
+signal other : std_logic_vector(7 downto 0);
+
+signal pcReset : std_logic;
 
 signal writeRegisterIn_conn8Bit : std_logic_vector(7 downto 0);
-signal regDst_conn8Bit : std_logic_vector(7 downto 0);
-signal aluOp_conn8Bit : std_logic_vector(7 downto 0);
-signal memToReg_conn8Bit : std_logic_vector(7 downto 0);
+--gdownto 0);signal other : std_logic_vector (7 downto 0);
 
 
 --COMPONENT DECLARATION
@@ -54,8 +61,8 @@ component pcRegister is
 	port(
 	reset	:	IN STD_LOGIC;
 	clk : IN STD_LOGIC;
-	PC_input: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-	PC_output : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+	PC_input: IN STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
+	PC_output : OUT STD_LOGIC_VECTOR(7 DOWNTO 0):= "00000000"
 	);
 end component;
 
@@ -181,6 +188,7 @@ port(
 end component;
 
 begin
+pcReset <= not(GReset);
 
 pcRegisterVal: pcRegister port map(GReset, GClock1, pcInput_conn, pcOutput_conn);
 
@@ -216,8 +224,8 @@ branchMux: mux8x8 port map(branchSelect_conn, pcAdderOut_conn, aluInputfromMux_c
 jumpBranchSel: mux8x8 port map(jump_conn, muxToMux_conn, jumpAddr_conn, pcInput_conn);
 
 
---COMPONENTS LEFT TO DO: SHIFTLEFT2 for jump address and multiplexor to get valueSelect outputs (may already have with mux 8x1, but need to modify);
-
+pcOutput <= pcOutput_conn;
+pcInput <= pcInput_conn;
 
 branchSel1_conn <= branch_conn and zero_conn;
 branchSel2_conn <= branchNE_conn and not(zero_conn);
@@ -231,20 +239,17 @@ zeroOut <= zero_conn;
 memWriteOut <= memWrite_conn;
 regWriteOut <= regWrite_conn;
 --STILL NEED TO DO THE MUX OUT VALUE;
-
-writeRegisterIn_conn8Bit <= "000" & writeRegisterIn_conn;
-regDst_conn8Bit <= "0000000" & regDst_conn;
-aluOp_conn8Bit <= "000000" & aluOp_conn;
-memToReg_conn8Bit <= "0000000" & memToReg_conn;
+other(0) <= zero_conn;
+other(1) <= regDst_conn;
+other(2) <= jump_conn;
+other(3) <= memRead_conn;
+other(4) <= memtoReg_conn;
+other(6 downto 5)<=aluOp_conn;
+other(7)<=aluSrc_conn;
 
 -- PC, ALUResult, ReadData1, ReadData2, WriteData, , RegDst, ALUOp ,  memtoReg
 outputVal: mux8x1EightBit port map(pcOutput_conn, aluResultToData_conn, readDataOne_conn, readDataTwo_conn, writeRegisterIn_conn8Bit,
-                                   regDst_conn8Bit, aluOp_conn8Bit, memToReg_conn8Bit, valueSelect, muxOut);
-
-
-  
-
-
+                                   other, other, other, valueSelect, muxOut);
 
 
 

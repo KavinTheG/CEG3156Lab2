@@ -18,7 +18,10 @@ architecture behavioral of tb_singleCycleProc is
 		branchOut: out std_logic;
 		zeroOut: out std_logic;
 		memWriteOut: out std_logic;
-		regWriteOut: out std_logic
+		regWriteOut: out std_logic;
+		
+	  pcInput : out std_logic_vector(7 downto 0)  := "00000000";
+		pcOutput : out std_logic_vector(7 downto 0)
 	);
   end component singleCycleTopLevel;
 
@@ -32,6 +35,8 @@ architecture behavioral of tb_singleCycleProc is
 		signal tb_zeroOut: std_logic;
 		signal tb_memWriteOut: std_logic;
 		signal tb_regWriteOut: std_logic;
+		signal tb_pcInput: std_logic_vector(7 downto 0) := "00000000";
+		signal tb_pcOutput: std_logic_vector(7 downto 0) := "00000000";
 		
 		signal sim_end : boolean := false;
 
@@ -48,7 +53,12 @@ begin
 		branchOut => tb_branchOut,
 		zeroOut => tb_memWriteOut,
 		memWriteOut => tb_memWriteOut,
-		regWriteOut => tb_regWriteOut
+		regWriteOut => tb_regWriteOut,
+		
+		pcInput => tb_pcInput,
+		pcOutput => tb_pcOutput
+		
+		
   );
 
   -- Stimulus process
@@ -78,9 +88,18 @@ end process;
   process
   begin
 
-    tb_valueSelect <= "000";
+    tb_GReset <= '0';
+    tb_valueSelect <= "001";
+  
+    wait for 100ps; 
+    
+    tb_GReset <= '1';
+
+    wait for 100ps;
+    
     
     wait for 2400ps; 
+
   sim_end <= true;
   wait;
   end process;

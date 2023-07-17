@@ -6,7 +6,7 @@ entity pcRegister is
 	port(
 	reset	:	IN STD_LOGIC;
 	clk : IN STD_LOGIC;
-	PC_input: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	PC_input: IN STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	PC_output : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
 	);
 end entity;
@@ -28,8 +28,7 @@ end component;
 begin
 
 pcVal: eightBitRegister port map(reset, pc_input, '1', clk, output);
-
---output value
+  
 PC_output <= output;
 
 end structural;

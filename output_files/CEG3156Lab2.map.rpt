@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CEG3156Lab2
-Mon Jul 03 14:19:32 2023
+Sat Jul 15 16:43:54 2023
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -16,32 +16,31 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   8. Analysis & Synthesis RAM Summary
   9. General Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Source assignments for instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_1d11:auto_generated
- 12. Source assignments for dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block|altsyncram_45a1:auto_generated
+ 11. Source assignments for instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated
+ 12. Source assignments for dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated
  13. Parameter Settings for User Entity Instance: instructionMemory:instructionMem|LPM_ROM:instructionMem
  14. Parameter Settings for User Entity Instance: dataMemory:dataMem|LPM_RAM_DQ:dataMem
- 15. Port Connectivity Checks: "mux8x1EightBit:outputVal"
- 16. Port Connectivity Checks: "eightBitAdder:branchAdder"
- 17. Port Connectivity Checks: "eightBitAdder:pcPlus4Adder"
- 18. Port Connectivity Checks: "dataMemory:dataMem|mux8x8:outputMuxSel"
- 19. Port Connectivity Checks: "ALUmain:alu|mux8x1EightBit:ALUMux"
- 20. Port Connectivity Checks: "ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp0"
- 21. Port Connectivity Checks: "ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp7"
- 22. Port Connectivity Checks: "ALUmain:alu|eightBitSubtractor:subtractor"
- 23. Port Connectivity Checks: "ALUmain:alu|eightBitAdder:adder"
- 24. Port Connectivity Checks: "signExtendUnit:signExt"
- 25. Port Connectivity Checks: "registerFile:regFile"
- 26. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit7"
- 27. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit6"
- 28. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit5"
- 29. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit4"
- 30. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit3"
- 31. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit2"
- 32. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit1"
- 33. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit0"
- 34. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal"
- 35. Elapsed Time Per Partition
- 36. Analysis & Synthesis Messages
+ 15. Port Connectivity Checks: "eightBitAdder:branchAdder"
+ 16. Port Connectivity Checks: "eightBitAdder:pcPlus4Adder"
+ 17. Port Connectivity Checks: "dataMemory:dataMem|mux8x8:outputMuxSel"
+ 18. Port Connectivity Checks: "ALUmain:alu|mux8x1EightBit:ALUMux"
+ 19. Port Connectivity Checks: "ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp0"
+ 20. Port Connectivity Checks: "ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp7"
+ 21. Port Connectivity Checks: "ALUmain:alu|eightBitSubtractor:subtractor"
+ 22. Port Connectivity Checks: "ALUmain:alu|eightBitAdder:adder"
+ 23. Port Connectivity Checks: "signExtendUnit:signExt"
+ 24. Port Connectivity Checks: "registerFile:regFile"
+ 25. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit7"
+ 26. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit6"
+ 27. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit5"
+ 28. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit4"
+ 29. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit3"
+ 30. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit2"
+ 31. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit1"
+ 32. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit0"
+ 33. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal"
+ 34. Elapsed Time Per Partition
+ 35. Analysis & Synthesis Messages
 
 
 
@@ -67,16 +66,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Jul 03 14:19:32 2023      ;
+; Analysis & Synthesis Status        ; Successful - Sat Jul 15 16:43:54 2023      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; CEG3156Lab2                                ;
 ; Top-level Entity Name              ; singleCycleTopLevel                        ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 322                                        ;
-;     Total combinational functions  ; 266                                        ;
+; Total logic elements               ; 333                                        ;
+;     Total combinational functions  ; 277                                        ;
 ;     Dedicated logic registers      ; 72                                         ;
 ; Total registers                    ; 72                                         ;
-; Total pins                         ; 50                                         ;
+; Total pins                         ; 66                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 10,240                                     ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -225,10 +224,10 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; a_rdenreg.inc                    ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/a_rdenreg.inc          ;         ;
 ; altram.inc                       ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/altram.inc             ;         ;
 ; altdpram.inc                     ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/altdpram.inc           ;         ;
-; db/altsyncram_1d11.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/db/altsyncram_1d11.tdf  ;         ;
+; db/altsyncram_d951.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/db/altsyncram_d951.tdf  ;         ;
 ; lpm_ram_dq.tdf                   ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_ram_dq.tdf         ;         ;
 ; altram.tdf                       ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/altram.tdf             ;         ;
-; db/altsyncram_45a1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/db/altsyncram_45a1.tdf  ;         ;
+; db/altsyncram_g1e1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/db/altsyncram_g1e1.tdf  ;         ;
 +----------------------------------+-----------------+----------------------------------+-----------------------------------------------------------------------+---------+
 
 
@@ -237,29 +236,29 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+---------------+
 ; Resource                                    ; Usage         ;
 +---------------------------------------------+---------------+
-; Estimated Total logic elements              ; 322           ;
+; Estimated Total logic elements              ; 333           ;
 ;                                             ;               ;
-; Total combinational functions               ; 266           ;
+; Total combinational functions               ; 277           ;
 ; Logic element usage by number of LUT inputs ;               ;
-;     -- 4 input functions                    ; 201           ;
-;     -- 3 input functions                    ; 60            ;
-;     -- <=2 input functions                  ; 5             ;
+;     -- 4 input functions                    ; 215           ;
+;     -- 3 input functions                    ; 58            ;
+;     -- <=2 input functions                  ; 4             ;
 ;                                             ;               ;
 ; Logic elements by mode                      ;               ;
-;     -- normal mode                          ; 266           ;
+;     -- normal mode                          ; 277           ;
 ;     -- arithmetic mode                      ; 0             ;
 ;                                             ;               ;
 ; Total registers                             ; 72            ;
 ;     -- Dedicated logic registers            ; 72            ;
 ;     -- I/O registers                        ; 0             ;
 ;                                             ;               ;
-; I/O pins                                    ; 50            ;
+; I/O pins                                    ; 66            ;
 ; Total memory bits                           ; 10240         ;
 ; Embedded Multiplier 9-bit elements          ; 0             ;
 ; Maximum fan-out node                        ; GClock1~input ;
 ; Maximum fan-out                             ; 112           ;
-; Total fan-out                               ; 1798          ;
-; Average fan-out                             ; 3.76          ;
+; Total fan-out                               ; 1864          ;
+; Average fan-out                             ; 3.58          ;
 +---------------------------------------------+---------------+
 
 
@@ -268,8 +267,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                          ; Library Name ;
 +-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |singleCycleTopLevel                            ; 266 (1)           ; 72 (0)       ; 10240       ; 0            ; 0       ; 0         ; 50   ; 0            ; |singleCycleTopLevel                                                                                                                         ; work         ;
-;    |ALUmain:alu|                                ; 70 (4)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu                                                                                                             ; work         ;
+; |singleCycleTopLevel                            ; 277 (0)           ; 72 (0)       ; 10240       ; 0            ; 0       ; 0         ; 66   ; 0            ; |singleCycleTopLevel                                                                                                                         ; work         ;
+;    |ALUmain:alu|                                ; 69 (3)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu                                                                                                             ; work         ;
 ;       |eighBitComparator:stl|                   ; 14 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl                                                                                       ; work         ;
 ;          |oneBitComparator:comp1|               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp1                                                                ; work         ;
 ;          |oneBitComparator:comp2|               ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp2                                                                ; work         ;
@@ -298,26 +297,24 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;       |lpm_ram_dq:dataMem|                      ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|dataMemory:dataMem|lpm_ram_dq:dataMem                                                                                   ; work         ;
 ;          |altram:sram|                          ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|dataMemory:dataMem|lpm_ram_dq:dataMem|altram:sram                                                                       ; work         ;
 ;             |altsyncram:ram_block|              ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|dataMemory:dataMem|lpm_ram_dq:dataMem|altram:sram|altsyncram:ram_block                                                  ; work         ;
-;                |altsyncram_45a1:auto_generated| ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|dataMemory:dataMem|lpm_ram_dq:dataMem|altram:sram|altsyncram:ram_block|altsyncram_45a1:auto_generated                   ; work         ;
-;    |eightBitAdder:pcPlus4Adder|                 ; 6 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|eightBitAdder:pcPlus4Adder                                                                                              ; work         ;
-;       |oneBitAdder:Bit4|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit4                                                                             ; work         ;
-;       |oneBitAdder:Bit5|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit5                                                                             ; work         ;
+;                |altsyncram_g1e1:auto_generated| ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|dataMemory:dataMem|lpm_ram_dq:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated                   ; work         ;
+;    |eightBitAdder:pcPlus4Adder|                 ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|eightBitAdder:pcPlus4Adder                                                                                              ; work         ;
 ;       |oneBitAdder:Bit6|                        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit6                                                                             ; work         ;
-;       |oneBitAdder:Bit7|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit7                                                                             ; work         ;
-;       |oneBitAdder:MSB|                         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:MSB                                                                              ; work         ;
 ;    |instructionMemory:instructionMem|           ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|instructionMemory:instructionMem                                                                                        ; work         ;
 ;       |lpm_rom:instructionMem|                  ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|instructionMemory:instructionMem|lpm_rom:instructionMem                                                                 ; work         ;
 ;          |altrom:srom|                          ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|instructionMemory:instructionMem|lpm_rom:instructionMem|altrom:srom                                                     ; work         ;
 ;             |altsyncram:rom_block|              ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|instructionMemory:instructionMem|lpm_rom:instructionMem|altrom:srom|altsyncram:rom_block                                ; work         ;
-;                |altsyncram_1d11:auto_generated| ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|instructionMemory:instructionMem|lpm_rom:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_1d11:auto_generated ; work         ;
-;    |mux5x5:mux5x5Out|                           ; 3 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux5x5:mux5x5Out                                                                                                        ; work         ;
-;       |mux2x1:bit2|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux5x5:mux5x5Out|mux2x1:bit2                                                                                            ; work         ;
-;       |mux2x1:bit3|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux5x5:mux5x5Out|mux2x1:bit3                                                                                            ; work         ;
-;       |mux2x1:lsb|                              ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux5x5:mux5x5Out|mux2x1:lsb                                                                                             ; work         ;
+;                |altsyncram_d951:auto_generated| ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|instructionMemory:instructionMem|lpm_rom:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated ; work         ;
 ;    |mux8x1EightBit:outputVal|                   ; 37 (37)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x1EightBit:outputVal                                                                                                ; work         ;
-;    |mux8x8:jumpBranchSel|                       ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel                                                                                                    ; work         ;
-;       |mux2x1:bit2|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit2                                                                                        ; work         ;
-;       |mux2x1:lsb|                              ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:lsb                                                                                         ; work         ;
+;    |mux8x8:jumpBranchSel|                       ; 23 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel                                                                                                    ; work         ;
+;       |mux2x1:bit2|                             ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit2                                                                                        ; work         ;
+;       |mux2x1:bit3|                             ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit3                                                                                        ; work         ;
+;       |mux2x1:bit4|                             ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit4                                                                                        ; work         ;
+;       |mux2x1:bit5|                             ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit5                                                                                        ; work         ;
+;       |mux2x1:bit6|                             ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit6                                                                                        ; work         ;
+;       |mux2x1:bit7|                             ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit7                                                                                        ; work         ;
+;       |mux2x1:lsb|                              ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:lsb                                                                                         ; work         ;
+;       |mux2x1:msb|                              ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:msb                                                                                         ; work         ;
 ;    |mux8x8:mux8BitData|                         ; 8 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData                                                                                                      ; work         ;
 ;       |mux2x1:bit2|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit2                                                                                          ; work         ;
 ;       |mux2x1:bit3|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit3                                                                                          ; work         ;
@@ -336,17 +333,17 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;       |mux2x1:bit7|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit7                                                                                              ; work         ;
 ;       |mux2x1:lsb|                              ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:lsb                                                                                               ; work         ;
 ;       |mux2x1:msb|                              ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:msb                                                                                               ; work         ;
-;    |pcRegister:pcRegisterVal|                   ; 7 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal                                                                                                ; work         ;
-;       |eightBitRegister:pcVal|                  ; 7 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal                                                                         ; work         ;
-;          |enARdFF_2:bit0|                       ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit0                                                          ; work         ;
+;    |pcRegister:pcRegisterVal|                   ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal                                                                                                ; work         ;
+;       |eightBitRegister:pcVal|                  ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal                                                                         ; work         ;
+;          |enARdFF_2:bit0|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit0                                                          ; work         ;
 ;          |enARdFF_2:bit1|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit1                                                          ; work         ;
-;          |enARdFF_2:bit2|                       ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit2                                                          ; work         ;
-;          |enARdFF_2:bit3|                       ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit3                                                          ; work         ;
-;          |enARdFF_2:bit4|                       ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit4                                                          ; work         ;
-;          |enARdFF_2:bit5|                       ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit5                                                          ; work         ;
-;          |enARdFF_2:bit6|                       ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit6                                                          ; work         ;
-;          |enARdFF_2:bit7|                       ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit7                                                          ; work         ;
-;    |registerFile:regFile|                       ; 114 (8)           ; 64 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile                                                                                                    ; work         ;
+;          |enARdFF_2:bit2|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit2                                                          ; work         ;
+;          |enARdFF_2:bit3|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit3                                                          ; work         ;
+;          |enARdFF_2:bit4|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit4                                                          ; work         ;
+;          |enARdFF_2:bit5|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit5                                                          ; work         ;
+;          |enARdFF_2:bit6|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit6                                                          ; work         ;
+;          |enARdFF_2:bit7|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit7                                                          ; work         ;
+;    |registerFile:regFile|                       ; 120 (14)          ; 64 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile                                                                                                    ; work         ;
 ;       |eightBitRegister:reg0|                   ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0                                                                              ; work         ;
 ;          |enARdFF_2:bit0|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit0                                                               ; work         ;
 ;          |enARdFF_2:bit1|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit1                                                               ; work         ;
@@ -425,14 +422,14 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                   ;
-+------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+-----------------------+
-; Name                                                                                                                               ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                   ;
-+------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+-----------------------+
-; dataMemory:dataMem|lpm_ram_dq:dataMem|altram:sram|altsyncram:ram_block|altsyncram_45a1:auto_generated|ALTSYNCRAM                   ; AUTO ; Single Port ; 256          ; 8            ; --           ; --           ; 2048 ; dataMemory.mif        ;
-; instructionMemory:instructionMem|lpm_rom:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_1d11:auto_generated|ALTSYNCRAM ; AUTO ; ROM         ; 256          ; 32           ; --           ; --           ; 8192 ; instructionMemory.mif ;
-+------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+-----------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                                                                 ;
++------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+---------------------------------------------------------------------+
+; Name                                                                                                                               ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                                                                 ;
++------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+---------------------------------------------------------------------+
+; dataMemory:dataMem|lpm_ram_dq:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated|ALTSYNCRAM                   ; AUTO ; Single Port ; 256          ; 8            ; --           ; --           ; 2048 ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dataMemory.mif        ;
+; instructionMemory:instructionMem|lpm_rom:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated|ALTSYNCRAM ; AUTO ; ROM         ; 256          ; 32           ; --           ; --           ; 8192 ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.mif ;
++------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+---------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -442,26 +439,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Total registers                              ; 72    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 6     ;
+; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 72    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 66    ;
+; Number of registers using Clock Enable       ; 64    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------+
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit0|int_q ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit2|int_q ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:lsb|o_m ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_1d11:auto_generated ;
+; Source assignments for instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated ;
 +---------------------------------+--------------------+------+----------------------------------------------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                                                               ;
 +---------------------------------+--------------------+------+----------------------------------------------------------------------------------+
@@ -470,7 +466,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 +------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block|altsyncram_45a1:auto_generated ;
+; Source assignments for dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated ;
 +---------------------------------+--------------------+------+----------------------------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                                             ;
 +---------------------------------+--------------------+------+----------------------------------------------------------------+
@@ -478,59 +474,47 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------+--------------------+------+----------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instructionMemory:instructionMem|LPM_ROM:instructionMem ;
-+------------------------+-----------------------+-----------------------------------------------------+
-; Parameter Name         ; Value                 ; Type                                                ;
-+------------------------+-----------------------+-----------------------------------------------------+
-; LPM_WIDTH              ; 32                    ; Signed Integer                                      ;
-; LPM_WIDTHAD            ; 8                     ; Signed Integer                                      ;
-; LPM_NUMWORDS           ; 256                   ; Signed Integer                                      ;
-; LPM_ADDRESS_CONTROL    ; REGISTERED            ; Untyped                                             ;
-; LPM_OUTDATA            ; REGISTERED            ; Untyped                                             ;
-; LPM_FILE               ; instructionMemory.mif ; Untyped                                             ;
-; DEVICE_FAMILY          ; Cyclone IV E          ; Untyped                                             ;
-; AUTO_CARRY_CHAINS      ; ON                    ; AUTO_CARRY                                          ;
-; IGNORE_CARRY_BUFFERS   ; OFF                   ; IGNORE_CARRY                                        ;
-; AUTO_CASCADE_CHAINS    ; ON                    ; AUTO_CASCADE                                        ;
-; IGNORE_CASCADE_BUFFERS ; OFF                   ; IGNORE_CASCADE                                      ;
-+------------------------+-----------------------+-----------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: instructionMemory:instructionMem|LPM_ROM:instructionMem          ;
++------------------------+---------------------------------------------------------------------+----------------+
+; Parameter Name         ; Value                                                               ; Type           ;
++------------------------+---------------------------------------------------------------------+----------------+
+; LPM_WIDTH              ; 32                                                                  ; Signed Integer ;
+; LPM_WIDTHAD            ; 8                                                                   ; Signed Integer ;
+; LPM_NUMWORDS           ; 256                                                                 ; Signed Integer ;
+; LPM_ADDRESS_CONTROL    ; REGISTERED                                                          ; Untyped        ;
+; LPM_OUTDATA            ; REGISTERED                                                          ; Untyped        ;
+; LPM_FILE               ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.mif ; Untyped        ;
+; DEVICE_FAMILY          ; Cyclone IV E                                                        ; Untyped        ;
+; AUTO_CARRY_CHAINS      ; ON                                                                  ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS   ; OFF                                                                 ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS    ; ON                                                                  ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS ; OFF                                                                 ; IGNORE_CASCADE ;
++------------------------+---------------------------------------------------------------------+----------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: dataMemory:dataMem|LPM_RAM_DQ:dataMem ;
-+------------------------+----------------+------------------------------------------+
-; Parameter Name         ; Value          ; Type                                     ;
-+------------------------+----------------+------------------------------------------+
-; LPM_WIDTH              ; 8              ; Signed Integer                           ;
-; LPM_WIDTHAD            ; 8              ; Signed Integer                           ;
-; LPM_NUMWORDS           ; 256            ; Signed Integer                           ;
-; LPM_INDATA             ; REGISTERED     ; Untyped                                  ;
-; LPM_ADDRESS_CONTROL    ; REGISTERED     ; Untyped                                  ;
-; LPM_OUTDATA            ; REGISTERED     ; Untyped                                  ;
-; LPM_FILE               ; dataMemory.mif ; Untyped                                  ;
-; USE_EAB                ; ON             ; Untyped                                  ;
-; DEVICE_FAMILY          ; Cyclone IV E   ; Untyped                                  ;
-; CBXI_PARAMETER         ; NOTHING        ; Untyped                                  ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                               ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                             ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                             ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                           ;
-+------------------------+----------------+------------------------------------------+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: dataMemory:dataMem|LPM_RAM_DQ:dataMem                     ;
++------------------------+--------------------------------------------------------------+----------------+
+; Parameter Name         ; Value                                                        ; Type           ;
++------------------------+--------------------------------------------------------------+----------------+
+; LPM_WIDTH              ; 8                                                            ; Signed Integer ;
+; LPM_WIDTHAD            ; 8                                                            ; Signed Integer ;
+; LPM_NUMWORDS           ; 256                                                          ; Signed Integer ;
+; LPM_INDATA             ; REGISTERED                                                   ; Untyped        ;
+; LPM_ADDRESS_CONTROL    ; REGISTERED                                                   ; Untyped        ;
+; LPM_OUTDATA            ; REGISTERED                                                   ; Untyped        ;
+; LPM_FILE               ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dataMemory.mif ; Untyped        ;
+; USE_EAB                ; ON                                                           ; Untyped        ;
+; DEVICE_FAMILY          ; Cyclone IV E                                                 ; Untyped        ;
+; CBXI_PARAMETER         ; NOTHING                                                      ; Untyped        ;
+; AUTO_CARRY_CHAINS      ; ON                                                           ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS   ; OFF                                                          ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS    ; ON                                                           ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS ; OFF                                                          ; IGNORE_CASCADE ;
++------------------------+--------------------------------------------------------------+----------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------+
-; Port Connectivity Checks: "mux8x1EightBit:outputVal" ;
-+----------+-------+----------+------------------------+
-; Port     ; Type  ; Severity ; Details                ;
-+----------+-------+----------+------------------------+
-; a4[7..5] ; Input ; Info     ; Stuck at GND           ;
-; a5[7..1] ; Input ; Info     ; Stuck at GND           ;
-; a6[7..2] ; Input ; Info     ; Stuck at GND           ;
-; a7[7..1] ; Input ; Info     ; Stuck at GND           ;
-+----------+-------+----------+------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------+
@@ -733,9 +717,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Mon Jul 03 14:19:29 2023
+    Info: Processing started: Sat Jul 15 16:43:51 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CEG3156Lab2 -c CEG3156Lab2
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file clk_div.vhd
+    Info (12022): Found design unit 1: clk_div-a
+    Info (12023): Found entity 1: clk_div
 Info (12021): Found 2 design units, including 1 entities, in source file enasdff.vhd
     Info (12022): Found design unit 1: enASdFF-rtl
     Info (12023): Found entity 1: enASdFF
@@ -817,8 +804,13 @@ Info (12021): Found 2 design units, including 1 entities, in source file pcregis
 Info (12021): Found 2 design units, including 1 entities, in source file singlecycletoplevel.vhd
     Info (12022): Found design unit 1: singleCycleTopLevel-structural
     Info (12023): Found entity 1: singleCycleTopLevel
+Info (12021): Found 2 design units, including 1 entities, in source file hazarddetectionunit.vhd
+    Info (12022): Found design unit 1: HazardDetectionUnit-structural
+    Info (12023): Found entity 1: HazardDetectionUnit
 Info (12127): Elaborating entity "singleCycleTopLevel" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at singleCycleTopLevel.vhd(23): object "aluResultToMux_conn" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at singleCycleTopLevel.vhd(28): object "aluResultToMux_conn" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at singleCycleTopLevel.vhd(52): object "pcReset" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at singleCycleTopLevel.vhd(54): used implicit default value for signal "writeRegisterIn_conn8Bit" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Info (12128): Elaborating entity "pcRegister" for hierarchy "pcRegister:pcRegisterVal"
 Info (12128): Elaborating entity "eightBitRegister" for hierarchy "pcRegister:pcRegisterVal|eightBitRegister:pcVal"
 Warning (10036): Verilog HDL or VHDL warning at eightBitRegister.vhd(16): object "notOutputs" assigned a value but never read
@@ -832,7 +824,7 @@ Info (12133): Instantiated megafunction "instructionMemory:instructionMem|LPM_RO
     Info (12134): Parameter "LPM_NUMWORDS" = "256"
     Info (12134): Parameter "LPM_ADDRESS_CONTROL" = "REGISTERED"
     Info (12134): Parameter "LPM_OUTDATA" = "REGISTERED"
-    Info (12134): Parameter "LPM_FILE" = "instructionMemory.mif"
+    Info (12134): Parameter "LPM_FILE" = "C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.mif"
     Info (12134): Parameter "LPM_TYPE" = "LPM_ROM"
     Info (12134): Parameter "INTENDED_DEVICE_FAMILY" = "UNUSED"
     Info (12134): Parameter "LPM_HINT" = "UNUSED"
@@ -840,16 +832,9 @@ Info (12128): Elaborating entity "altrom" for hierarchy "instructionMemory:instr
 Info (12131): Elaborated megafunction instantiation "instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom", which is child of megafunction instantiation "instructionMemory:instructionMem|LPM_ROM:instructionMem"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block"
 Info (12131): Elaborated megafunction instantiation "instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block", which is child of megafunction instantiation "instructionMemory:instructionMem|LPM_ROM:instructionMem"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_1d11.tdf
-    Info (12023): Found entity 1: altsyncram_1d11
-Info (12128): Elaborating entity "altsyncram_1d11" for hierarchy "instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_1d11:auto_generated"
-Warning (113031): 6 out of 256 addresses are reinitialized. The latest initialized data will replace the existing data. There are 6 warnings found, and 6 warnings are reported.
-    Warning (113030): Memory Initialization File address 0 is reinitialized
-    Warning (113030): Memory Initialization File address 4 is reinitialized
-    Warning (113030): Memory Initialization File address 8 is reinitialized
-    Warning (113030): Memory Initialization File address 12 is reinitialized
-    Warning (113030): Memory Initialization File address 16 is reinitialized
-    Warning (113030): Memory Initialization File address 20 is reinitialized
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_d951.tdf
+    Info (12023): Found entity 1: altsyncram_d951
+Info (12128): Elaborating entity "altsyncram_d951" for hierarchy "instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated"
 Info (12128): Elaborating entity "mux5x5" for hierarchy "mux5x5:mux5x5Out"
 Info (12128): Elaborating entity "mux2x1" for hierarchy "mux5x5:mux5x5Out|mux2x1:msb"
 Info (12128): Elaborating entity "registerFile" for hierarchy "registerFile:regFile"
@@ -876,7 +861,7 @@ Info (12133): Instantiated megafunction "dataMemory:dataMem|LPM_RAM_DQ:dataMem" 
     Info (12134): Parameter "LPM_INDATA" = "REGISTERED"
     Info (12134): Parameter "LPM_ADDRESS_CONTROL" = "REGISTERED"
     Info (12134): Parameter "LPM_OUTDATA" = "REGISTERED"
-    Info (12134): Parameter "LPM_FILE" = "dataMemory.mif"
+    Info (12134): Parameter "LPM_FILE" = "C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dataMemory.mif"
     Info (12134): Parameter "LPM_TYPE" = "LPM_RAM_DQ"
     Info (12134): Parameter "USE_EAB" = "ON"
     Info (12134): Parameter "INTENDED_DEVICE_FAMILY" = "UNUSED"
@@ -886,12 +871,9 @@ Warning (287001): Assertion warning: altram does not support Cyclone IV E device
 Info (12131): Elaborated megafunction instantiation "dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram", which is child of megafunction instantiation "dataMemory:dataMem|LPM_RAM_DQ:dataMem"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block"
 Info (12131): Elaborated megafunction instantiation "dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block", which is child of megafunction instantiation "dataMemory:dataMem|LPM_RAM_DQ:dataMem"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_45a1.tdf
-    Info (12023): Found entity 1: altsyncram_45a1
-Info (12128): Elaborating entity "altsyncram_45a1" for hierarchy "dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block|altsyncram_45a1:auto_generated"
-Warning (113031): 2 out of 256 addresses are reinitialized. The latest initialized data will replace the existing data. There are 2 warnings found, and 2 warnings are reported.
-    Warning (113030): Memory Initialization File address 0 is reinitialized
-    Warning (113030): Memory Initialization File address 1 is reinitialized
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_g1e1.tdf
+    Info (12023): Found entity 1: altsyncram_g1e1
+Info (12128): Elaborating entity "altsyncram_g1e1" for hierarchy "dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated"
 Info (12128): Elaborating entity "controlLogicUnit" for hierarchy "controlLogicUnit:controlUnit"
 Info (12128): Elaborating entity "shiftLeft2Unit" for hierarchy "shiftLeft2Unit:shiftLeftBranch"
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
@@ -899,6 +881,10 @@ Warning (13044): Always-enabled tri-state buffer(s) removed
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[8]" to the node "instructionOut[8]" into a wire
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[9]" to the node "instructionOut[9]" into a wire
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[10]" to the node "instructionOut[10]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[14]" to the node "instructionOut[14]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[15]" to the node "instructionOut[15]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[19]" to the node "instructionOut[19]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[20]" to the node "instructionOut[20]" into a wire
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[24]" to the node "instructionOut[24]" into a wire
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[25]" to the node "instructionOut[25]" into a wire
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[2]" to the node "instructionOut[2]" into a wire
@@ -924,17 +910,9 @@ Warning (13044): Always-enabled tri-state buffer(s) removed
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[11]" to the node "instructionOut[11]" into a wire
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[12]" to the node "instructionOut[12]" into a wire
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[13]" to the node "instructionOut[13]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[14]" to the node "instructionOut[14]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[19]" to the node "instructionOut[19]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[15]" to the node "instructionOut[15]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[20]" to the node "instructionOut[20]" into a wire
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[11]" to the node "mux5x5:mux5x5Out|mux2x1:lsb|o_m" into a wire
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[12]" to the node "mux5x5:mux5x5Out|mux2x1:bit2|o_m" into a wire
     Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[13]" to the node "mux5x5:mux5x5Out|mux2x1:bit3|o_m" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[14]" to the node "mux5x5:mux5x5Out|mux2x1:bit4|o_m" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[19]" to the node "mux5x5:mux5x5Out|mux2x1:bit4|o_m" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[15]" to the node "mux5x5:mux5x5Out|mux2x1:msb|o_m" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[20]" to the node "mux5x5:mux5x5Out|mux2x1:msb|o_m" into a wire
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[2]" to the node "aluControlUnit:aluCont|aluCntrlOut[1]" into an OR gate
     Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[26]" to the node "controlLogicUnit:controlUnit|memRead" into an OR gate
@@ -959,15 +937,15 @@ Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 420 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 455 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 6 input pins
-    Info (21059): Implemented 44 output pins
-    Info (21061): Implemented 330 logic cells
+    Info (21059): Implemented 60 output pins
+    Info (21061): Implemented 349 logic cells
     Info (21064): Implemented 40 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 77 warnings
-    Info: Peak virtual memory: 4701 megabytes
-    Info: Processing ended: Mon Jul 03 14:19:32 2023
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 65 warnings
+    Info: Peak virtual memory: 4688 megabytes
+    Info: Processing ended: Sat Jul 15 16:43:54 2023
     Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Total CPU time (on all processors): 00:00:02
 
 

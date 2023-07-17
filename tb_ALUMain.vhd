@@ -41,11 +41,11 @@ begin
   begin
 
     -- Add
-    tb_input1 <= "10010110";
-    tb_input2 <= "00001000";
+    tb_input1 <= "01010101";
+    tb_input2 <= "10101010";
     tb_sel <= "010";
     wait for 100 ps;
-    assert(tb_aluResult = "10011110")
+    assert(tb_aluResult = "11111111")
     report "Test for addition failed" severity error;
 
     -- Subtract

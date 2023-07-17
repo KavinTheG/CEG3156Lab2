@@ -56,6 +56,21 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_s
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VHDL_FILE twoBitRegister.vhd
+set_global_assignment -name VHDL_FILE threeBitRegister.vhd
+set_global_assignment -name VHDL_FILE thirtyTwoBitRegister.vhd
+set_global_assignment -name VHDL_FILE ProcessorTopLevelEntity.vhd
+set_global_assignment -name VHDL_FILE MEM_WBRegister.vhd
+set_global_assignment -name VHDL_FILE IF_IDRegister.vhd
+set_global_assignment -name VHDL_FILE ID_EXRegister.vhd
+set_global_assignment -name VHDL_FILE fourBitRegister.vhd
+set_global_assignment -name VHDL_FILE forwardingUnit.vhd
+set_global_assignment -name VHDL_FILE fiveBitRegister.vhd
+set_global_assignment -name VHDL_FILE EX_MEMRegister.vhd
+set_global_assignment -name VHDL_FILE ControlLogicUnit_tb.vhd
+set_global_assignment -name VHDL_FILE aluControlUnit_tb.vhd
+set_global_assignment -name VHDL_FILE clk_div.vhd
 set_global_assignment -name MIF_FILE dataMemory.mif
 set_global_assignment -name VHDL_FILE enASdFF.vhd
 set_global_assignment -name VHDL_FILE enARdFF_2.vhd
@@ -86,4 +101,8 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE mux8x1EightBit.vwf
 set_global_assignment -name VHDL_FILE pcRegister.vhd
 set_global_assignment -name VHDL_FILE singleCycleTopLevel.vhd
 set_global_assignment -name MIF_FILE instructionMemory.mif
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VHDL_FILE HazardDetectionUnit.vhd
+set_global_assignment -name VHDL_FILE pipelinedProc.vhd
+set_global_assignment -name VHDL_FILE mux9bit2x1.vhd
+set_global_assignment -name VHDL_FILE mux8bit3x1.vhd
+set_global_assignment -name VHDL_FILE mux3x1.vhd

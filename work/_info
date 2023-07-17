@@ -16,7 +16,7 @@ L5
 V8Q`^bQ[;7nXkYX?LLL9la2
 Z8 OV;C;10.1d;51
 32
-Z9 !s108 1688422051.080000
+Z9 !s108 1688433221.123000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/aluControlUnit.vhd|
 Z11 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/aluControlUnit.vhd|
 Z12 o-work work -2002 -explicit -O0
@@ -52,7 +52,7 @@ L4
 V1_`<lWjZ4A977Nb3SGL^J1
 R8
 32
-Z16 !s108 1688422051.134000
+Z16 !s108 1688433221.202000
 Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/aluControlUnit_tb.vhd|
 Z18 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/aluControlUnit_tb.vhd|
 R12
@@ -87,7 +87,7 @@ L5
 VbYI5V`L08;1PCUgSZ<RIa3
 R8
 32
-Z21 !s108 1688422051.225000
+Z21 !s108 1688433221.269000
 Z22 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ALUmain.vhd|
 Z23 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ALUmain.vhd|
 R12
@@ -122,7 +122,7 @@ L4
 V:Oi0cbe6h:fmT8]_2jI>53
 R8
 32
-Z26 !s108 1688422051.317000
+Z26 !s108 1688433221.338000
 Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/controlLogicUnit.vhd|
 Z28 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/controlLogicUnit.vhd|
 R12
@@ -157,7 +157,7 @@ L4
 V0b>K<OeFZSd3^8:zBSd>`1
 R8
 32
-Z31 !s108 1688422051.409000
+Z31 !s108 1688433221.427000
 Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ControlLogicUnit_tb.vhd|
 Z33 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ControlLogicUnit_tb.vhd|
 R12
@@ -193,7 +193,7 @@ L7
 V>`TBDoEI26UZ??`H1BS8M0
 R8
 32
-Z38 !s108 1688422051.491000
+Z38 !s108 1688433221.502000
 Z39 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dataMemory.vhd|
 Z40 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dataMemory.vhd|
 R12
@@ -229,7 +229,7 @@ L31
 VmU6=]RL[DRb3B>U3nj:PT2
 R8
 32
-Z43 !s108 1688422051.569000
+Z43 !s108 1688433221.570000
 Z44 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dFF_2.vhd|
 Z45 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dFF_2.vhd|
 R12
@@ -264,7 +264,7 @@ L4
 V]?lifgSOhB745R9V>XB132
 R8
 32
-Z48 !s108 1688422051.725000
+Z48 !s108 1688433221.725000
 Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitComparator.vhd|
 Z50 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitComparator.vhd|
 R12
@@ -299,7 +299,7 @@ L4
 VnH^5;7IjcEZNbT7N^h6l11
 R8
 32
-Z53 !s108 1688422051.636000
+Z53 !s108 1688433221.644000
 Z54 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitAdder.vhd|
 Z55 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitAdder.vhd|
 R12
@@ -334,7 +334,7 @@ L4
 V4_LgM81ERAl;jXOR0z9[[0
 R8
 32
-Z58 !s108 1688422051.824000
+Z58 !s108 1688433221.791000
 Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitRegister.vhd|
 Z60 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitRegister.vhd|
 R12
@@ -369,7 +369,7 @@ L4
 V3V2fAI;5TgDI@cn?YoW6K2
 R8
 32
-Z63 !s108 1688422051.895000
+Z63 !s108 1688433221.855000
 Z64 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitSubtractor.vhd|
 Z65 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitSubtractor.vhd|
 R12
@@ -404,7 +404,7 @@ L31
 VW45mLHZkgINE^UQaXmP5[3
 R8
 32
-Z68 !s108 1688422051.962000
+Z68 !s108 1688433221.915000
 Z69 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/enARdFF_2.vhd|
 Z70 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/enARdFF_2.vhd|
 R12
@@ -439,7 +439,7 @@ L5
 V7:A;<cQ5bOn7Nzo5c`47]0
 R8
 32
-Z73 !s108 1688422052.061000
+Z73 !s108 1688433221.973000
 Z74 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/enASdFF.vhd|
 Z75 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/enASdFF.vhd|
 R12
@@ -473,47 +473,47 @@ Z78 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.vhd
 l0
 L6
 VZ2eXLXA2UAJzSRCa>?fJ_3
+!s100 6YEF_8jQnn8dCc`N`_zn`3
 R8
 32
-Z79 !s108 1688422052.148000
+!i10b 1
+Z79 !s108 1688433240.196000
 Z80 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.vhd|
 Z81 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.vhd|
 R12
 R13
-!s100 6YEF_8jQnn8dCc`N`_zn`3
-!i10b 1
 Astructural
 R35
 R3
 R4
-DEx4 work 17 instructionmemory 0 22 Z2eXLXA2UAJzSRCa>?fJ_3
+Z82 DEx4 work 17 instructionmemory 0 22 Z2eXLXA2UAJzSRCa>?fJ_3
 l43
 L15
-VUzkedJL31Pdm`?6Y`Efc01
+Z83 VUzkedJL31Pdm`?6Y`Efc01
+Z84 !s100 :iL:Ae?]MaS7Y>810aOTb2
 R8
 32
+!i10b 1
 R79
 R80
 R81
 R12
 R13
-!s100 :iL:Ae?]MaS7Y>810aOTb2
-!i10b 1
 Emux2x1
 R1
 R3
 R4
 R5
-Z82 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux2x1.vhd
-Z83 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux2x1.vhd
+Z85 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux2x1.vhd
+Z86 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux2x1.vhd
 l0
 L4
 V`dhJb@GCXg0gC[zT>80CJ3
 R8
 32
-Z84 !s108 1688422052.220000
-Z85 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux2x1.vhd|
-Z86 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux2x1.vhd|
+Z87 !s108 1688433222.048000
+Z88 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux2x1.vhd|
+Z89 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux2x1.vhd|
 R12
 R13
 !s100 ad8`2X3ZGC@ch6NFF]VTa0
@@ -527,9 +527,9 @@ L11
 VNH`FnY1a?I9ooJhjB=kLH0
 R8
 32
-R84
-R85
-R86
+R87
+R88
+R89
 R12
 R13
 !s100 <l]fmXkI;27:OQKaLGQJP1
@@ -539,16 +539,16 @@ R1
 R3
 R4
 R5
-Z87 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux5x5.vhd
-Z88 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux5x5.vhd
+Z90 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux5x5.vhd
+Z91 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux5x5.vhd
 l0
 L5
 Vz_kP@7IUF<CKTf>=_L?3J0
 R8
 32
-Z89 !s108 1688422052.297000
-Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux5x5.vhd|
-Z91 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux5x5.vhd|
+Z92 !s108 1688433222.113000
+Z93 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux5x5.vhd|
+Z94 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux5x5.vhd|
 R12
 R13
 !s100 AMoBI0a49EVDJc;JHG]Tf2
@@ -562,9 +562,9 @@ L13
 VEO?g6_JkG@PFPY_Y@kOgo0
 R8
 32
-R89
-R90
-R91
+R92
+R93
+R94
 R12
 R13
 !s100 N4D;d[S=A_zL4D:N6gGQz0
@@ -574,16 +574,16 @@ R1
 R3
 R4
 R5
-Z92 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux7x7.vhd
-Z93 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux7x7.vhd
+Z95 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux7x7.vhd
+Z96 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux7x7.vhd
 l0
 L5
 VD>z7^Ia_KzZ644RHVz[1O0
 R8
 32
-Z94 !s108 1688422052.392000
-Z95 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux7x7.vhd|
-Z96 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux7x7.vhd|
+Z97 !s108 1688433222.179000
+Z98 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux7x7.vhd|
+Z99 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux7x7.vhd|
 R12
 R13
 !s100 RX>0M9>^]29dT=DkZ;>HC1
@@ -597,9 +597,9 @@ L13
 V?LkPn77FGf1Rf10FjU=km1
 R8
 32
-R94
-R95
-R96
+R97
+R98
+R99
 R12
 R13
 !s100 IoUXY`7c3GK@Q7BiGAa9B2
@@ -609,16 +609,16 @@ R1
 R3
 R4
 R5
-Z97 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x1EightBit.vhd
-Z98 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x1EightBit.vhd
+Z100 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x1EightBit.vhd
+Z101 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x1EightBit.vhd
 l0
 L4
 V6hJNNIH9S3JNo9H6HEaYh0
 R8
 32
-Z99 !s108 1688422052.473000
-Z100 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x1EightBit.vhd|
-Z101 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x1EightBit.vhd|
+Z102 !s108 1688433222.246000
+Z103 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x1EightBit.vhd|
+Z104 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x1EightBit.vhd|
 R12
 R13
 !s100 QFz1=8m3TGmLaHdl;YVNF3
@@ -632,9 +632,9 @@ L12
 V6bFMW@e;ULXHTE=Md_n4V2
 R8
 32
-R99
-R100
-R101
+R102
+R103
+R104
 R12
 R13
 !s100 Rm@z2hiee8kMn]g2l^mF=3
@@ -644,16 +644,16 @@ R1
 R3
 R4
 R5
-Z102 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x8.vhd
-Z103 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x8.vhd
+Z105 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x8.vhd
+Z106 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x8.vhd
 l0
 L5
 Vo4neWk@J7H1YLK7a0I@C`1
 R8
 32
-Z104 !s108 1688422052.560000
-Z105 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x8.vhd|
-Z106 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x8.vhd|
+Z107 !s108 1688433222.308000
+Z108 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x8.vhd|
+Z109 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x8.vhd|
 R12
 R13
 !s100 88oKc1:1;ERd3f?[?fInc2
@@ -667,9 +667,9 @@ L13
 VTeV`8f<1XWh7R8A=eiCTB3
 R8
 32
-R104
-R105
-R106
+R107
+R108
+R109
 R12
 R13
 !s100 K>0dUi==>XHC@k[^_XHA_0
@@ -679,16 +679,16 @@ R1
 R3
 R4
 R5
-Z107 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd
-Z108 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd
+Z110 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd
+Z111 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd
 l0
 L31
 V<WPaMLJ_Q??nLET?Qn5W02
 R8
 32
-Z109 !s108 1688422052.654000
-Z110 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd|
-Z111 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd|
+Z112 !s108 1688433222.386000
+Z113 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd|
+Z114 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd|
 R12
 R13
 !s100 3=]2afhWa=ab9Iz_HFcb00
@@ -702,9 +702,9 @@ L38
 VMbkMHFWh@k3b7o@o6>i5k2
 R8
 32
-R109
-R110
-R111
+R112
+R113
+R114
 R12
 R13
 !s100 RRbEGVI`EKl=XLGnQ:<dQ0
@@ -714,16 +714,16 @@ R1
 R3
 R4
 R5
-Z112 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitcomparator.vhd
-Z113 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitcomparator.vhd
+Z115 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitcomparator.vhd
+Z116 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitcomparator.vhd
 l0
 L31
 Va114[DTKdX[dS9GV3?VV>2
 R8
 32
-Z114 !s108 1688422052.726000
-Z115 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitcomparator.vhd|
-Z116 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitcomparator.vhd|
+Z117 !s108 1688433222.464000
+Z118 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitcomparator.vhd|
+Z119 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitcomparator.vhd|
 R12
 R13
 !s100 <jX6<_c^nQ8XW_1O_gY[<1
@@ -737,9 +737,9 @@ L38
 VA0g5UdUYmzdXnCE:h69Va3
 R8
 32
-R114
-R115
-R116
+R117
+R118
+R119
 R12
 R13
 !s100 8fVAI]h6XZcSDo?:0YWH41
@@ -749,16 +749,16 @@ R1
 R3
 R4
 R5
-Z117 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/oneBitSubtractor.vhd
-Z118 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/oneBitSubtractor.vhd
+Z120 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/oneBitSubtractor.vhd
+Z121 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/oneBitSubtractor.vhd
 l0
 L4
 VRKKln6[AZ9mc=lI3i0Mfb3
 R8
 32
-Z119 !s108 1688422052.805000
-Z120 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/oneBitSubtractor.vhd|
-Z121 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/oneBitSubtractor.vhd|
+Z122 !s108 1688433222.532000
+Z123 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/oneBitSubtractor.vhd|
+Z124 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/oneBitSubtractor.vhd|
 R12
 R13
 !s100 8k^5;SgSYM3GAhjY0k[=;3
@@ -772,9 +772,9 @@ L11
 VhL^kb9QQFN2iMFEIW<FaV3
 R8
 32
-R119
-R120
-R121
+R122
+R123
+R124
 R12
 R13
 !s100 oF`F_7o2W4lQiPH[EH<iT1
@@ -795,59 +795,59 @@ R12
 R13
 !s100 3zY3mN[g:=XScHeUj=L1F2
 !i10b 1
-!s108 1688419856.367000
+!s108 1688427570.719000
 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pcAdder8Bit.vhd|
 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pcAdder8Bit.vhd|
 Epcregister
-R1
+Z125 w1688426093
 R3
 R4
 R5
-Z122 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pcRegister.vhd
-Z123 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pcRegister.vhd
+Z126 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pcRegister.vhd
+Z127 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pcRegister.vhd
 l0
 L5
-VBE`ZSlib7>j:4j6KJm_e@2
+VnlnmTY8o9MUcz56QBRQ>D1
 R8
 32
-Z124 !s108 1688422052.870000
-Z125 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pcRegister.vhd|
-Z126 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pcRegister.vhd|
+Z128 !s108 1688433222.594000
+Z129 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pcRegister.vhd|
+Z130 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pcRegister.vhd|
 R12
 R13
-!s100 n:?n:GQUc4XSUGTn=e9H83
+!s100 5`aej6;ZSQng<FPjicUCj2
 !i10b 1
 Astructural
 R3
 R4
-DEx4 work 10 pcregister 0 22 BE`ZSlib7>j:4j6KJm_e@2
+DEx4 work 10 pcregister 0 22 nlnmTY8o9MUcz56QBRQ>D1
 l28
 L14
 V4T@Ykb7bIBA5[>Th68QDj0
 R8
 32
-R124
-R125
-R126
+R128
+R129
+R130
 R12
 R13
-!s100 9g21`d_nlzX`ke;^PC`J?1
+!s100 99?I66G]VG94c45cgi^aR0
 !i10b 1
 Eprocessortoplevelentity
 R1
 R3
 R4
 R5
-Z127 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ProcessorTopLevelEntity.vhd
-Z128 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ProcessorTopLevelEntity.vhd
+Z131 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ProcessorTopLevelEntity.vhd
+Z132 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ProcessorTopLevelEntity.vhd
 l0
 L4
 V:mfF1K=e=j3cYiHZ?bOZe3
 R8
 32
-Z129 !s108 1688422052.936000
-Z130 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ProcessorTopLevelEntity.vhd|
-Z131 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ProcessorTopLevelEntity.vhd|
+Z133 !s108 1688433222.660000
+Z134 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ProcessorTopLevelEntity.vhd|
+Z135 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ProcessorTopLevelEntity.vhd|
 R12
 R13
 !s100 3d7EOQA64mGPMkF>SF?=F3
@@ -861,9 +861,9 @@ L18
 VjLIa79:Y??4O119l_FKV12
 R8
 32
-R129
-R130
-R131
+R133
+R134
+R135
 R12
 R13
 !s100 :9<Yz358<gIA@Q3V3<3@03
@@ -873,16 +873,16 @@ R1
 R3
 R4
 R5
-Z132 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/registerFile.vhd
-Z133 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/registerFile.vhd
+Z136 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/registerFile.vhd
+Z137 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/registerFile.vhd
 l0
 L4
 VMOG3JHT5ibEb=zf;SGc403
 R8
 32
-Z134 !s108 1688422053.027000
-Z135 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/registerFile.vhd|
-Z136 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/registerFile.vhd|
+Z138 !s108 1688433222.731000
+Z139 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/registerFile.vhd|
+Z140 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/registerFile.vhd|
 R12
 R13
 !s100 8b=idzA3H_zcmVKfliK``2
@@ -896,9 +896,9 @@ L24
 V=dMh<G[?VAWl87G`E6A>C3
 R8
 32
-R134
-R135
-R136
+R138
+R139
+R140
 R12
 R13
 !s100 gXFgAg45h?H[XHBGBRKO02
@@ -908,16 +908,16 @@ R1
 R3
 R4
 R5
-Z137 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/shiftLeft2Unit.vhd
-Z138 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/shiftLeft2Unit.vhd
+Z141 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/shiftLeft2Unit.vhd
+Z142 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/shiftLeft2Unit.vhd
 l0
 L5
 V1Vg?ZFY`<3aWTl_1b:2JT2
 R8
 32
-Z139 !s108 1688422053.102000
-Z140 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/shiftLeft2Unit.vhd|
-Z141 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/shiftLeft2Unit.vhd|
+Z143 !s108 1688433222.792000
+Z144 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/shiftLeft2Unit.vhd|
+Z145 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/shiftLeft2Unit.vhd|
 R12
 R13
 !s100 AQ7DBR`c<7LH=a1iEH23X3
@@ -931,9 +931,9 @@ L11
 V:U1P>AeMMR]V@?4ngegdJ1
 R8
 32
-R139
-R140
-R141
+R143
+R144
+R145
 R12
 R13
 !s100 oU8CUQmcOmkl_17M_J8gm3
@@ -943,16 +943,16 @@ R1
 R3
 R4
 R5
-Z142 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/signExtendUnit.vhd
-Z143 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/signExtendUnit.vhd
+Z146 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/signExtendUnit.vhd
+Z147 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/signExtendUnit.vhd
 l0
 L5
 VjOlTm4co:Ci9ZQ<KTZ9h61
 R8
 32
-Z144 !s108 1688422053.213000
-Z145 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/signExtendUnit.vhd|
-Z146 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/signExtendUnit.vhd|
+Z148 !s108 1688433222.853000
+Z149 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/signExtendUnit.vhd|
+Z150 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/signExtendUnit.vhd|
 R12
 R13
 !s100 2gJ^?bBFA;Ml:k9X52d0f0
@@ -966,63 +966,63 @@ L12
 VnDOnQkO=STS;E:2jd=UeY1
 R8
 32
-R144
-R145
-R146
+R148
+R149
+R150
 R12
 R13
 !s100 cLW9QdEgDJVQHF0ZGdkjN0
 !i10b 1
 Esinglecycletoplevel
-Z147 w1688420117
+Z151 w1688428129
 R3
 R4
 R5
-Z148 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/singleCycleTopLevel.vhd
-Z149 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/singleCycleTopLevel.vhd
+Z152 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/singleCycleTopLevel.vhd
+Z153 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/singleCycleTopLevel.vhd
 l0
 L4
-VDCfQX4IcAW@<6F34aZBPz3
+VbmcXcek[YeLz`LaW=X5<o1
 R8
 32
-Z150 !s108 1688422053.288000
-Z151 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/singleCycleTopLevel.vhd|
-Z152 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/singleCycleTopLevel.vhd|
+Z154 !s108 1688433222.909000
+Z155 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/singleCycleTopLevel.vhd|
+Z156 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/singleCycleTopLevel.vhd|
 R12
 R13
-!s100 oaDHENDHhHjf[96mA6dac1
+!s100 HC_]Xk>ZS66]A>nzT>7A62
 !i10b 1
 Astructural
 R3
 R4
-DEx4 work 19 singlecycletoplevel 0 22 DCfQX4IcAW@<6F34aZBPz3
-l183
-L18
-VU3[8IG^@;fFlWk0Ej6UjI2
+DEx4 work 19 singlecycletoplevel 0 22 bmcXcek[YeLz`LaW=X5<o1
+l190
+L23
+VdFM[gYHCA:UBDFF5=17AC0
 R8
 32
-R150
-R151
-R152
+R154
+R155
+R156
 R12
 R13
-!s100 ]@6IA7ZAMXUe`>VAfNiJl0
+!s100 UGJUfld<j33X3AKn8heki3
 !i10b 1
 Etb_alumain
-R1
+Z157 w1688429606
 R3
 R4
 R5
-Z153 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_ALUMain.vhd
-Z154 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_ALUMain.vhd
+Z158 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_ALUMain.vhd
+Z159 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_ALUMain.vhd
 l0
 L6
 V[ffJ9cg>hIYHX>ZibIkF23
 R8
 32
-Z155 !s108 1688422053.380000
-Z156 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_ALUMain.vhd|
-Z157 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_ALUMain.vhd|
+Z160 !s108 1688433222.979000
+Z161 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_ALUMain.vhd|
+Z162 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_ALUMain.vhd|
 R12
 R13
 !s100 0MTkL9Y<L>UnobLkJl@J31
@@ -1033,31 +1033,31 @@ R4
 DEx4 work 10 tb_alumain 0 22 [ffJ9cg>hIYHX>ZibIkF23
 l28
 L9
-V`:]O[kkFT3K;:C:VOJL5O0
+VRQncAIPYTShOM=E`A@V0j1
 R8
 32
-R155
-R156
-R157
+R160
+R161
+R162
 R12
 R13
-!s100 Q`?=6=?6o==8^6X3Mh6FQ0
+!s100 T>`Bd>a8F[E]Xh?]4<MSa2
 !i10b 1
 Etb_eightbitreg
 R1
 R3
 R4
 R5
-Z158 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_eightBitReg.vhd
-Z159 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_eightBitReg.vhd
+Z163 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_eightBitReg.vhd
+Z164 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_eightBitReg.vhd
 l0
 L4
 VVE2VbSS:556F@M30[DiEd3
 R8
 32
-Z160 !s108 1688422053.437000
-Z161 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_eightBitReg.vhd|
-Z162 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_eightBitReg.vhd|
+Z165 !s108 1688433223.045000
+Z166 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_eightBitReg.vhd|
+Z167 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_eightBitReg.vhd|
 R12
 R13
 !s100 lIQD><]h19H5Ca<acnWbl3
@@ -1071,28 +1071,63 @@ L7
 VNI4C6>Dod1L@^UU]OZ^9C1
 R8
 32
-R160
-R161
-R162
+R165
+R166
+R167
 R12
 R13
 !s100 ;Xj6CMA3U@>F60WGjS5o@3
+!i10b 1
+Etb_instructionmemory
+Z168 w1688424913
+R3
+R4
+R5
+Z169 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_instructionMemory.vhd
+Z170 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_instructionMemory.vhd
+l0
+L6
+VeGF`j9:FPBzA0@U^2=gfF0
+R8
+32
+Z171 !s108 1688433240.142000
+Z172 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_instructionMemory.vhd|
+Z173 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_instructionMemory.vhd|
+R12
+R13
+!s100 hJKQ3lTFY3:`M6`IHHf6^1
+!i10b 1
+Abehavioral
+R3
+R4
+DEx4 work 20 tb_instructionmemory 0 22 eGF`j9:FPBzA0@U^2=gfF0
+l27
+L9
+VbE4gj[O]?:9a=DFG^b2H03
+!s100 ;OFl2JKmPS?lU?z<24=Vg3
+R8
+32
+R171
+R172
+R173
+R12
+R13
 !i10b 1
 Etb_mux8x1eightbit
 R1
 R3
 R4
 R5
-Z163 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_mux8x1EightBit.vhd
-Z164 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_mux8x1EightBit.vhd
+Z174 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_mux8x1EightBit.vhd
+Z175 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_mux8x1EightBit.vhd
 l0
 L7
 VAfB]F3CV0J]C;jJ9hSC[R2
 R8
 32
-Z165 !s108 1688422053.522000
-Z166 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_mux8x1EightBit.vhd|
-Z167 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_mux8x1EightBit.vhd|
+Z176 !s108 1688433223.098000
+Z177 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_mux8x1EightBit.vhd|
+Z178 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_mux8x1EightBit.vhd|
 R12
 R13
 !s100 ^Nm[;^7L5QlEXjEYij`z50
@@ -1106,28 +1141,63 @@ L10
 VC?8jCU6ckB5h4;kN8NF2a3
 R8
 32
-R165
-R166
-R167
+R176
+R177
+R178
 R12
 R13
 !s100 ]LiFa]_WTIW]Q<OI@bGRz1
+!i10b 1
+Etb_pcreg
+Z179 w1688426851
+R3
+R4
+R5
+Z180 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_pcReg.vhd
+Z181 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_pcReg.vhd
+l0
+L4
+V1SDf0DH@6REN:aXn?gdfg1
+R8
+32
+Z182 !s108 1688433240.087000
+Z183 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_pcReg.vhd|
+Z184 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_pcReg.vhd|
+R12
+R13
+!s100 B]@m[7nNlbN>hal7Z[_GD3
+!i10b 1
+Atestbench
+R3
+R4
+DEx4 work 8 tb_pcreg 0 22 1SDf0DH@6REN:aXn?gdfg1
+l23
+L7
+V?oISRXKF:A2b8oKHM_;2R0
+R8
+32
+R182
+R183
+R184
+R12
+R13
+!s100 hOh@nQJg1WeOS10NXek;@0
 !i10b 1
 Etb_registerfile
 R1
 R3
 R4
 R5
-Z168 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd
-Z169 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd
+Z185 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd
+Z186 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd
 l0
 L4
 V1_VZ^DE_C2fi6UElc9=?J0
 R8
 32
-Z170 !s108 1688422053.603000
-Z171 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd|
-Z172 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd|
+Z187 !s108 1688433223.161000
+Z188 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd|
+Z189 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd|
 R12
 R13
 !s100 LH^GnJDN?L@U2HSonTDLn2
@@ -1141,63 +1211,63 @@ L7
 VhzELjU>O^ik7T`;FKWSSV2
 R8
 32
-R170
-R171
-R172
+R187
+R188
+R189
 R12
 R13
 !s100 A26O07`>5hl_H^F<;8g`<0
 !i10b 1
 Etb_singlecycleproc
-Z173 w1688422045
+Z190 w1688431156
 R3
 R4
 R5
-Z174 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_singleCycleProc.vhd
-Z175 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_singleCycleProc.vhd
+Z191 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_singleCycleProc.vhd
+Z192 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_singleCycleProc.vhd
 l0
 L6
 V>1J@;DCFD^9Z[k8;Gz6Zc3
-!s100 a67o44o?<2eA4`jP[YknE0
 R8
 32
-!i10b 1
-Z176 !s108 1688422053.818000
-Z177 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_singleCycleProc.vhd|
-Z178 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_singleCycleProc.vhd|
+Z193 !s108 1688433234.488000
+Z194 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_singleCycleProc.vhd|
+Z195 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_singleCycleProc.vhd|
 R12
 R13
+!s100 a67o44o?<2eA4`jP[YknE0
+!i10b 1
 Abehavioral
 R3
 R4
-Z179 DEx4 work 18 tb_singlecycleproc 0 22 >1J@;DCFD^9Z[k8;Gz6Zc3
-l38
+DEx4 work 18 tb_singlecycleproc 0 22 >1J@;DCFD^9Z[k8;Gz6Zc3
+l43
 L9
-V6OeYDKIh:9jJ5;:`<861L2
-!s100 T5j;e8Pfi_W9^^7Q7@L_^0
+V`kL[l0Y[eB6ZBXbV]3?ZK2
 R8
 32
-!i10b 1
-R176
-R177
-R178
+R193
+R194
+R195
 R12
 R13
+!s100 3^ImYHlfdao4=0l0S>TBH1
+!i10b 1
 Etb_threetoeightdecoder
 R1
 R3
 R4
 R5
-Z180 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_threeToEightDecoder.vhd
-Z181 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_threeToEightDecoder.vhd
+Z196 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_threeToEightDecoder.vhd
+Z197 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_threeToEightDecoder.vhd
 l0
 L4
 VMXRc<n:A5;Mif;0`f9<D11
 R8
 32
-Z182 !s108 1688422053.673000
-Z183 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_threeToEightDecoder.vhd|
-Z184 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_threeToEightDecoder.vhd|
+Z198 !s108 1688433223.231000
+Z199 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_threeToEightDecoder.vhd|
+Z200 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_threeToEightDecoder.vhd|
 R12
 R13
 !s100 MHn3zAAkFZE>@giNkZ8YL0
@@ -1211,9 +1281,9 @@ L7
 VNi1_T3nB4HCB=M8=hELEI1
 R8
 32
-R182
-R183
-R184
+R198
+R199
+R200
 R12
 R13
 !s100 5Th078kmFZIIl:MN1zma=0
@@ -1223,16 +1293,16 @@ R1
 R3
 R4
 R5
-Z185 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/threeToEightDecoder.vhd
-Z186 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/threeToEightDecoder.vhd
+Z201 8C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/threeToEightDecoder.vhd
+Z202 FC:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/threeToEightDecoder.vhd
 l0
 L4
 VbzEK[RCnD]CVDUO7JbSRS0
 R8
 32
-Z187 !s108 1688422053.750000
-Z188 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/threeToEightDecoder.vhd|
-Z189 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/threeToEightDecoder.vhd|
+Z203 !s108 1688433224.459000
+Z204 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/threeToEightDecoder.vhd|
+Z205 !s107 C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/threeToEightDecoder.vhd|
 R12
 R13
 !s100 o723LTHocDQzScFR[T?bT0
@@ -1244,12 +1314,12 @@ DEx4 work 19 threetoeightdecoder 0 22 bzEK[RCnD]CVDUO7JbSRS0
 l12
 L11
 VeFFZD01@`:Y_4]8__0^aW2
-!s100 jmeASREzfjneJ[ifIdL?11
 R8
 32
-R187
-R188
-R189
+R203
+R204
+R205
 R12
 R13
+!s100 jmeASREzfjneJ[ifIdL?11
 !i10b 1

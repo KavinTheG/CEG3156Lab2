@@ -14,7 +14,16 @@ entity controlLogicUnit is
 		branchNotEqual: out std_logic;
 		jump: out std_logic;
 		aluOp1: out std_logic;
-		aluOp0: out std_logic
+		aluOp0: out std_logic;
+		
+		--pipeline 
+		flush: out std_logic:='0';
+		EX: out std_logic_vector(3 downto 0);
+		M: out std_logic_vector(2 downto 0);
+		WB: out std_logic_vector(1 downto 0);
+		
+		-- if BEQ will occur (if branch is 1 and data is equal)
+		isBEQ : in std_logic;
 	);
 end entity;
 
@@ -51,6 +60,23 @@ architecture rtl of controlLogicUnit is
 		jump <= jmp;
 		aluOp1 <= int_aluOp1;
 		aluOp0 <= int_aluOp0;
+		
+		
+		
+		EX(0) <= aluOp0;
+		EX(1) <= aluOp1;
+		EX(3) <= regDst;
+		
+		M(0) <= MemWrite;
+		M(1) <= MemRead;
+		M(2) <= beq;
+		
+		WB(0) <= memToReg;
+		WB(1) <= regWrite;
+		
+		flush <= isBEQ;
+		
+		
 	
 	end rtl;
 		

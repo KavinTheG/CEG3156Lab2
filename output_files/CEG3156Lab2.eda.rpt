@@ -1,5 +1,5 @@
 EDA Netlist Writer report for CEG3156Lab2
-Mon Jul 03 14:19:57 2023
+Sat Jul 15 16:44:23 2023
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Mon Jul 03 14:19:57 2023 ;
+; EDA Netlist Writer Status ; Successful - Sat Jul 15 16:44:23 2023 ;
 ; Revision Name             ; CEG3156Lab2                           ;
 ; Top-level Entity Name     ; singleCycleTopLevel                   ;
 ; Family                    ; Cyclone IV E                          ;
@@ -80,12 +80,12 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Mon Jul 03 14:19:57 2023
+    Info: Processing started: Sat Jul 15 16:44:23 2023
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off CEG3156Lab2 -c CEG3156Lab2
 Info (204019): Generated file CEG3156Lab2.vo in folder "C:/home/kavin/Github/CEG3156Lab2/simulation/qsim//" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4549 megabytes
-    Info: Processing ended: Mon Jul 03 14:19:57 2023
+    Info: Peak virtual memory: 4557 megabytes
+    Info: Processing ended: Sat Jul 15 16:44:23 2023
     Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 

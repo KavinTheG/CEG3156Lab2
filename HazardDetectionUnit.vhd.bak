@@ -1,0 +1,24 @@
+--1. If (ID/EX.MemRead & ((ID/EX.RegisterRt = IF/ID.RegisterRs) or (ID/EX.RegisterRt = IF/ID.RegisterRt))) <-- lw stall (hazard detected)
+--2  If (IF/ID.op = 000100 AND data1 == data2) <--branch stall
+--3  If (MEM/WB.WriteRegister = IF/ID.rt OR MEM/WB.WriteRegister = IF/ID.rs) AND (MEM/WB.RegWrite)	<-- lw stall
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+entity HazardDetectionUnit is 
+	port(
+		idExMemRead : in std_logic;
+		idExRegRt : in std_logic_vector(4 downto 0);
+		ifIdRegRs : in std_logic_vector(4 downto 0);
+		ifIdRegRt : in std_logic_vector(4 downto 0);
+		idWrite,PCwrite,CtrMuxSel : out std_logic:='0'
+	);
+end entity;
+
+architecture structural of HazardDetectionUnit is 
+	signal RtRs,RtRt:std_logic_vector(4 downto 0);
+begin 
+
+
+end;
+
