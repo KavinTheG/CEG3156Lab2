@@ -4,17 +4,17 @@ use ieee.std_logic_1164.all;
 entity controlLogicUnit is
 	port(
 		op: in std_logic_vector (5 downto 0);
-		regDst: out std_logic;
-		aluSrc: out std_logic;
-		memToReg: out std_logic;
-		regWrite: out std_logic;
-		memRead: out std_logic;
-		memWrite: out std_logic;
+		regDst: buffer std_logic;
+		aluSrc: buffer std_logic;
+		memToReg: buffer std_logic;
+		--regWrite: out std_logic;
+		memRead: buffer std_logic;
+		memWrite: buffer std_logic;
 		branch: out std_logic;
 		branchNotEqual: out std_logic;
-		jump: out std_logic;
-		aluOp1: out std_logic;
-		aluOp0: out std_logic;
+		jump: buffer std_logic;
+		aluOp1: buffer std_logic;
+		aluOp0: buffer std_logic;
 		
 		--pipeline 
 		flush: out std_logic:='0';
@@ -23,13 +23,15 @@ entity controlLogicUnit is
 		WB: out std_logic_vector(1 downto 0);
 		
 		-- if BEQ will occur (if branch is 1 and data is equal)
-		isBEQ : in std_logic;
+		isBEQ : in std_logic
 	);
 end entity;
 
 architecture rtl of controlLogicUnit is
 	signal rFormat, lw, sw, beq, bne, jmp : std_logic;
 	signal int_aluSrc, int_regWrite, int_aluOp0, int_aluOp1: std_logic;
+	
+	signal regWrite : std_logic;
 	
 	begin
 	
@@ -43,7 +45,7 @@ architecture rtl of controlLogicUnit is
 		
 		--intermediate wires to prevent overlap
 		int_aluSrc <= lw or sw;
-		int_regWrite <= rFormat or lw;
+		regWrite <= rFormat or lw;
 		int_aluOp1 <= rFormat;
 		int_aluOp0 <= beq or bne;
 		
@@ -52,7 +54,7 @@ architecture rtl of controlLogicUnit is
 		regDst <= rFormat;
 		aluSrc <= int_aluSrc;
 		memToReg <= lw;
-		regWrite <= int_regWrite;
+		--regWrite <= int_regWrite;
 		memRead <= lw;
 		memWrite <= sw;
 		branch <= beq;

@@ -11,7 +11,7 @@ entity EX_MEMRegister is
 	WBSignals : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
 	MSignals : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
 	aluResult: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-	aluShift2Result: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	--aluShift2Result: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 	aluZero: IN STD_LOGIC;
 	instructionMuxResult: IN STD_LOGIC_VECTOR(4 DOWNTO 0);
 	readData2: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -20,7 +20,7 @@ entity EX_MEMRegister is
 	WBSignals_o : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
 	MSignals_o : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
 	aluResult_o : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-	aluShift2Result_o: OUT STD_LOGIC_VECTOR(7 DOWNTO 0); --ALU w SL2 input
+	--aluShift2Result_o: OUT STD_LOGIC_VECTOR(7 DOWNTO 0); --ALU w SL2 input
 	aluZero_o: OUT STD_LOGIC;
 	instructionMuxResult_o: OUT STD_LOGIC_VECTOR(4 DOWNTO 0); --rs or rt
 	readData2_o: OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
@@ -92,7 +92,7 @@ begin
 	WBSignalsOut: twoBitRegister port map(reset, WBSignals, en, clk,	WBSignals_conn );
 	MSignalsOut: threeBitRegister port map(reset, MSignals, en, clk, MSignals_conn);
 	aluResultOut: eightBitRegister port map(reset, aluResult, en, clk, aluResult_conn);
-	aluShift2ResultOut: eightBitRegister port map(reset, aluShift2Result, en, clk, aluShift2Result_conn);
+--	aluShift2ResultOut: eightBitRegister port map(reset, aluShift2Result, en, clk, aluShift2Result_conn);
 	readData2Out: eightBitRegister port map(reset, readData2, en, clk, readData2_conn);
 	instructionMuxResultOut: fiveBitRegister port map(reset, instructionMuxResult, en, clk, instructionMuxResult_conn);
 	aluZeroOut: enARdFF_2 port map(reset, aluZero, en, clk, aluZero_conn);
@@ -103,7 +103,7 @@ begin
 
 	aluResult_o <= aluResult_conn;
 	
-	aluShift2Result_o <= aluShift2Result_conn;
+	--aluShift2Result_o <= aluShift2Result_conn;
 	readData2_o <= readData2_conn;
 	instructionMuxResult_o <= instructionMuxResult_conn;
 	

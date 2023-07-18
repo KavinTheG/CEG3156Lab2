@@ -13,7 +13,7 @@ entity ID_EXRegister is
 	pcPlusFour: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 	readData1: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 	readData2: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-	instructionExt: IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+	instructionExt: IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 	instruction25To21: IN STD_LOGIC_VECTOR(4 DOWNTO 0);
 	instruction20To16: IN STD_LOGIC_VECTOR(4 DOWNTO 0);
 	instruction15To11: IN STD_LOGIC_VECTOR(4 DOWNTO 0);
@@ -86,7 +86,7 @@ end component;
 component thirtyTwoBitRegister is
 port(
 	reset	:	IN STD_LOGIC;
-	values : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+	values : IN STD_LOGIC_VECTOR(31 DOWNTO 0) := "00000000000000000000000000000000";
 	en : IN STD_LOGIC;
 	clk : IN STD_LOGIC;
 	outputs : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
@@ -110,7 +110,7 @@ begin
 	readData1Out: eightBitRegister port map(reset, readData1, en, clk, readData1_conn);
 	
 	readData2Out: eightBitRegister port map(reset, readData2, en, clk, readData2_conn);
-	instructionExtOut: thirtyTwoBitRegister port map(reset, instructionExt, en, clk, instructionExt_conn);
+	instructionExtOut: eightBitRegister port map(reset, instructionExt(7 downto 0), en, clk, instructionExt_conn(7 downto 0));
 	instruction25To21Out: fiveBitRegister port map(reset, instruction25To21, en, clk, instruction25To21_conn);
 	instruction20To16Out: fiveBitRegister port map(reset, instruction20To16, en, clk, instruction20To16_conn);
    instruction15To11Out: fiveBitRegister port map(reset, instruction15To11, en, clk, instruction15To11_conn);

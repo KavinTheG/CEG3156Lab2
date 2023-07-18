@@ -1,15 +1,26 @@
-|singleCycleTopLevel
-GClock1 => pcRegister:pcRegisterVal.clk
+|pipelinedProc
+GClock1 => pcRegister:pcReg.clk
 GClock1 => instructionMemory:instructionMem.outclock
+GClock1 => IF_IDRegister:IFIDBuffer.clk
 GClock1 => registerFile:regFile.clk
+GClock1 => ID_EXRegister:IDEXBuffer.clk
+GClock1 => EX_MEMRegister:EXMEMBuffer.clk
 GClock1 => dataMemory:dataMem.outclock
+GClock1 => MEM_WBRegister:MEMWBBuffer.clk
 GClock2 => instructionMemory:instructionMem.inclock
 GClock2 => dataMemory:dataMem.inclock
-GReset => pcRegister:pcRegisterVal.reset
+GReset => ifIdReset.IN1
+GReset => pcRegister:pcReg.reset
 GReset => registerFile:regFile.reset
+GReset => ID_EXRegister:IDEXBuffer.reset
+GReset => EX_MEMRegister:EXMEMBuffer.reset
+GReset => MEM_WBRegister:MEMWBBuffer.reset
 valueSelect[0] => mux8x1EightBit:outputVal.s[0]
 valueSelect[1] => mux8x1EightBit:outputVal.s[1]
 valueSelect[2] => mux8x1EightBit:outputVal.s[2]
+instrSelect[0] => ~NO_FANOUT~
+instrSelect[1] => ~NO_FANOUT~
+instrSelect[2] => ~NO_FANOUT~
 muxOut[0] << mux8x1EightBit:outputVal.o[0]
 muxOut[1] << mux8x1EightBit:outputVal.o[1]
 muxOut[2] << mux8x1EightBit:outputVal.o[2]
@@ -54,25 +65,9 @@ branchOut << controlLogicUnit:controlUnit.branch
 zeroOut << ALUmain:alu.zero
 memWriteOut << controlLogicUnit:controlUnit.memWrite
 regWriteOut << controlLogicUnit:controlUnit.regWrite
-pcInput[0] << mux8x8:jumpBranchSel.o_m[0]
-pcInput[1] << mux8x8:jumpBranchSel.o_m[1]
-pcInput[2] << mux8x8:jumpBranchSel.o_m[2]
-pcInput[3] << mux8x8:jumpBranchSel.o_m[3]
-pcInput[4] << mux8x8:jumpBranchSel.o_m[4]
-pcInput[5] << mux8x8:jumpBranchSel.o_m[5]
-pcInput[6] << mux8x8:jumpBranchSel.o_m[6]
-pcInput[7] << mux8x8:jumpBranchSel.o_m[7]
-pcOutput[0] << pcRegister:pcRegisterVal.PC_output[0]
-pcOutput[1] << pcRegister:pcRegisterVal.PC_output[1]
-pcOutput[2] << pcRegister:pcRegisterVal.PC_output[2]
-pcOutput[3] << pcRegister:pcRegisterVal.PC_output[3]
-pcOutput[4] << pcRegister:pcRegisterVal.PC_output[4]
-pcOutput[5] << pcRegister:pcRegisterVal.PC_output[5]
-pcOutput[6] << pcRegister:pcRegisterVal.PC_output[6]
-pcOutput[7] << pcRegister:pcRegisterVal.PC_output[7]
 
 
-|singleCycleTopLevel|pcRegister:pcRegisterVal
+|pipelinedProc|pcRegister:pcReg
 reset => eightBitRegister:pcVal.reset
 clk => eightBitRegister:pcVal.clk
 PC_input[0] => eightBitRegister:pcVal.values[0]
@@ -93,7 +88,7 @@ PC_output[6] <= eightBitRegister:pcVal.outputs[6]
 PC_output[7] <= eightBitRegister:pcVal.outputs[7]
 
 
-|singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal
+|pipelinedProc|pcRegister:pcReg|eightBitRegister:pcVal
 reset => enARdFF_2:bit0.i_resetBar
 reset => enARdFF_2:bit1.i_resetBar
 reset => enARdFF_2:bit2.i_resetBar
@@ -136,7 +131,7 @@ outputs[6] <= enARdFF_2:bit6.o_q
 outputs[7] <= enARdFF_2:bit7.o_q
 
 
-|singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit0
+|pipelinedProc|pcRegister:pcReg|eightBitRegister:pcVal|enARdFF_2:bit0
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -145,7 +140,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit1
+|pipelinedProc|pcRegister:pcReg|eightBitRegister:pcVal|enARdFF_2:bit1
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -154,7 +149,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit2
+|pipelinedProc|pcRegister:pcReg|eightBitRegister:pcVal|enARdFF_2:bit2
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -163,7 +158,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit3
+|pipelinedProc|pcRegister:pcReg|eightBitRegister:pcVal|enARdFF_2:bit3
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -172,7 +167,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit4
+|pipelinedProc|pcRegister:pcReg|eightBitRegister:pcVal|enARdFF_2:bit4
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -181,7 +176,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit5
+|pipelinedProc|pcRegister:pcReg|eightBitRegister:pcVal|enARdFF_2:bit5
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -190,7 +185,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit6
+|pipelinedProc|pcRegister:pcReg|eightBitRegister:pcVal|enARdFF_2:bit6
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -199,7 +194,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit7
+|pipelinedProc|pcRegister:pcReg|eightBitRegister:pcVal|enARdFF_2:bit7
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -208,7 +203,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|instructionMemory:instructionMem
+|pipelinedProc|instructionMemory:instructionMem
 inclock => LPM_ROM:instructionMem.INCLOCK
 outclock => LPM_ROM:instructionMem.OUTCLOCK
 readAddress[0] => LPM_ROM:instructionMem.ADDRESS[0]
@@ -253,7 +248,7 @@ instruction_out[30] <= LPM_ROM:instructionMem.Q[30]
 instruction_out[31] <= LPM_ROM:instructionMem.Q[31]
 
 
-|singleCycleTopLevel|instructionMemory:instructionMem|LPM_ROM:instructionMem
+|pipelinedProc|instructionMemory:instructionMem|LPM_ROM:instructionMem
 address[0] => altrom:srom.address[0]
 address[1] => altrom:srom.address[1]
 address[2] => altrom:srom.address[2]
@@ -330,7 +325,7 @@ q[30] <= otri[30].DB_MAX_OUTPUT_PORT_TYPE
 q[31] <= otri[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom
+|pipelinedProc|instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom
 address[0] => altsyncram:rom_block.address_a[0]
 address[1] => altsyncram:rom_block.address_a[1]
 address[2] => altsyncram:rom_block.address_a[2]
@@ -375,7 +370,7 @@ q[30] <= altsyncram:rom_block.q_a[30]
 q[31] <= altsyncram:rom_block.q_a[31]
 
 
-|singleCycleTopLevel|instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block
+|pipelinedProc|instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block
 wren_a => ~NO_FANOUT~
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -472,7 +467,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|singleCycleTopLevel|instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated
+|pipelinedProc|instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -827,8 +822,783 @@ q_a[30] <= ram_block1a30.PORTADATAOUT
 q_a[31] <= ram_block1a31.PORTADATAOUT
 
 
-|singleCycleTopLevel|mux5x5:mux5x5Out
+|pipelinedProc|eightBitAdder:pcPlus4Adder
+A_i[0] => oneBitAdder:LSB.i_Ai
+A_i[1] => oneBitAdder:Bit2.i_Ai
+A_i[2] => oneBitAdder:Bit3.i_Ai
+A_i[3] => oneBitAdder:Bit4.i_Ai
+A_i[4] => oneBitAdder:Bit5.i_Ai
+A_i[5] => oneBitAdder:Bit6.i_Ai
+A_i[6] => oneBitAdder:Bit7.i_Ai
+A_i[7] => oneBitAdder:MSB.i_Ai
+B_i[0] => oneBitAdder:LSB.i_Bi
+B_i[1] => oneBitAdder:Bit2.i_Bi
+B_i[2] => oneBitAdder:Bit3.i_Bi
+B_i[3] => oneBitAdder:Bit4.i_Bi
+B_i[4] => oneBitAdder:Bit5.i_Bi
+B_i[5] => oneBitAdder:Bit6.i_Bi
+B_i[6] => oneBitAdder:Bit7.i_Bi
+B_i[7] => oneBitAdder:MSB.i_Bi
+C_i => oneBitAdder:LSB.i_CarryIn
+C_o <= oneBitAdder:MSB.o_CarryOut
+sum[0] <= oneBitAdder:LSB.o_Sum
+sum[1] <= oneBitAdder:Bit2.o_Sum
+sum[2] <= oneBitAdder:Bit3.o_Sum
+sum[3] <= oneBitAdder:Bit4.o_Sum
+sum[4] <= oneBitAdder:Bit5.o_Sum
+sum[5] <= oneBitAdder:Bit6.o_Sum
+sum[6] <= oneBitAdder:Bit7.o_Sum
+sum[7] <= oneBitAdder:MSB.o_Sum
+
+
+|pipelinedProc|eightBitAdder:pcPlus4Adder|oneBitAdder:MSB
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit7
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit6
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit5
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit4
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit3
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit2
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:pcPlus4Adder|oneBitAdder:LSB
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer
+reset => eightBitRegister:pcPlusFourOut.reset
+reset => thirtyTwoBitRegister:instructionOut.reset
+en => eightBitRegister:pcPlusFourOut.en
+en => thirtyTwoBitRegister:instructionOut.en
+clk => eightBitRegister:pcPlusFourOut.clk
+clk => thirtyTwoBitRegister:instructionOut.clk
+pcPlusFour[0] => eightBitRegister:pcPlusFourOut.values[0]
+pcPlusFour[1] => eightBitRegister:pcPlusFourOut.values[1]
+pcPlusFour[2] => eightBitRegister:pcPlusFourOut.values[2]
+pcPlusFour[3] => eightBitRegister:pcPlusFourOut.values[3]
+pcPlusFour[4] => eightBitRegister:pcPlusFourOut.values[4]
+pcPlusFour[5] => eightBitRegister:pcPlusFourOut.values[5]
+pcPlusFour[6] => eightBitRegister:pcPlusFourOut.values[6]
+pcPlusFour[7] => eightBitRegister:pcPlusFourOut.values[7]
+instruction[0] => thirtyTwoBitRegister:instructionOut.values[0]
+instruction[1] => thirtyTwoBitRegister:instructionOut.values[1]
+instruction[2] => thirtyTwoBitRegister:instructionOut.values[2]
+instruction[3] => thirtyTwoBitRegister:instructionOut.values[3]
+instruction[4] => thirtyTwoBitRegister:instructionOut.values[4]
+instruction[5] => thirtyTwoBitRegister:instructionOut.values[5]
+instruction[6] => thirtyTwoBitRegister:instructionOut.values[6]
+instruction[7] => thirtyTwoBitRegister:instructionOut.values[7]
+instruction[8] => thirtyTwoBitRegister:instructionOut.values[8]
+instruction[9] => thirtyTwoBitRegister:instructionOut.values[9]
+instruction[10] => thirtyTwoBitRegister:instructionOut.values[10]
+instruction[11] => thirtyTwoBitRegister:instructionOut.values[11]
+instruction[12] => thirtyTwoBitRegister:instructionOut.values[12]
+instruction[13] => thirtyTwoBitRegister:instructionOut.values[13]
+instruction[14] => thirtyTwoBitRegister:instructionOut.values[14]
+instruction[15] => thirtyTwoBitRegister:instructionOut.values[15]
+instruction[16] => thirtyTwoBitRegister:instructionOut.values[16]
+instruction[17] => thirtyTwoBitRegister:instructionOut.values[17]
+instruction[18] => thirtyTwoBitRegister:instructionOut.values[18]
+instruction[19] => thirtyTwoBitRegister:instructionOut.values[19]
+instruction[20] => thirtyTwoBitRegister:instructionOut.values[20]
+instruction[21] => thirtyTwoBitRegister:instructionOut.values[21]
+instruction[22] => thirtyTwoBitRegister:instructionOut.values[22]
+instruction[23] => thirtyTwoBitRegister:instructionOut.values[23]
+instruction[24] => thirtyTwoBitRegister:instructionOut.values[24]
+instruction[25] => thirtyTwoBitRegister:instructionOut.values[25]
+instruction[26] => thirtyTwoBitRegister:instructionOut.values[26]
+instruction[27] => thirtyTwoBitRegister:instructionOut.values[27]
+instruction[28] => thirtyTwoBitRegister:instructionOut.values[28]
+instruction[29] => thirtyTwoBitRegister:instructionOut.values[29]
+instruction[30] => thirtyTwoBitRegister:instructionOut.values[30]
+instruction[31] => thirtyTwoBitRegister:instructionOut.values[31]
+pcPlusFour_out[0] <= eightBitRegister:pcPlusFourOut.outputs[0]
+pcPlusFour_out[1] <= eightBitRegister:pcPlusFourOut.outputs[1]
+pcPlusFour_out[2] <= eightBitRegister:pcPlusFourOut.outputs[2]
+pcPlusFour_out[3] <= eightBitRegister:pcPlusFourOut.outputs[3]
+pcPlusFour_out[4] <= eightBitRegister:pcPlusFourOut.outputs[4]
+pcPlusFour_out[5] <= eightBitRegister:pcPlusFourOut.outputs[5]
+pcPlusFour_out[6] <= eightBitRegister:pcPlusFourOut.outputs[6]
+pcPlusFour_out[7] <= eightBitRegister:pcPlusFourOut.outputs[7]
+instruction_out[0] <= thirtyTwoBitRegister:instructionOut.outputs[0]
+instruction_out[1] <= thirtyTwoBitRegister:instructionOut.outputs[1]
+instruction_out[2] <= thirtyTwoBitRegister:instructionOut.outputs[2]
+instruction_out[3] <= thirtyTwoBitRegister:instructionOut.outputs[3]
+instruction_out[4] <= thirtyTwoBitRegister:instructionOut.outputs[4]
+instruction_out[5] <= thirtyTwoBitRegister:instructionOut.outputs[5]
+instruction_out[6] <= thirtyTwoBitRegister:instructionOut.outputs[6]
+instruction_out[7] <= thirtyTwoBitRegister:instructionOut.outputs[7]
+instruction_out[8] <= thirtyTwoBitRegister:instructionOut.outputs[8]
+instruction_out[9] <= thirtyTwoBitRegister:instructionOut.outputs[9]
+instruction_out[10] <= thirtyTwoBitRegister:instructionOut.outputs[10]
+instruction_out[11] <= thirtyTwoBitRegister:instructionOut.outputs[11]
+instruction_out[12] <= thirtyTwoBitRegister:instructionOut.outputs[12]
+instruction_out[13] <= thirtyTwoBitRegister:instructionOut.outputs[13]
+instruction_out[14] <= thirtyTwoBitRegister:instructionOut.outputs[14]
+instruction_out[15] <= thirtyTwoBitRegister:instructionOut.outputs[15]
+instruction_out[16] <= thirtyTwoBitRegister:instructionOut.outputs[16]
+instruction_out[17] <= thirtyTwoBitRegister:instructionOut.outputs[17]
+instruction_out[18] <= thirtyTwoBitRegister:instructionOut.outputs[18]
+instruction_out[19] <= thirtyTwoBitRegister:instructionOut.outputs[19]
+instruction_out[20] <= thirtyTwoBitRegister:instructionOut.outputs[20]
+instruction_out[21] <= thirtyTwoBitRegister:instructionOut.outputs[21]
+instruction_out[22] <= thirtyTwoBitRegister:instructionOut.outputs[22]
+instruction_out[23] <= thirtyTwoBitRegister:instructionOut.outputs[23]
+instruction_out[24] <= thirtyTwoBitRegister:instructionOut.outputs[24]
+instruction_out[25] <= thirtyTwoBitRegister:instructionOut.outputs[25]
+instruction_out[26] <= thirtyTwoBitRegister:instructionOut.outputs[26]
+instruction_out[27] <= thirtyTwoBitRegister:instructionOut.outputs[27]
+instruction_out[28] <= thirtyTwoBitRegister:instructionOut.outputs[28]
+instruction_out[29] <= thirtyTwoBitRegister:instructionOut.outputs[29]
+instruction_out[30] <= thirtyTwoBitRegister:instructionOut.outputs[30]
+instruction_out[31] <= thirtyTwoBitRegister:instructionOut.outputs[31]
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|eightBitRegister:pcPlusFourOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+reset => enARdFF_2:bit5.i_resetBar
+reset => enARdFF_2:bit6.i_resetBar
+reset => enARdFF_2:bit7.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+values[5] => enARdFF_2:bit5.i_d
+values[6] => enARdFF_2:bit6.i_d
+values[7] => enARdFF_2:bit7.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+en => enARdFF_2:bit5.i_enable
+en => enARdFF_2:bit6.i_enable
+en => enARdFF_2:bit7.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+clk => enARdFF_2:bit5.i_clock
+clk => enARdFF_2:bit6.i_clock
+clk => enARdFF_2:bit7.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+outputs[5] <= enARdFF_2:bit5.o_q
+outputs[6] <= enARdFF_2:bit6.o_q
+outputs[7] <= enARdFF_2:bit7.o_q
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit5
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit6
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit7
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+reset => enARdFF_2:bit5.i_resetBar
+reset => enARdFF_2:bit6.i_resetBar
+reset => enARdFF_2:bit7.i_resetBar
+reset => enARdFF_2:bit8.i_resetBar
+reset => enARdFF_2:bit9.i_resetBar
+reset => enARdFF_2:bit10.i_resetBar
+reset => enARdFF_2:bit11.i_resetBar
+reset => enARdFF_2:bit12.i_resetBar
+reset => enARdFF_2:bit13.i_resetBar
+reset => enARdFF_2:bit14.i_resetBar
+reset => enARdFF_2:bit15.i_resetBar
+reset => enARdFF_2:bit16.i_resetBar
+reset => enARdFF_2:bit17.i_resetBar
+reset => enARdFF_2:bit18.i_resetBar
+reset => enARdFF_2:bit19.i_resetBar
+reset => enARdFF_2:bit20.i_resetBar
+reset => enARdFF_2:bit21.i_resetBar
+reset => enARdFF_2:bit22.i_resetBar
+reset => enARdFF_2:bit23.i_resetBar
+reset => enARdFF_2:bit24.i_resetBar
+reset => enARdFF_2:bit25.i_resetBar
+reset => enARdFF_2:bit26.i_resetBar
+reset => enARdFF_2:bit27.i_resetBar
+reset => enARdFF_2:bit28.i_resetBar
+reset => enARdFF_2:bit29.i_resetBar
+reset => enARdFF_2:bit30.i_resetBar
+reset => enARdFF_2:bit31.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+values[5] => enARdFF_2:bit5.i_d
+values[6] => enARdFF_2:bit6.i_d
+values[7] => enARdFF_2:bit7.i_d
+values[8] => enARdFF_2:bit8.i_d
+values[9] => enARdFF_2:bit9.i_d
+values[10] => enARdFF_2:bit10.i_d
+values[11] => enARdFF_2:bit11.i_d
+values[12] => enARdFF_2:bit12.i_d
+values[13] => enARdFF_2:bit13.i_d
+values[14] => enARdFF_2:bit14.i_d
+values[15] => enARdFF_2:bit15.i_d
+values[16] => enARdFF_2:bit16.i_d
+values[17] => enARdFF_2:bit17.i_d
+values[18] => enARdFF_2:bit18.i_d
+values[19] => enARdFF_2:bit19.i_d
+values[20] => enARdFF_2:bit20.i_d
+values[21] => enARdFF_2:bit21.i_d
+values[22] => enARdFF_2:bit22.i_d
+values[23] => enARdFF_2:bit23.i_d
+values[24] => enARdFF_2:bit24.i_d
+values[25] => enARdFF_2:bit25.i_d
+values[26] => enARdFF_2:bit26.i_d
+values[27] => enARdFF_2:bit27.i_d
+values[28] => enARdFF_2:bit28.i_d
+values[29] => enARdFF_2:bit29.i_d
+values[30] => enARdFF_2:bit30.i_d
+values[31] => enARdFF_2:bit31.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+en => enARdFF_2:bit5.i_enable
+en => enARdFF_2:bit6.i_enable
+en => enARdFF_2:bit7.i_enable
+en => enARdFF_2:bit8.i_enable
+en => enARdFF_2:bit9.i_enable
+en => enARdFF_2:bit10.i_enable
+en => enARdFF_2:bit11.i_enable
+en => enARdFF_2:bit12.i_enable
+en => enARdFF_2:bit13.i_enable
+en => enARdFF_2:bit14.i_enable
+en => enARdFF_2:bit15.i_enable
+en => enARdFF_2:bit16.i_enable
+en => enARdFF_2:bit17.i_enable
+en => enARdFF_2:bit18.i_enable
+en => enARdFF_2:bit19.i_enable
+en => enARdFF_2:bit20.i_enable
+en => enARdFF_2:bit21.i_enable
+en => enARdFF_2:bit22.i_enable
+en => enARdFF_2:bit23.i_enable
+en => enARdFF_2:bit24.i_enable
+en => enARdFF_2:bit25.i_enable
+en => enARdFF_2:bit26.i_enable
+en => enARdFF_2:bit27.i_enable
+en => enARdFF_2:bit28.i_enable
+en => enARdFF_2:bit29.i_enable
+en => enARdFF_2:bit30.i_enable
+en => enARdFF_2:bit31.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+clk => enARdFF_2:bit5.i_clock
+clk => enARdFF_2:bit6.i_clock
+clk => enARdFF_2:bit7.i_clock
+clk => enARdFF_2:bit8.i_clock
+clk => enARdFF_2:bit9.i_clock
+clk => enARdFF_2:bit10.i_clock
+clk => enARdFF_2:bit11.i_clock
+clk => enARdFF_2:bit12.i_clock
+clk => enARdFF_2:bit13.i_clock
+clk => enARdFF_2:bit14.i_clock
+clk => enARdFF_2:bit15.i_clock
+clk => enARdFF_2:bit16.i_clock
+clk => enARdFF_2:bit17.i_clock
+clk => enARdFF_2:bit18.i_clock
+clk => enARdFF_2:bit19.i_clock
+clk => enARdFF_2:bit20.i_clock
+clk => enARdFF_2:bit21.i_clock
+clk => enARdFF_2:bit22.i_clock
+clk => enARdFF_2:bit23.i_clock
+clk => enARdFF_2:bit24.i_clock
+clk => enARdFF_2:bit25.i_clock
+clk => enARdFF_2:bit26.i_clock
+clk => enARdFF_2:bit27.i_clock
+clk => enARdFF_2:bit28.i_clock
+clk => enARdFF_2:bit29.i_clock
+clk => enARdFF_2:bit30.i_clock
+clk => enARdFF_2:bit31.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+outputs[5] <= enARdFF_2:bit5.o_q
+outputs[6] <= enARdFF_2:bit6.o_q
+outputs[7] <= enARdFF_2:bit7.o_q
+outputs[8] <= enARdFF_2:bit8.o_q
+outputs[9] <= enARdFF_2:bit9.o_q
+outputs[10] <= enARdFF_2:bit10.o_q
+outputs[11] <= enARdFF_2:bit11.o_q
+outputs[12] <= enARdFF_2:bit12.o_q
+outputs[13] <= enARdFF_2:bit13.o_q
+outputs[14] <= enARdFF_2:bit14.o_q
+outputs[15] <= enARdFF_2:bit15.o_q
+outputs[16] <= enARdFF_2:bit16.o_q
+outputs[17] <= enARdFF_2:bit17.o_q
+outputs[18] <= enARdFF_2:bit18.o_q
+outputs[19] <= enARdFF_2:bit19.o_q
+outputs[20] <= enARdFF_2:bit20.o_q
+outputs[21] <= enARdFF_2:bit21.o_q
+outputs[22] <= enARdFF_2:bit22.o_q
+outputs[23] <= enARdFF_2:bit23.o_q
+outputs[24] <= enARdFF_2:bit24.o_q
+outputs[25] <= enARdFF_2:bit25.o_q
+outputs[26] <= enARdFF_2:bit26.o_q
+outputs[27] <= enARdFF_2:bit27.o_q
+outputs[28] <= enARdFF_2:bit28.o_q
+outputs[29] <= enARdFF_2:bit29.o_q
+outputs[30] <= enARdFF_2:bit30.o_q
+outputs[31] <= enARdFF_2:bit31.o_q
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit5
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit6
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit7
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit8
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit9
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit10
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit11
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit12
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit13
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit14
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit15
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit16
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit17
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit18
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit19
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit20
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit21
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit22
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit23
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit24
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit25
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit26
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit27
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit28
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit29
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit30
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|IF_IDRegister:IFIDBuffer|thirtyTwoBitRegister:instructionOut|enARdFF_2:bit31
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8x8:muxPC
 sel => mux2x1:msb.sel
+sel => mux2x1:bit7.sel
+sel => mux2x1:bit6.sel
+sel => mux2x1:bit5.sel
 sel => mux2x1:bit4.sel
 sel => mux2x1:bit3.sel
 sel => mux2x1:bit2.sel
@@ -837,20 +1607,29 @@ a_i[0] => mux2x1:lsb.a_i
 a_i[1] => mux2x1:bit2.a_i
 a_i[2] => mux2x1:bit3.a_i
 a_i[3] => mux2x1:bit4.a_i
-a_i[4] => mux2x1:msb.a_i
+a_i[4] => mux2x1:bit5.a_i
+a_i[5] => mux2x1:bit6.a_i
+a_i[6] => mux2x1:bit7.a_i
+a_i[7] => mux2x1:msb.a_i
 b_i[0] => mux2x1:lsb.b_i
 b_i[1] => mux2x1:bit2.b_i
 b_i[2] => mux2x1:bit3.b_i
 b_i[3] => mux2x1:bit4.b_i
-b_i[4] => mux2x1:msb.b_i
+b_i[4] => mux2x1:bit5.b_i
+b_i[5] => mux2x1:bit6.b_i
+b_i[6] => mux2x1:bit7.b_i
+b_i[7] => mux2x1:msb.b_i
 o_m[0] <= mux2x1:lsb.o_m
 o_m[1] <= mux2x1:bit2.o_m
 o_m[2] <= mux2x1:bit3.o_m
 o_m[3] <= mux2x1:bit4.o_m
-o_m[4] <= mux2x1:msb.o_m
+o_m[4] <= mux2x1:bit5.o_m
+o_m[5] <= mux2x1:bit6.o_m
+o_m[6] <= mux2x1:bit7.o_m
+o_m[7] <= mux2x1:msb.o_m
 
 
-|singleCycleTopLevel|mux5x5:mux5x5Out|mux2x1:msb
+|pipelinedProc|mux8x8:muxPC|mux2x1:msb
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -858,7 +1637,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux5x5:mux5x5Out|mux2x1:bit4
+|pipelinedProc|mux8x8:muxPC|mux2x1:bit7
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -866,7 +1645,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux5x5:mux5x5Out|mux2x1:bit3
+|pipelinedProc|mux8x8:muxPC|mux2x1:bit6
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -874,7 +1653,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux5x5:mux5x5Out|mux2x1:bit2
+|pipelinedProc|mux8x8:muxPC|mux2x1:bit5
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -882,7 +1661,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux5x5:mux5x5Out|mux2x1:lsb
+|pipelinedProc|mux8x8:muxPC|mux2x1:bit4
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -890,7 +1669,31 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile
+|pipelinedProc|mux8x8:muxPC|mux2x1:bit3
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8x8:muxPC|mux2x1:bit2
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8x8:muxPC|mux2x1:lsb
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|registerFile:regFile
 reset => eightBitRegister:reg0.reset
 reset => eightBitRegister:reg1.reset
 reset => eightBitRegister:reg2.reset
@@ -1036,7 +1839,7 @@ readRegD4[6] <= eightBitRegister:reg3.outputs[6]
 readRegD4[7] <= eightBitRegister:reg3.outputs[7]
 
 
-|singleCycleTopLevel|registerFile:regFile|threeToEightDecoder:writeDecoder
+|pipelinedProc|registerFile:regFile|threeToEightDecoder:writeDecoder
 X[0] => Y.IN1
 X[0] => Y.IN1
 X[0] => Y.IN1
@@ -1063,7 +1866,7 @@ Y[6] <= Y.DB_MAX_OUTPUT_PORT_TYPE
 Y[7] <= Y.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg0
 reset => enARdFF_2:bit0.i_resetBar
 reset => enARdFF_2:bit1.i_resetBar
 reset => enARdFF_2:bit2.i_resetBar
@@ -1106,7 +1909,7 @@ outputs[6] <= enARdFF_2:bit6.o_q
 outputs[7] <= enARdFF_2:bit7.o_q
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit0
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit0
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1115,7 +1918,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit1
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit1
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1124,7 +1927,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit2
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit2
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1133,7 +1936,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit3
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit3
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1142,7 +1945,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit4
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit4
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1151,7 +1954,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit5
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit5
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1160,7 +1963,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit6
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit6
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1169,7 +1972,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit7
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit7
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1178,7 +1981,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg1
 reset => enARdFF_2:bit0.i_resetBar
 reset => enARdFF_2:bit1.i_resetBar
 reset => enARdFF_2:bit2.i_resetBar
@@ -1221,7 +2024,7 @@ outputs[6] <= enARdFF_2:bit6.o_q
 outputs[7] <= enARdFF_2:bit7.o_q
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit0
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit0
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1230,7 +2033,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit1
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit1
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1239,7 +2042,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit2
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit2
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1248,7 +2051,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit3
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit3
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1257,7 +2060,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit4
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit4
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1266,7 +2069,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit5
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit5
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1275,7 +2078,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit6
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit6
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1284,7 +2087,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit7
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit7
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1293,7 +2096,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg2
 reset => enARdFF_2:bit0.i_resetBar
 reset => enARdFF_2:bit1.i_resetBar
 reset => enARdFF_2:bit2.i_resetBar
@@ -1336,7 +2139,7 @@ outputs[6] <= enARdFF_2:bit6.o_q
 outputs[7] <= enARdFF_2:bit7.o_q
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit0
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit0
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1345,7 +2148,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit1
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit1
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1354,7 +2157,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit2
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit2
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1363,7 +2166,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit3
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit3
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1372,7 +2175,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit4
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit4
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1381,7 +2184,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit5
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit5
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1390,7 +2193,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit6
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit6
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1399,7 +2202,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit7
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit7
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1408,7 +2211,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg3
 reset => enARdFF_2:bit0.i_resetBar
 reset => enARdFF_2:bit1.i_resetBar
 reset => enARdFF_2:bit2.i_resetBar
@@ -1451,7 +2254,7 @@ outputs[6] <= enARdFF_2:bit6.o_q
 outputs[7] <= enARdFF_2:bit7.o_q
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit0
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit0
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1460,7 +2263,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit1
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit1
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1469,7 +2272,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit2
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit2
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1478,7 +2281,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit3
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit3
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1487,7 +2290,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit4
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit4
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1496,7 +2299,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit5
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit5
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1505,7 +2308,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit6
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit6
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1514,7 +2317,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit7
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit7
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1523,7 +2326,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg4
 reset => enARdFF_2:bit0.i_resetBar
 reset => enARdFF_2:bit1.i_resetBar
 reset => enARdFF_2:bit2.i_resetBar
@@ -1566,7 +2369,7 @@ outputs[6] <= enARdFF_2:bit6.o_q
 outputs[7] <= enARdFF_2:bit7.o_q
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit0
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit0
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1575,7 +2378,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit1
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit1
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1584,7 +2387,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit2
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit2
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1593,7 +2396,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit3
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit3
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1602,7 +2405,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit4
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit4
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1611,7 +2414,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit5
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit5
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1620,7 +2423,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit6
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit6
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1629,7 +2432,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit7
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit7
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1638,7 +2441,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg5
 reset => enARdFF_2:bit0.i_resetBar
 reset => enARdFF_2:bit1.i_resetBar
 reset => enARdFF_2:bit2.i_resetBar
@@ -1681,7 +2484,7 @@ outputs[6] <= enARdFF_2:bit6.o_q
 outputs[7] <= enARdFF_2:bit7.o_q
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit0
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit0
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1690,7 +2493,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit1
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit1
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1699,7 +2502,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit2
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit2
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1708,7 +2511,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit3
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit3
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1717,7 +2520,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit4
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit4
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1726,7 +2529,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit5
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit5
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1735,7 +2538,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit6
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit6
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1744,7 +2547,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit7
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit7
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1753,7 +2556,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg6
 reset => enARdFF_2:bit0.i_resetBar
 reset => enARdFF_2:bit1.i_resetBar
 reset => enARdFF_2:bit2.i_resetBar
@@ -1796,7 +2599,7 @@ outputs[6] <= enARdFF_2:bit6.o_q
 outputs[7] <= enARdFF_2:bit7.o_q
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit0
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit0
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1805,7 +2608,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit1
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit1
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1814,7 +2617,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit2
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit2
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1823,7 +2626,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit3
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit3
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1832,7 +2635,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit4
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit4
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1841,7 +2644,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit5
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit5
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1850,7 +2653,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit6
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit6
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1859,7 +2662,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit7
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit7
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1868,7 +2671,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg7
 reset => enARdFF_2:bit0.i_resetBar
 reset => enARdFF_2:bit1.i_resetBar
 reset => enARdFF_2:bit2.i_resetBar
@@ -1911,7 +2714,7 @@ outputs[6] <= enARdFF_2:bit6.o_q
 outputs[7] <= enARdFF_2:bit7.o_q
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit0
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit0
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1920,7 +2723,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit1
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit1
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1929,7 +2732,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit2
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit2
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1938,7 +2741,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit3
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit3
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1947,7 +2750,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit4
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit4
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1956,7 +2759,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit5
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit5
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1965,7 +2768,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit6
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit6
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1974,7 +2777,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit7
+|pipelinedProc|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit7
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -1983,7 +2786,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|mux8x1EightBit:readRegister1
+|pipelinedProc|registerFile:regFile|mux8x1EightBit:readRegister1
 a0[0] => o.IN1
 a0[1] => o.IN1
 a0[2] => o.IN1
@@ -2074,7 +2877,7 @@ o[6] <= o.DB_MAX_OUTPUT_PORT_TYPE
 o[7] <= o.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|registerFile:regFile|mux8x1EightBit:readRegister2
+|pipelinedProc|registerFile:regFile|mux8x1EightBit:readRegister2
 a0[0] => o.IN1
 a0[1] => o.IN1
 a0[2] => o.IN1
@@ -2165,74 +2968,1708 @@ o[6] <= o.DB_MAX_OUTPUT_PORT_TYPE
 o[7] <= o.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|signExtendUnit:signExt
-sign_input[0] => sign_output[0].DATAIN
-sign_input[1] => sign_output[1].DATAIN
-sign_input[2] => sign_output[2].DATAIN
-sign_input[3] => sign_output[3].DATAIN
-sign_input[4] => sign_output[4].DATAIN
-sign_input[5] => sign_output[5].DATAIN
-sign_input[6] => sign_output[6].DATAIN
-sign_input[7] => sign_output[7].DATAIN
-sign_input[8] => sign_output[8].DATAIN
-sign_input[9] => sign_output[9].DATAIN
-sign_input[10] => sign_output[10].DATAIN
-sign_input[11] => sign_output[11].DATAIN
-sign_input[12] => sign_output[12].DATAIN
-sign_input[13] => sign_output[13].DATAIN
-sign_input[14] => sign_output[14].DATAIN
-sign_input[15] => sign_output[15].DATAIN
-sign_input[15] => sign_output[31].DATAIN
-sign_input[15] => sign_output[30].DATAIN
-sign_input[15] => sign_output[29].DATAIN
-sign_input[15] => sign_output[28].DATAIN
-sign_input[15] => sign_output[27].DATAIN
-sign_input[15] => sign_output[26].DATAIN
-sign_input[15] => sign_output[25].DATAIN
-sign_input[15] => sign_output[24].DATAIN
-sign_input[15] => sign_output[23].DATAIN
-sign_input[15] => sign_output[22].DATAIN
-sign_input[15] => sign_output[21].DATAIN
-sign_input[15] => sign_output[20].DATAIN
-sign_input[15] => sign_output[19].DATAIN
-sign_input[15] => sign_output[18].DATAIN
-sign_input[15] => sign_output[17].DATAIN
-sign_input[15] => sign_output[16].DATAIN
-sign_output[0] <= sign_input[0].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[1] <= sign_input[1].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[2] <= sign_input[2].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[3] <= sign_input[3].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[4] <= sign_input[4].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[5] <= sign_input[5].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[6] <= sign_input[6].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[7] <= sign_input[7].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[8] <= sign_input[8].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[9] <= sign_input[9].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[10] <= sign_input[10].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[11] <= sign_input[11].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[12] <= sign_input[12].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[13] <= sign_input[13].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[14] <= sign_input[14].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[15] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[16] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[17] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[18] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[19] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[20] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[21] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[22] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[23] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[24] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[25] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[26] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[27] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[28] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[29] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[30] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
-sign_output[31] <= sign_input[15].DB_MAX_OUTPUT_PORT_TYPE
+|pipelinedProc|mux9bit2x1:ctrlMux
+sel => mux2x1:msb.sel
+sel => mux2x1:bit7.sel
+sel => mux2x1:bit6.sel
+sel => mux2x1:bit5.sel
+sel => mux2x1:bit4.sel
+sel => mux2x1:bit3.sel
+sel => mux2x1:bit2.sel
+sel => mux2x1:bit1.sel
+sel => mux2x1:lsb.sel
+a_i[0] => mux2x1:lsb.a_i
+a_i[1] => mux2x1:bit1.a_i
+a_i[2] => mux2x1:bit2.a_i
+a_i[3] => mux2x1:bit3.a_i
+a_i[4] => mux2x1:bit4.a_i
+a_i[5] => mux2x1:bit5.a_i
+a_i[6] => mux2x1:bit6.a_i
+a_i[7] => mux2x1:bit7.a_i
+a_i[8] => mux2x1:msb.a_i
+b_i[0] => mux2x1:lsb.b_i
+b_i[1] => mux2x1:bit1.b_i
+b_i[2] => mux2x1:bit2.b_i
+b_i[3] => mux2x1:bit3.b_i
+b_i[4] => mux2x1:bit4.b_i
+b_i[5] => mux2x1:bit5.b_i
+b_i[6] => mux2x1:bit6.b_i
+b_i[7] => mux2x1:bit7.b_i
+b_i[8] => mux2x1:msb.b_i
+o_m[0] <= mux2x1:lsb.o_m
+o_m[1] <= mux2x1:bit1.o_m
+o_m[2] <= mux2x1:bit2.o_m
+o_m[3] <= mux2x1:bit3.o_m
+o_m[4] <= mux2x1:bit4.o_m
+o_m[5] <= mux2x1:bit5.o_m
+o_m[6] <= mux2x1:bit6.o_m
+o_m[7] <= mux2x1:bit7.o_m
+o_m[8] <= mux2x1:msb.o_m
 
 
-|singleCycleTopLevel|aluControlUnit:aluCont
+|pipelinedProc|mux9bit2x1:ctrlMux|mux2x1:msb
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux9bit2x1:ctrlMux|mux2x1:bit7
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux9bit2x1:ctrlMux|mux2x1:bit6
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux9bit2x1:ctrlMux|mux2x1:bit5
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux9bit2x1:ctrlMux|mux2x1:bit4
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux9bit2x1:ctrlMux|mux2x1:bit3
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux9bit2x1:ctrlMux|mux2x1:bit2
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux9bit2x1:ctrlMux|mux2x1:bit1
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux9bit2x1:ctrlMux|mux2x1:lsb
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|controlLogicUnit:controlUnit
+op[0] => lw.IN1
+op[0] => sw.IN1
+op[0] => rFormat.IN1
+op[0] => beq.IN1
+op[0] => bne.IN1
+op[0] => jmp.IN1
+op[1] => lw.IN1
+op[1] => sw.IN1
+op[1] => bne.IN1
+op[1] => jmp.IN1
+op[1] => rFormat.IN1
+op[1] => beq.IN1
+op[2] => beq.IN1
+op[2] => rFormat.IN1
+op[2] => lw.IN1
+op[2] => lw.IN1
+op[2] => sw.IN1
+op[3] => sw.IN1
+op[3] => rFormat.IN1
+op[4] => rFormat.IN0
+op[4] => lw.IN0
+op[5] => lw.IN1
+op[5] => rFormat.IN1
+regDst <= rFormat.DB_MAX_OUTPUT_PORT_TYPE
+aluSrc <= int_aluSrc.DB_MAX_OUTPUT_PORT_TYPE
+memToReg <= lw.DB_MAX_OUTPUT_PORT_TYPE
+memRead <= lw.DB_MAX_OUTPUT_PORT_TYPE
+memWrite <= sw.DB_MAX_OUTPUT_PORT_TYPE
+branch <= beq.DB_MAX_OUTPUT_PORT_TYPE
+branchNotEqual <= bne.DB_MAX_OUTPUT_PORT_TYPE
+jump <= jmp.DB_MAX_OUTPUT_PORT_TYPE
+aluOp1 <= rFormat.DB_MAX_OUTPUT_PORT_TYPE
+aluOp0 <= int_aluOp0.DB_MAX_OUTPUT_PORT_TYPE
+flush <= isBEQ.DB_MAX_OUTPUT_PORT_TYPE
+EX[0] <= int_aluOp0.DB_MAX_OUTPUT_PORT_TYPE
+EX[1] <= rFormat.DB_MAX_OUTPUT_PORT_TYPE
+EX[2] <= <GND>
+EX[3] <= rFormat.DB_MAX_OUTPUT_PORT_TYPE
+M[0] <= sw.DB_MAX_OUTPUT_PORT_TYPE
+M[1] <= lw.DB_MAX_OUTPUT_PORT_TYPE
+M[2] <= beq.DB_MAX_OUTPUT_PORT_TYPE
+WB[0] <= lw.DB_MAX_OUTPUT_PORT_TYPE
+WB[1] <= regWrite.DB_MAX_OUTPUT_PORT_TYPE
+isBEQ => flush.DATAIN
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer
+reset => twoBitRegister:WBSignalsOut.reset
+reset => threeBitRegister:MSignalsOut.reset
+reset => fourBitRegister:EXSignalsOut.reset
+reset => eightBitRegister:pcPlusFourOut.reset
+reset => eightBitRegister:readData1Out.reset
+reset => eightBitRegister:readData2Out.reset
+reset => eightBitRegister:instructionExtOut.reset
+reset => fiveBitRegister:instruction25To21Out.reset
+reset => fiveBitRegister:instruction20To16Out.reset
+reset => fiveBitRegister:instruction15To11Out.reset
+en => twoBitRegister:WBSignalsOut.en
+en => threeBitRegister:MSignalsOut.en
+en => fourBitRegister:EXSignalsOut.en
+en => eightBitRegister:pcPlusFourOut.en
+en => eightBitRegister:readData1Out.en
+en => eightBitRegister:readData2Out.en
+en => eightBitRegister:instructionExtOut.en
+en => fiveBitRegister:instruction25To21Out.en
+en => fiveBitRegister:instruction20To16Out.en
+en => fiveBitRegister:instruction15To11Out.en
+clk => twoBitRegister:WBSignalsOut.clk
+clk => threeBitRegister:MSignalsOut.clk
+clk => fourBitRegister:EXSignalsOut.clk
+clk => eightBitRegister:pcPlusFourOut.clk
+clk => eightBitRegister:readData1Out.clk
+clk => eightBitRegister:readData2Out.clk
+clk => eightBitRegister:instructionExtOut.clk
+clk => fiveBitRegister:instruction25To21Out.clk
+clk => fiveBitRegister:instruction20To16Out.clk
+clk => fiveBitRegister:instruction15To11Out.clk
+WBSignals[0] => twoBitRegister:WBSignalsOut.values[0]
+WBSignals[1] => twoBitRegister:WBSignalsOut.values[1]
+MSignals[0] => threeBitRegister:MSignalsOut.values[0]
+MSignals[1] => threeBitRegister:MSignalsOut.values[1]
+MSignals[2] => threeBitRegister:MSignalsOut.values[2]
+EXSignals[0] => fourBitRegister:EXSignalsOut.values[0]
+EXSignals[1] => fourBitRegister:EXSignalsOut.values[1]
+EXSignals[2] => fourBitRegister:EXSignalsOut.values[2]
+EXSignals[3] => fourBitRegister:EXSignalsOut.values[3]
+pcPlusFour[0] => eightBitRegister:pcPlusFourOut.values[0]
+pcPlusFour[1] => eightBitRegister:pcPlusFourOut.values[1]
+pcPlusFour[2] => eightBitRegister:pcPlusFourOut.values[2]
+pcPlusFour[3] => eightBitRegister:pcPlusFourOut.values[3]
+pcPlusFour[4] => eightBitRegister:pcPlusFourOut.values[4]
+pcPlusFour[5] => eightBitRegister:pcPlusFourOut.values[5]
+pcPlusFour[6] => eightBitRegister:pcPlusFourOut.values[6]
+pcPlusFour[7] => eightBitRegister:pcPlusFourOut.values[7]
+readData1[0] => eightBitRegister:readData1Out.values[0]
+readData1[1] => eightBitRegister:readData1Out.values[1]
+readData1[2] => eightBitRegister:readData1Out.values[2]
+readData1[3] => eightBitRegister:readData1Out.values[3]
+readData1[4] => eightBitRegister:readData1Out.values[4]
+readData1[5] => eightBitRegister:readData1Out.values[5]
+readData1[6] => eightBitRegister:readData1Out.values[6]
+readData1[7] => eightBitRegister:readData1Out.values[7]
+readData2[0] => eightBitRegister:readData2Out.values[0]
+readData2[1] => eightBitRegister:readData2Out.values[1]
+readData2[2] => eightBitRegister:readData2Out.values[2]
+readData2[3] => eightBitRegister:readData2Out.values[3]
+readData2[4] => eightBitRegister:readData2Out.values[4]
+readData2[5] => eightBitRegister:readData2Out.values[5]
+readData2[6] => eightBitRegister:readData2Out.values[6]
+readData2[7] => eightBitRegister:readData2Out.values[7]
+instructionExt[0] => eightBitRegister:instructionExtOut.values[0]
+instructionExt[1] => eightBitRegister:instructionExtOut.values[1]
+instructionExt[2] => eightBitRegister:instructionExtOut.values[2]
+instructionExt[3] => eightBitRegister:instructionExtOut.values[3]
+instructionExt[4] => eightBitRegister:instructionExtOut.values[4]
+instructionExt[5] => eightBitRegister:instructionExtOut.values[5]
+instructionExt[6] => eightBitRegister:instructionExtOut.values[6]
+instructionExt[7] => eightBitRegister:instructionExtOut.values[7]
+instructionExt[8] => ~NO_FANOUT~
+instructionExt[9] => ~NO_FANOUT~
+instructionExt[10] => ~NO_FANOUT~
+instructionExt[11] => ~NO_FANOUT~
+instructionExt[12] => ~NO_FANOUT~
+instructionExt[13] => ~NO_FANOUT~
+instructionExt[14] => ~NO_FANOUT~
+instructionExt[15] => ~NO_FANOUT~
+instruction25To21[0] => fiveBitRegister:instruction25To21Out.values[0]
+instruction25To21[1] => fiveBitRegister:instruction25To21Out.values[1]
+instruction25To21[2] => fiveBitRegister:instruction25To21Out.values[2]
+instruction25To21[3] => fiveBitRegister:instruction25To21Out.values[3]
+instruction25To21[4] => fiveBitRegister:instruction25To21Out.values[4]
+instruction20To16[0] => fiveBitRegister:instruction20To16Out.values[0]
+instruction20To16[1] => fiveBitRegister:instruction20To16Out.values[1]
+instruction20To16[2] => fiveBitRegister:instruction20To16Out.values[2]
+instruction20To16[3] => fiveBitRegister:instruction20To16Out.values[3]
+instruction20To16[4] => fiveBitRegister:instruction20To16Out.values[4]
+instruction15To11[0] => fiveBitRegister:instruction15To11Out.values[0]
+instruction15To11[1] => fiveBitRegister:instruction15To11Out.values[1]
+instruction15To11[2] => fiveBitRegister:instruction15To11Out.values[2]
+instruction15To11[3] => fiveBitRegister:instruction15To11Out.values[3]
+instruction15To11[4] => fiveBitRegister:instruction15To11Out.values[4]
+WBSignals_o[0] <= twoBitRegister:WBSignalsOut.outputs[0]
+WBSignals_o[1] <= twoBitRegister:WBSignalsOut.outputs[1]
+MSignals_o[0] <= threeBitRegister:MSignalsOut.outputs[0]
+MSignals_o[1] <= threeBitRegister:MSignalsOut.outputs[1]
+MSignals_o[2] <= threeBitRegister:MSignalsOut.outputs[2]
+EXSignals_o[0] <= fourBitRegister:EXSignalsOut.outputs[0]
+EXSignals_o[1] <= fourBitRegister:EXSignalsOut.outputs[1]
+EXSignals_o[2] <= fourBitRegister:EXSignalsOut.outputs[2]
+EXSignals_o[3] <= fourBitRegister:EXSignalsOut.outputs[3]
+pcPlusFour_o[0] <= eightBitRegister:pcPlusFourOut.outputs[0]
+pcPlusFour_o[1] <= eightBitRegister:pcPlusFourOut.outputs[1]
+pcPlusFour_o[2] <= eightBitRegister:pcPlusFourOut.outputs[2]
+pcPlusFour_o[3] <= eightBitRegister:pcPlusFourOut.outputs[3]
+pcPlusFour_o[4] <= eightBitRegister:pcPlusFourOut.outputs[4]
+pcPlusFour_o[5] <= eightBitRegister:pcPlusFourOut.outputs[5]
+pcPlusFour_o[6] <= eightBitRegister:pcPlusFourOut.outputs[6]
+pcPlusFour_o[7] <= eightBitRegister:pcPlusFourOut.outputs[7]
+readData1_o[0] <= eightBitRegister:readData1Out.outputs[0]
+readData1_o[1] <= eightBitRegister:readData1Out.outputs[1]
+readData1_o[2] <= eightBitRegister:readData1Out.outputs[2]
+readData1_o[3] <= eightBitRegister:readData1Out.outputs[3]
+readData1_o[4] <= eightBitRegister:readData1Out.outputs[4]
+readData1_o[5] <= eightBitRegister:readData1Out.outputs[5]
+readData1_o[6] <= eightBitRegister:readData1Out.outputs[6]
+readData1_o[7] <= eightBitRegister:readData1Out.outputs[7]
+readData2_o[0] <= eightBitRegister:readData2Out.outputs[0]
+readData2_o[1] <= eightBitRegister:readData2Out.outputs[1]
+readData2_o[2] <= eightBitRegister:readData2Out.outputs[2]
+readData2_o[3] <= eightBitRegister:readData2Out.outputs[3]
+readData2_o[4] <= eightBitRegister:readData2Out.outputs[4]
+readData2_o[5] <= eightBitRegister:readData2Out.outputs[5]
+readData2_o[6] <= eightBitRegister:readData2Out.outputs[6]
+readData2_o[7] <= eightBitRegister:readData2Out.outputs[7]
+instructionExt_o[0] <= eightBitRegister:instructionExtOut.outputs[0]
+instructionExt_o[1] <= eightBitRegister:instructionExtOut.outputs[1]
+instructionExt_o[2] <= eightBitRegister:instructionExtOut.outputs[2]
+instructionExt_o[3] <= eightBitRegister:instructionExtOut.outputs[3]
+instructionExt_o[4] <= eightBitRegister:instructionExtOut.outputs[4]
+instructionExt_o[5] <= eightBitRegister:instructionExtOut.outputs[5]
+instructionExt_o[6] <= eightBitRegister:instructionExtOut.outputs[6]
+instructionExt_o[7] <= eightBitRegister:instructionExtOut.outputs[7]
+instructionExt_o[8] <= <GND>
+instructionExt_o[9] <= <GND>
+instructionExt_o[10] <= <GND>
+instructionExt_o[11] <= <GND>
+instructionExt_o[12] <= <GND>
+instructionExt_o[13] <= <GND>
+instructionExt_o[14] <= <GND>
+instructionExt_o[15] <= <GND>
+instructionExt_o[16] <= <GND>
+instructionExt_o[17] <= <GND>
+instructionExt_o[18] <= <GND>
+instructionExt_o[19] <= <GND>
+instructionExt_o[20] <= <GND>
+instructionExt_o[21] <= <GND>
+instructionExt_o[22] <= <GND>
+instructionExt_o[23] <= <GND>
+instructionExt_o[24] <= <GND>
+instructionExt_o[25] <= <GND>
+instructionExt_o[26] <= <GND>
+instructionExt_o[27] <= <GND>
+instructionExt_o[28] <= <GND>
+instructionExt_o[29] <= <GND>
+instructionExt_o[30] <= <GND>
+instructionExt_o[31] <= <GND>
+instruction25To21_o[0] <= fiveBitRegister:instruction25To21Out.outputs[0]
+instruction25To21_o[1] <= fiveBitRegister:instruction25To21Out.outputs[1]
+instruction25To21_o[2] <= fiveBitRegister:instruction25To21Out.outputs[2]
+instruction25To21_o[3] <= fiveBitRegister:instruction25To21Out.outputs[3]
+instruction25To21_o[4] <= fiveBitRegister:instruction25To21Out.outputs[4]
+instruction20To16_o[0] <= fiveBitRegister:instruction20To16Out.outputs[0]
+instruction20To16_o[1] <= fiveBitRegister:instruction20To16Out.outputs[1]
+instruction20To16_o[2] <= fiveBitRegister:instruction20To16Out.outputs[2]
+instruction20To16_o[3] <= fiveBitRegister:instruction20To16Out.outputs[3]
+instruction20To16_o[4] <= fiveBitRegister:instruction20To16Out.outputs[4]
+instruction15To11_o[0] <= fiveBitRegister:instruction15To11Out.outputs[0]
+instruction15To11_o[1] <= fiveBitRegister:instruction15To11Out.outputs[1]
+instruction15To11_o[2] <= fiveBitRegister:instruction15To11Out.outputs[2]
+instruction15To11_o[3] <= fiveBitRegister:instruction15To11Out.outputs[3]
+instruction15To11_o[4] <= fiveBitRegister:instruction15To11Out.outputs[4]
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|twoBitRegister:WBSignalsOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|twoBitRegister:WBSignalsOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|twoBitRegister:WBSignalsOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|threeBitRegister:MSignalsOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|threeBitRegister:MSignalsOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|threeBitRegister:MSignalsOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|threeBitRegister:MSignalsOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fourBitRegister:EXSignalsOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fourBitRegister:EXSignalsOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fourBitRegister:EXSignalsOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fourBitRegister:EXSignalsOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fourBitRegister:EXSignalsOut|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:pcPlusFourOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+reset => enARdFF_2:bit5.i_resetBar
+reset => enARdFF_2:bit6.i_resetBar
+reset => enARdFF_2:bit7.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+values[5] => enARdFF_2:bit5.i_d
+values[6] => enARdFF_2:bit6.i_d
+values[7] => enARdFF_2:bit7.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+en => enARdFF_2:bit5.i_enable
+en => enARdFF_2:bit6.i_enable
+en => enARdFF_2:bit7.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+clk => enARdFF_2:bit5.i_clock
+clk => enARdFF_2:bit6.i_clock
+clk => enARdFF_2:bit7.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+outputs[5] <= enARdFF_2:bit5.o_q
+outputs[6] <= enARdFF_2:bit6.o_q
+outputs[7] <= enARdFF_2:bit7.o_q
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit5
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit6
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:pcPlusFourOut|enARdFF_2:bit7
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData1Out
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+reset => enARdFF_2:bit5.i_resetBar
+reset => enARdFF_2:bit6.i_resetBar
+reset => enARdFF_2:bit7.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+values[5] => enARdFF_2:bit5.i_d
+values[6] => enARdFF_2:bit6.i_d
+values[7] => enARdFF_2:bit7.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+en => enARdFF_2:bit5.i_enable
+en => enARdFF_2:bit6.i_enable
+en => enARdFF_2:bit7.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+clk => enARdFF_2:bit5.i_clock
+clk => enARdFF_2:bit6.i_clock
+clk => enARdFF_2:bit7.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+outputs[5] <= enARdFF_2:bit5.o_q
+outputs[6] <= enARdFF_2:bit6.o_q
+outputs[7] <= enARdFF_2:bit7.o_q
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData1Out|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData1Out|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData1Out|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData1Out|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData1Out|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData1Out|enARdFF_2:bit5
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData1Out|enARdFF_2:bit6
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData1Out|enARdFF_2:bit7
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData2Out
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+reset => enARdFF_2:bit5.i_resetBar
+reset => enARdFF_2:bit6.i_resetBar
+reset => enARdFF_2:bit7.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+values[5] => enARdFF_2:bit5.i_d
+values[6] => enARdFF_2:bit6.i_d
+values[7] => enARdFF_2:bit7.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+en => enARdFF_2:bit5.i_enable
+en => enARdFF_2:bit6.i_enable
+en => enARdFF_2:bit7.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+clk => enARdFF_2:bit5.i_clock
+clk => enARdFF_2:bit6.i_clock
+clk => enARdFF_2:bit7.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+outputs[5] <= enARdFF_2:bit5.o_q
+outputs[6] <= enARdFF_2:bit6.o_q
+outputs[7] <= enARdFF_2:bit7.o_q
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData2Out|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData2Out|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData2Out|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData2Out|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData2Out|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData2Out|enARdFF_2:bit5
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData2Out|enARdFF_2:bit6
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:readData2Out|enARdFF_2:bit7
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:instructionExtOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+reset => enARdFF_2:bit5.i_resetBar
+reset => enARdFF_2:bit6.i_resetBar
+reset => enARdFF_2:bit7.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+values[5] => enARdFF_2:bit5.i_d
+values[6] => enARdFF_2:bit6.i_d
+values[7] => enARdFF_2:bit7.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+en => enARdFF_2:bit5.i_enable
+en => enARdFF_2:bit6.i_enable
+en => enARdFF_2:bit7.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+clk => enARdFF_2:bit5.i_clock
+clk => enARdFF_2:bit6.i_clock
+clk => enARdFF_2:bit7.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+outputs[5] <= enARdFF_2:bit5.o_q
+outputs[6] <= enARdFF_2:bit6.o_q
+outputs[7] <= enARdFF_2:bit7.o_q
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:instructionExtOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:instructionExtOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:instructionExtOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:instructionExtOut|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:instructionExtOut|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:instructionExtOut|enARdFF_2:bit5
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:instructionExtOut|enARdFF_2:bit6
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|eightBitRegister:instructionExtOut|enARdFF_2:bit7
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction25To21Out
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction25To21Out|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction25To21Out|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction25To21Out|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction25To21Out|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction25To21Out|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction20To16Out
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction20To16Out|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction20To16Out|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction20To16Out|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction20To16Out|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction20To16Out|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction15To11Out
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction15To11Out|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction15To11Out|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction15To11Out|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction15To11Out|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|ID_EXRegister:IDEXBuffer|fiveBitRegister:instruction15To11Out|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|HazardDetectionUnit:hazardDection
+idExMemRead => ifIdWrite.IN1
+idExMemRead => PCwrite.IN1
+idExMemRead => ctrlMux.IN1
+idExRegRt[0] => IdExRtEqIfIdRs[0].IN0
+idExRegRt[0] => IdExRtEqIfIdRt[0].IN0
+idExRegRt[1] => IdExRtEqIfIdRs[1].IN0
+idExRegRt[1] => IdExRtEqIfIdRt[1].IN0
+idExRegRt[2] => IdExRtEqIfIdRs[2].IN0
+idExRegRt[2] => IdExRtEqIfIdRt[2].IN0
+idExRegRt[3] => IdExRtEqIfIdRs[3].IN0
+idExRegRt[3] => IdExRtEqIfIdRt[3].IN0
+idExRegRt[4] => IdExRtEqIfIdRs[4].IN0
+idExRegRt[4] => IdExRtEqIfIdRt[4].IN0
+ifIdRegRs[0] => IdExRtEqIfIdRs[0].IN1
+ifIdRegRs[1] => IdExRtEqIfIdRs[1].IN1
+ifIdRegRs[2] => IdExRtEqIfIdRs[2].IN1
+ifIdRegRs[3] => IdExRtEqIfIdRs[3].IN1
+ifIdRegRs[4] => IdExRtEqIfIdRs[4].IN1
+ifIdRegRt[0] => IdExRtEqIfIdRt[0].IN1
+ifIdRegRt[1] => IdExRtEqIfIdRt[1].IN1
+ifIdRegRt[2] => IdExRtEqIfIdRt[2].IN1
+ifIdRegRt[3] => IdExRtEqIfIdRt[3].IN1
+ifIdRegRt[4] => IdExRtEqIfIdRt[4].IN1
+ifIdWrite <= ifIdWrite.DB_MAX_OUTPUT_PORT_TYPE
+PCwrite <= PCwrite.DB_MAX_OUTPUT_PORT_TYPE
+ctrlMux <= ctrlMux.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|shiftLeft2Unit:shiftLeftBranch
+shift_input[0] => shift_output[2].DATAIN
+shift_input[1] => shift_output[3].DATAIN
+shift_input[2] => shift_output[4].DATAIN
+shift_input[3] => shift_output[5].DATAIN
+shift_input[4] => shift_output[6].DATAIN
+shift_input[5] => shift_output[7].DATAIN
+shift_input[6] => ~NO_FANOUT~
+shift_input[7] => ~NO_FANOUT~
+shift_output[0] <= <GND>
+shift_output[1] <= <GND>
+shift_output[2] <= shift_input[0].DB_MAX_OUTPUT_PORT_TYPE
+shift_output[3] <= shift_input[1].DB_MAX_OUTPUT_PORT_TYPE
+shift_output[4] <= shift_input[2].DB_MAX_OUTPUT_PORT_TYPE
+shift_output[5] <= shift_input[3].DB_MAX_OUTPUT_PORT_TYPE
+shift_output[6] <= shift_input[4].DB_MAX_OUTPUT_PORT_TYPE
+shift_output[7] <= shift_input[5].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:branchAdder
+A_i[0] => oneBitAdder:LSB.i_Ai
+A_i[1] => oneBitAdder:Bit2.i_Ai
+A_i[2] => oneBitAdder:Bit3.i_Ai
+A_i[3] => oneBitAdder:Bit4.i_Ai
+A_i[4] => oneBitAdder:Bit5.i_Ai
+A_i[5] => oneBitAdder:Bit6.i_Ai
+A_i[6] => oneBitAdder:Bit7.i_Ai
+A_i[7] => oneBitAdder:MSB.i_Ai
+B_i[0] => oneBitAdder:LSB.i_Bi
+B_i[1] => oneBitAdder:Bit2.i_Bi
+B_i[2] => oneBitAdder:Bit3.i_Bi
+B_i[3] => oneBitAdder:Bit4.i_Bi
+B_i[4] => oneBitAdder:Bit5.i_Bi
+B_i[5] => oneBitAdder:Bit6.i_Bi
+B_i[6] => oneBitAdder:Bit7.i_Bi
+B_i[7] => oneBitAdder:MSB.i_Bi
+C_i => oneBitAdder:LSB.i_CarryIn
+C_o <= oneBitAdder:MSB.o_CarryOut
+sum[0] <= oneBitAdder:LSB.o_Sum
+sum[1] <= oneBitAdder:Bit2.o_Sum
+sum[2] <= oneBitAdder:Bit3.o_Sum
+sum[3] <= oneBitAdder:Bit4.o_Sum
+sum[4] <= oneBitAdder:Bit5.o_Sum
+sum[5] <= oneBitAdder:Bit6.o_Sum
+sum[6] <= oneBitAdder:Bit7.o_Sum
+sum[7] <= oneBitAdder:MSB.o_Sum
+
+
+|pipelinedProc|eightBitAdder:branchAdder|oneBitAdder:MSB
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:branchAdder|oneBitAdder:Bit7
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:branchAdder|oneBitAdder:Bit6
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:branchAdder|oneBitAdder:Bit5
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:branchAdder|oneBitAdder:Bit4
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:branchAdder|oneBitAdder:Bit3
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:branchAdder|oneBitAdder:Bit2
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|eightBitAdder:branchAdder|oneBitAdder:LSB
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux5x5:IDEXMux
+sel => mux2x1:msb.sel
+sel => mux2x1:bit4.sel
+sel => mux2x1:bit3.sel
+sel => mux2x1:bit2.sel
+sel => mux2x1:lsb.sel
+a_i[0] => mux2x1:lsb.a_i
+a_i[1] => mux2x1:bit2.a_i
+a_i[2] => mux2x1:bit3.a_i
+a_i[3] => mux2x1:bit4.a_i
+a_i[4] => mux2x1:msb.a_i
+b_i[0] => mux2x1:lsb.b_i
+b_i[1] => mux2x1:bit2.b_i
+b_i[2] => mux2x1:bit3.b_i
+b_i[3] => mux2x1:bit4.b_i
+b_i[4] => mux2x1:msb.b_i
+o_m[0] <= mux2x1:lsb.o_m
+o_m[1] <= mux2x1:bit2.o_m
+o_m[2] <= mux2x1:bit3.o_m
+o_m[3] <= mux2x1:bit4.o_m
+o_m[4] <= mux2x1:msb.o_m
+
+
+|pipelinedProc|mux5x5:IDEXMux|mux2x1:msb
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux5x5:IDEXMux|mux2x1:bit4
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux5x5:IDEXMux|mux2x1:bit3
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux5x5:IDEXMux|mux2x1:bit2
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux5x5:IDEXMux|mux2x1:lsb
+a_i => o_m.IN0
+b_i => o_m.IN0
+sel => o_m.IN1
+sel => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data1Mux
+sel[0] => mux3x1:msb.sel[0]
+sel[0] => mux3x1:bit6.sel[0]
+sel[0] => mux3x1:bit5.sel[0]
+sel[0] => mux3x1:bit4.sel[0]
+sel[0] => mux3x1:bit3.sel[0]
+sel[0] => mux3x1:bit2.sel[0]
+sel[0] => mux3x1:bit1.sel[0]
+sel[0] => mux3x1:lsb.sel[0]
+sel[1] => mux3x1:msb.sel[1]
+sel[1] => mux3x1:bit6.sel[1]
+sel[1] => mux3x1:bit5.sel[1]
+sel[1] => mux3x1:bit4.sel[1]
+sel[1] => mux3x1:bit3.sel[1]
+sel[1] => mux3x1:bit2.sel[1]
+sel[1] => mux3x1:bit1.sel[1]
+sel[1] => mux3x1:lsb.sel[1]
+a_i[0] => mux3x1:lsb.a_i
+a_i[1] => mux3x1:bit1.a_i
+a_i[2] => mux3x1:bit2.a_i
+a_i[3] => mux3x1:bit3.a_i
+a_i[4] => mux3x1:bit4.a_i
+a_i[5] => mux3x1:bit5.a_i
+a_i[6] => mux3x1:bit6.a_i
+a_i[7] => mux3x1:msb.a_i
+b_i[0] => mux3x1:lsb.b_i
+b_i[1] => mux3x1:bit1.b_i
+b_i[2] => mux3x1:bit2.b_i
+b_i[3] => mux3x1:bit3.b_i
+b_i[4] => mux3x1:bit4.b_i
+b_i[5] => mux3x1:bit5.b_i
+b_i[6] => mux3x1:bit6.b_i
+b_i[7] => mux3x1:msb.b_i
+c_i[0] => ~NO_FANOUT~
+c_i[1] => ~NO_FANOUT~
+c_i[2] => ~NO_FANOUT~
+c_i[3] => ~NO_FANOUT~
+c_i[4] => ~NO_FANOUT~
+c_i[5] => ~NO_FANOUT~
+c_i[6] => ~NO_FANOUT~
+c_i[7] => mux3x1:msb.c_i
+c_i[7] => mux3x1:bit6.c_i
+c_i[7] => mux3x1:bit5.c_i
+c_i[7] => mux3x1:bit4.c_i
+c_i[7] => mux3x1:bit3.c_i
+c_i[7] => mux3x1:bit2.c_i
+c_i[7] => mux3x1:bit1.c_i
+c_i[7] => mux3x1:lsb.c_i
+o_m[0] <= mux3x1:lsb.o_m
+o_m[1] <= mux3x1:bit1.o_m
+o_m[2] <= mux3x1:bit2.o_m
+o_m[3] <= mux3x1:bit3.o_m
+o_m[4] <= mux3x1:bit4.o_m
+o_m[5] <= mux3x1:bit5.o_m
+o_m[6] <= mux3x1:bit6.o_m
+o_m[7] <= mux3x1:msb.o_m
+
+
+|pipelinedProc|mux8bit3x1:data1Mux|mux3x1:msb
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data1Mux|mux3x1:bit6
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data1Mux|mux3x1:bit5
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data1Mux|mux3x1:bit4
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data1Mux|mux3x1:bit3
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data1Mux|mux3x1:bit2
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data1Mux|mux3x1:bit1
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data1Mux|mux3x1:lsb
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data2Mux
+sel[0] => mux3x1:msb.sel[0]
+sel[0] => mux3x1:bit6.sel[0]
+sel[0] => mux3x1:bit5.sel[0]
+sel[0] => mux3x1:bit4.sel[0]
+sel[0] => mux3x1:bit3.sel[0]
+sel[0] => mux3x1:bit2.sel[0]
+sel[0] => mux3x1:bit1.sel[0]
+sel[0] => mux3x1:lsb.sel[0]
+sel[1] => mux3x1:msb.sel[1]
+sel[1] => mux3x1:bit6.sel[1]
+sel[1] => mux3x1:bit5.sel[1]
+sel[1] => mux3x1:bit4.sel[1]
+sel[1] => mux3x1:bit3.sel[1]
+sel[1] => mux3x1:bit2.sel[1]
+sel[1] => mux3x1:bit1.sel[1]
+sel[1] => mux3x1:lsb.sel[1]
+a_i[0] => mux3x1:lsb.a_i
+a_i[1] => mux3x1:bit1.a_i
+a_i[2] => mux3x1:bit2.a_i
+a_i[3] => mux3x1:bit3.a_i
+a_i[4] => mux3x1:bit4.a_i
+a_i[5] => mux3x1:bit5.a_i
+a_i[6] => mux3x1:bit6.a_i
+a_i[7] => mux3x1:msb.a_i
+b_i[0] => mux3x1:lsb.b_i
+b_i[1] => mux3x1:bit1.b_i
+b_i[2] => mux3x1:bit2.b_i
+b_i[3] => mux3x1:bit3.b_i
+b_i[4] => mux3x1:bit4.b_i
+b_i[5] => mux3x1:bit5.b_i
+b_i[6] => mux3x1:bit6.b_i
+b_i[7] => mux3x1:msb.b_i
+c_i[0] => ~NO_FANOUT~
+c_i[1] => ~NO_FANOUT~
+c_i[2] => ~NO_FANOUT~
+c_i[3] => ~NO_FANOUT~
+c_i[4] => ~NO_FANOUT~
+c_i[5] => ~NO_FANOUT~
+c_i[6] => ~NO_FANOUT~
+c_i[7] => mux3x1:msb.c_i
+c_i[7] => mux3x1:bit6.c_i
+c_i[7] => mux3x1:bit5.c_i
+c_i[7] => mux3x1:bit4.c_i
+c_i[7] => mux3x1:bit3.c_i
+c_i[7] => mux3x1:bit2.c_i
+c_i[7] => mux3x1:bit1.c_i
+c_i[7] => mux3x1:lsb.c_i
+o_m[0] <= mux3x1:lsb.o_m
+o_m[1] <= mux3x1:bit1.o_m
+o_m[2] <= mux3x1:bit2.o_m
+o_m[3] <= mux3x1:bit3.o_m
+o_m[4] <= mux3x1:bit4.o_m
+o_m[5] <= mux3x1:bit5.o_m
+o_m[6] <= mux3x1:bit6.o_m
+o_m[7] <= mux3x1:msb.o_m
+
+
+|pipelinedProc|mux8bit3x1:data2Mux|mux3x1:msb
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data2Mux|mux3x1:bit6
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data2Mux|mux3x1:bit5
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data2Mux|mux3x1:bit4
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data2Mux|mux3x1:bit3
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data2Mux|mux3x1:bit2
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data2Mux|mux3x1:bit1
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8bit3x1:data2Mux|mux3x1:lsb
+a_i => o_m.IN1
+b_i => o_m.IN1
+c_i => o_m.IN1
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[0] => o_m.IN0
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+sel[1] => o_m.IN1
+o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|aluControlUnit:aluCont
 aluOp[0] => op2.IN1
 aluOp[1] => sig0.IN0
 aluOp[1] => op0.IN1
@@ -2248,106 +4685,7 @@ aluCntrlOut[1] <= op1.DB_MAX_OUTPUT_PORT_TYPE
 aluCntrlOut[2] <= op2.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux8x8:mux8Bit
-sel => mux2x1:msb.sel
-sel => mux2x1:bit7.sel
-sel => mux2x1:bit6.sel
-sel => mux2x1:bit5.sel
-sel => mux2x1:bit4.sel
-sel => mux2x1:bit3.sel
-sel => mux2x1:bit2.sel
-sel => mux2x1:lsb.sel
-a_i[0] => mux2x1:lsb.a_i
-a_i[1] => mux2x1:bit2.a_i
-a_i[2] => mux2x1:bit3.a_i
-a_i[3] => mux2x1:bit4.a_i
-a_i[4] => mux2x1:bit5.a_i
-a_i[5] => mux2x1:bit6.a_i
-a_i[6] => mux2x1:bit7.a_i
-a_i[7] => mux2x1:msb.a_i
-b_i[0] => mux2x1:lsb.b_i
-b_i[1] => mux2x1:bit2.b_i
-b_i[2] => mux2x1:bit3.b_i
-b_i[3] => mux2x1:bit4.b_i
-b_i[4] => mux2x1:bit5.b_i
-b_i[5] => mux2x1:bit6.b_i
-b_i[6] => mux2x1:bit7.b_i
-b_i[7] => mux2x1:msb.b_i
-o_m[0] <= mux2x1:lsb.o_m
-o_m[1] <= mux2x1:bit2.o_m
-o_m[2] <= mux2x1:bit3.o_m
-o_m[3] <= mux2x1:bit4.o_m
-o_m[4] <= mux2x1:bit5.o_m
-o_m[5] <= mux2x1:bit6.o_m
-o_m[6] <= mux2x1:bit7.o_m
-o_m[7] <= mux2x1:msb.o_m
-
-
-|singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:msb
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit7
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit6
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit5
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit4
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit3
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit2
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:lsb
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|ALUmain:alu
+|pipelinedProc|ALUmain:alu
 input1[0] => andResult[0].IN0
 input1[0] => orResult[0].IN0
 input1[0] => eightBitAdder:adder.A_i[0]
@@ -2442,7 +4780,7 @@ aluResult[6] <= mux8x1EightBit:ALUMux.o[6]
 aluResult[7] <= mux8x1EightBit:ALUMux.o[7]
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder
+|pipelinedProc|ALUmain:alu|eightBitAdder:adder
 A_i[0] => oneBitAdder:LSB.i_Ai
 A_i[1] => oneBitAdder:Bit2.i_Ai
 A_i[2] => oneBitAdder:Bit3.i_Ai
@@ -2471,7 +4809,7 @@ sum[6] <= oneBitAdder:Bit7.o_Sum
 sum[7] <= oneBitAdder:MSB.o_Sum
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:MSB
+|pipelinedProc|ALUmain:alu|eightBitAdder:adder|oneBitAdder:MSB
 i_CarryIn => int_CarryOut3.IN0
 i_CarryIn => int_CarryOut1.IN0
 i_Ai => int_CarryOut3.IN1
@@ -2482,7 +4820,7 @@ o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
 o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit7
+|pipelinedProc|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit7
 i_CarryIn => int_CarryOut3.IN0
 i_CarryIn => int_CarryOut1.IN0
 i_Ai => int_CarryOut3.IN1
@@ -2493,7 +4831,7 @@ o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
 o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit6
+|pipelinedProc|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit6
 i_CarryIn => int_CarryOut3.IN0
 i_CarryIn => int_CarryOut1.IN0
 i_Ai => int_CarryOut3.IN1
@@ -2504,7 +4842,7 @@ o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
 o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit5
+|pipelinedProc|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit5
 i_CarryIn => int_CarryOut3.IN0
 i_CarryIn => int_CarryOut1.IN0
 i_Ai => int_CarryOut3.IN1
@@ -2515,7 +4853,7 @@ o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
 o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit4
+|pipelinedProc|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit4
 i_CarryIn => int_CarryOut3.IN0
 i_CarryIn => int_CarryOut1.IN0
 i_Ai => int_CarryOut3.IN1
@@ -2526,7 +4864,7 @@ o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
 o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit3
+|pipelinedProc|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit3
 i_CarryIn => int_CarryOut3.IN0
 i_CarryIn => int_CarryOut1.IN0
 i_Ai => int_CarryOut3.IN1
@@ -2537,7 +4875,7 @@ o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
 o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit2
+|pipelinedProc|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit2
 i_CarryIn => int_CarryOut3.IN0
 i_CarryIn => int_CarryOut1.IN0
 i_Ai => int_CarryOut3.IN1
@@ -2548,7 +4886,7 @@ o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
 o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:LSB
+|pipelinedProc|ALUmain:alu|eightBitAdder:adder|oneBitAdder:LSB
 i_CarryIn => int_CarryOut3.IN0
 i_CarryIn => int_CarryOut1.IN0
 i_Ai => int_CarryOut3.IN1
@@ -2559,7 +4897,7 @@ o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
 o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor
+|pipelinedProc|ALUmain:alu|eightBitSubtractor:subtractor
 A_i[0] => oneBitSubtractor:LSB.a_i
 A_i[1] => oneBitSubtractor:Bit2.a_i
 A_i[2] => oneBitSubtractor:Bit3.a_i
@@ -2588,7 +4926,7 @@ diff[6] <= oneBitSubtractor:Bit7.diff
 diff[7] <= oneBitSubtractor:MSB.diff
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:MSB
+|pipelinedProc|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:MSB
 a_i => diff.IN0
 a_i => cout.IN0
 a_i => cout.IN0
@@ -2602,7 +4940,7 @@ diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
 cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit7
+|pipelinedProc|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit7
 a_i => diff.IN0
 a_i => cout.IN0
 a_i => cout.IN0
@@ -2616,7 +4954,7 @@ diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
 cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit6
+|pipelinedProc|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit6
 a_i => diff.IN0
 a_i => cout.IN0
 a_i => cout.IN0
@@ -2630,7 +4968,7 @@ diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
 cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit5
+|pipelinedProc|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit5
 a_i => diff.IN0
 a_i => cout.IN0
 a_i => cout.IN0
@@ -2644,7 +4982,7 @@ diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
 cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit4
+|pipelinedProc|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit4
 a_i => diff.IN0
 a_i => cout.IN0
 a_i => cout.IN0
@@ -2658,7 +4996,7 @@ diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
 cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit3
+|pipelinedProc|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit3
 a_i => diff.IN0
 a_i => cout.IN0
 a_i => cout.IN0
@@ -2672,7 +5010,7 @@ diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
 cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit2
+|pipelinedProc|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit2
 a_i => diff.IN0
 a_i => cout.IN0
 a_i => cout.IN0
@@ -2686,7 +5024,7 @@ diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
 cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:LSB
+|pipelinedProc|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:LSB
 a_i => diff.IN0
 a_i => cout.IN0
 a_i => cout.IN0
@@ -2700,7 +5038,7 @@ diff <= diff.DB_MAX_OUTPUT_PORT_TYPE
 cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl
+|pipelinedProc|ALUmain:alu|eighBitComparator:stl
 A[0] => oneBitComparator:comp0.i_Ai
 A[1] => oneBitComparator:comp1.i_Ai
 A[2] => oneBitComparator:comp2.i_Ai
@@ -2720,7 +5058,7 @@ B[7] => oneBitComparator:comp7.i_Bi
 LT <= oneBitComparator:comp0.o_LT
 
 
-|singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp7
+|pipelinedProc|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp7
 i_GTPrevious => int_GT2.IN0
 i_GTPrevious => int_GT1.IN0
 i_GTPrevious => int_LT2.IN0
@@ -2735,7 +5073,7 @@ o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
 o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp6
+|pipelinedProc|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp6
 i_GTPrevious => int_GT2.IN0
 i_GTPrevious => int_GT1.IN0
 i_GTPrevious => int_LT2.IN0
@@ -2750,7 +5088,7 @@ o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
 o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp5
+|pipelinedProc|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp5
 i_GTPrevious => int_GT2.IN0
 i_GTPrevious => int_GT1.IN0
 i_GTPrevious => int_LT2.IN0
@@ -2765,7 +5103,7 @@ o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
 o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp4
+|pipelinedProc|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp4
 i_GTPrevious => int_GT2.IN0
 i_GTPrevious => int_GT1.IN0
 i_GTPrevious => int_LT2.IN0
@@ -2780,7 +5118,7 @@ o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
 o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp3
+|pipelinedProc|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp3
 i_GTPrevious => int_GT2.IN0
 i_GTPrevious => int_GT1.IN0
 i_GTPrevious => int_LT2.IN0
@@ -2795,7 +5133,7 @@ o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
 o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp2
+|pipelinedProc|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp2
 i_GTPrevious => int_GT2.IN0
 i_GTPrevious => int_GT1.IN0
 i_GTPrevious => int_LT2.IN0
@@ -2810,7 +5148,7 @@ o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
 o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp1
+|pipelinedProc|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp1
 i_GTPrevious => int_GT2.IN0
 i_GTPrevious => int_GT1.IN0
 i_GTPrevious => int_LT2.IN0
@@ -2825,7 +5163,7 @@ o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
 o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp0
+|pipelinedProc|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp0
 i_GTPrevious => int_GT2.IN0
 i_GTPrevious => int_GT1.IN0
 i_GTPrevious => int_LT2.IN0
@@ -2840,7 +5178,7 @@ o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
 o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|ALUmain:alu|mux8x1EightBit:ALUMux
+|pipelinedProc|ALUmain:alu|mux8x1EightBit:ALUMux
 a0[0] => o.IN1
 a0[1] => o.IN1
 a0[2] => o.IN1
@@ -2931,7 +5269,529 @@ o[6] <= o.DB_MAX_OUTPUT_PORT_TYPE
 o[7] <= o.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|dataMemory:dataMem
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer
+reset => twoBitRegister:WBSignalsOut.reset
+reset => threeBitRegister:MSignalsOut.reset
+reset => eightBitRegister:aluResultOut.reset
+reset => eightBitRegister:readData2Out.reset
+reset => fiveBitRegister:instructionMuxResultOut.reset
+reset => enARdFF_2:aluZeroOut.i_resetBar
+en => twoBitRegister:WBSignalsOut.en
+en => threeBitRegister:MSignalsOut.en
+en => eightBitRegister:aluResultOut.en
+en => eightBitRegister:readData2Out.en
+en => fiveBitRegister:instructionMuxResultOut.en
+en => enARdFF_2:aluZeroOut.i_enable
+clk => twoBitRegister:WBSignalsOut.clk
+clk => threeBitRegister:MSignalsOut.clk
+clk => eightBitRegister:aluResultOut.clk
+clk => eightBitRegister:readData2Out.clk
+clk => fiveBitRegister:instructionMuxResultOut.clk
+clk => enARdFF_2:aluZeroOut.i_clock
+WBSignals[0] => twoBitRegister:WBSignalsOut.values[0]
+WBSignals[1] => twoBitRegister:WBSignalsOut.values[1]
+MSignals[0] => threeBitRegister:MSignalsOut.values[0]
+MSignals[1] => threeBitRegister:MSignalsOut.values[1]
+MSignals[2] => threeBitRegister:MSignalsOut.values[2]
+aluResult[0] => eightBitRegister:aluResultOut.values[0]
+aluResult[1] => eightBitRegister:aluResultOut.values[1]
+aluResult[2] => eightBitRegister:aluResultOut.values[2]
+aluResult[3] => eightBitRegister:aluResultOut.values[3]
+aluResult[4] => eightBitRegister:aluResultOut.values[4]
+aluResult[5] => eightBitRegister:aluResultOut.values[5]
+aluResult[6] => eightBitRegister:aluResultOut.values[6]
+aluResult[7] => eightBitRegister:aluResultOut.values[7]
+aluZero => enARdFF_2:aluZeroOut.i_d
+instructionMuxResult[0] => fiveBitRegister:instructionMuxResultOut.values[0]
+instructionMuxResult[1] => fiveBitRegister:instructionMuxResultOut.values[1]
+instructionMuxResult[2] => fiveBitRegister:instructionMuxResultOut.values[2]
+instructionMuxResult[3] => fiveBitRegister:instructionMuxResultOut.values[3]
+instructionMuxResult[4] => fiveBitRegister:instructionMuxResultOut.values[4]
+readData2[0] => eightBitRegister:readData2Out.values[0]
+readData2[1] => eightBitRegister:readData2Out.values[1]
+readData2[2] => eightBitRegister:readData2Out.values[2]
+readData2[3] => eightBitRegister:readData2Out.values[3]
+readData2[4] => eightBitRegister:readData2Out.values[4]
+readData2[5] => eightBitRegister:readData2Out.values[5]
+readData2[6] => eightBitRegister:readData2Out.values[6]
+readData2[7] => eightBitRegister:readData2Out.values[7]
+WBSignals_o[0] <= twoBitRegister:WBSignalsOut.outputs[0]
+WBSignals_o[1] <= twoBitRegister:WBSignalsOut.outputs[1]
+MSignals_o[0] <= threeBitRegister:MSignalsOut.outputs[0]
+MSignals_o[1] <= threeBitRegister:MSignalsOut.outputs[1]
+MSignals_o[2] <= threeBitRegister:MSignalsOut.outputs[2]
+aluResult_o[0] <= eightBitRegister:aluResultOut.outputs[0]
+aluResult_o[1] <= eightBitRegister:aluResultOut.outputs[1]
+aluResult_o[2] <= eightBitRegister:aluResultOut.outputs[2]
+aluResult_o[3] <= eightBitRegister:aluResultOut.outputs[3]
+aluResult_o[4] <= eightBitRegister:aluResultOut.outputs[4]
+aluResult_o[5] <= eightBitRegister:aluResultOut.outputs[5]
+aluResult_o[6] <= eightBitRegister:aluResultOut.outputs[6]
+aluResult_o[7] <= eightBitRegister:aluResultOut.outputs[7]
+aluZero_o <= enARdFF_2:aluZeroOut.o_q
+instructionMuxResult_o[0] <= fiveBitRegister:instructionMuxResultOut.outputs[0]
+instructionMuxResult_o[1] <= fiveBitRegister:instructionMuxResultOut.outputs[1]
+instructionMuxResult_o[2] <= fiveBitRegister:instructionMuxResultOut.outputs[2]
+instructionMuxResult_o[3] <= fiveBitRegister:instructionMuxResultOut.outputs[3]
+instructionMuxResult_o[4] <= fiveBitRegister:instructionMuxResultOut.outputs[4]
+readData2_o[0] <= eightBitRegister:readData2Out.outputs[0]
+readData2_o[1] <= eightBitRegister:readData2Out.outputs[1]
+readData2_o[2] <= eightBitRegister:readData2Out.outputs[2]
+readData2_o[3] <= eightBitRegister:readData2Out.outputs[3]
+readData2_o[4] <= eightBitRegister:readData2Out.outputs[4]
+readData2_o[5] <= eightBitRegister:readData2Out.outputs[5]
+readData2_o[6] <= eightBitRegister:readData2Out.outputs[6]
+readData2_o[7] <= eightBitRegister:readData2Out.outputs[7]
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|twoBitRegister:WBSignalsOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|twoBitRegister:WBSignalsOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|twoBitRegister:WBSignalsOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|threeBitRegister:MSignalsOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|threeBitRegister:MSignalsOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|threeBitRegister:MSignalsOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|threeBitRegister:MSignalsOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:aluResultOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+reset => enARdFF_2:bit5.i_resetBar
+reset => enARdFF_2:bit6.i_resetBar
+reset => enARdFF_2:bit7.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+values[5] => enARdFF_2:bit5.i_d
+values[6] => enARdFF_2:bit6.i_d
+values[7] => enARdFF_2:bit7.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+en => enARdFF_2:bit5.i_enable
+en => enARdFF_2:bit6.i_enable
+en => enARdFF_2:bit7.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+clk => enARdFF_2:bit5.i_clock
+clk => enARdFF_2:bit6.i_clock
+clk => enARdFF_2:bit7.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+outputs[5] <= enARdFF_2:bit5.o_q
+outputs[6] <= enARdFF_2:bit6.o_q
+outputs[7] <= enARdFF_2:bit7.o_q
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit5
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit6
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit7
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:readData2Out
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+reset => enARdFF_2:bit5.i_resetBar
+reset => enARdFF_2:bit6.i_resetBar
+reset => enARdFF_2:bit7.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+values[5] => enARdFF_2:bit5.i_d
+values[6] => enARdFF_2:bit6.i_d
+values[7] => enARdFF_2:bit7.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+en => enARdFF_2:bit5.i_enable
+en => enARdFF_2:bit6.i_enable
+en => enARdFF_2:bit7.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+clk => enARdFF_2:bit5.i_clock
+clk => enARdFF_2:bit6.i_clock
+clk => enARdFF_2:bit7.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+outputs[5] <= enARdFF_2:bit5.o_q
+outputs[6] <= enARdFF_2:bit6.o_q
+outputs[7] <= enARdFF_2:bit7.o_q
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:readData2Out|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:readData2Out|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:readData2Out|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:readData2Out|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:readData2Out|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:readData2Out|enARdFF_2:bit5
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:readData2Out|enARdFF_2:bit6
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|eightBitRegister:readData2Out|enARdFF_2:bit7
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|fiveBitRegister:instructionMuxResultOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|fiveBitRegister:instructionMuxResultOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|fiveBitRegister:instructionMuxResultOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|fiveBitRegister:instructionMuxResultOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|fiveBitRegister:instructionMuxResultOut|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|fiveBitRegister:instructionMuxResultOut|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|EX_MEMRegister:EXMEMBuffer|enARdFF_2:aluZeroOut
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|forwardingUnit:forwardUnit
+EX_MEM_regWrite => ifCond1.IN1
+MEM_WB_regWrite => ifCond3.IN1
+EX_MEM_regRead[0] => EX_MEM_regReadZero.IN1
+EX_MEM_regRead[0] => EX_MEM_regReadEqualRs.IN0
+EX_MEM_regRead[0] => EX_MEM_regReadEqualRt.IN0
+EX_MEM_regRead[1] => EX_MEM_regReadZero.IN1
+EX_MEM_regRead[1] => EX_MEM_regReadEqualRs.IN0
+EX_MEM_regRead[1] => EX_MEM_regReadEqualRt.IN0
+EX_MEM_regRead[2] => EX_MEM_regReadZero.IN1
+EX_MEM_regRead[2] => EX_MEM_regReadEqualRs.IN0
+EX_MEM_regRead[2] => EX_MEM_regReadEqualRt.IN0
+EX_MEM_regRead[3] => EX_MEM_regReadZero.IN0
+EX_MEM_regRead[3] => EX_MEM_regReadEqualRs.IN0
+EX_MEM_regRead[3] => EX_MEM_regReadEqualRt.IN0
+EX_MEM_regRead[4] => EX_MEM_regReadZero.IN1
+EX_MEM_regRead[4] => EX_MEM_regReadEqualRs.IN0
+EX_MEM_regRead[4] => EX_MEM_regReadEqualRt.IN0
+MEM_WB_regRead[0] => MEM_WB_regReadZero.IN1
+MEM_WB_regRead[0] => MEM_WB_regReadEqualRs.IN0
+MEM_WB_regRead[0] => MEM_WB_regReadEqualRt.IN0
+MEM_WB_regRead[1] => MEM_WB_regReadZero.IN1
+MEM_WB_regRead[1] => MEM_WB_regReadEqualRs.IN0
+MEM_WB_regRead[1] => MEM_WB_regReadEqualRt.IN0
+MEM_WB_regRead[2] => MEM_WB_regReadZero.IN1
+MEM_WB_regRead[2] => MEM_WB_regReadEqualRs.IN0
+MEM_WB_regRead[2] => MEM_WB_regReadEqualRt.IN0
+MEM_WB_regRead[3] => MEM_WB_regReadZero.IN0
+MEM_WB_regRead[3] => MEM_WB_regReadEqualRs.IN0
+MEM_WB_regRead[3] => MEM_WB_regReadEqualRt.IN0
+MEM_WB_regRead[4] => MEM_WB_regReadZero.IN1
+MEM_WB_regRead[4] => MEM_WB_regReadEqualRs.IN0
+MEM_WB_regRead[4] => MEM_WB_regReadEqualRt.IN0
+ID_EX_regRs[0] => EX_MEM_regReadEqualRs.IN1
+ID_EX_regRs[0] => MEM_WB_regReadEqualRs.IN1
+ID_EX_regRs[1] => EX_MEM_regReadEqualRs.IN1
+ID_EX_regRs[1] => MEM_WB_regReadEqualRs.IN1
+ID_EX_regRs[2] => EX_MEM_regReadEqualRs.IN1
+ID_EX_regRs[2] => MEM_WB_regReadEqualRs.IN1
+ID_EX_regRs[3] => EX_MEM_regReadEqualRs.IN1
+ID_EX_regRs[3] => MEM_WB_regReadEqualRs.IN1
+ID_EX_regRs[4] => EX_MEM_regReadEqualRs.IN1
+ID_EX_regRs[4] => MEM_WB_regReadEqualRs.IN1
+ID_EX_regRt[0] => EX_MEM_regReadEqualRt.IN1
+ID_EX_regRt[0] => MEM_WB_regReadEqualRt.IN1
+ID_EX_regRt[1] => EX_MEM_regReadEqualRt.IN1
+ID_EX_regRt[1] => MEM_WB_regReadEqualRt.IN1
+ID_EX_regRt[2] => EX_MEM_regReadEqualRt.IN1
+ID_EX_regRt[2] => MEM_WB_regReadEqualRt.IN1
+ID_EX_regRt[3] => EX_MEM_regReadEqualRt.IN1
+ID_EX_regRt[3] => MEM_WB_regReadEqualRt.IN1
+ID_EX_regRt[4] => EX_MEM_regReadEqualRt.IN1
+ID_EX_regRt[4] => MEM_WB_regReadEqualRt.IN1
+forwardA[0] <= ifCond3.DB_MAX_OUTPUT_PORT_TYPE
+forwardA[1] <= ifCond1.DB_MAX_OUTPUT_PORT_TYPE
+forwardB[0] <= ifCond4.DB_MAX_OUTPUT_PORT_TYPE
+forwardB[1] <= ifCond2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|dataMemory:dataMem
 inclock => LPM_RAM_DQ:dataMem.INCLOCK
 outclock => LPM_RAM_DQ:dataMem.OUTCLOCK
 memWrite => LPM_RAM_DQ:dataMem.WE
@@ -2962,7 +5822,7 @@ readData[6] <= mux8x8:outputMuxSel.o_m[6]
 readData[7] <= mux8x8:outputMuxSel.o_m[7]
 
 
-|singleCycleTopLevel|dataMemory:dataMem|LPM_RAM_DQ:dataMem
+|pipelinedProc|dataMemory:dataMem|LPM_RAM_DQ:dataMem
 data[0] => altram:sram.data[0]
 data[1] => altram:sram.data[1]
 data[2] => altram:sram.data[2]
@@ -2992,7 +5852,7 @@ q[6] <= altram:sram.q[6]
 q[7] <= altram:sram.q[7]
 
 
-|singleCycleTopLevel|dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram
+|pipelinedProc|dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram
 we => _.IN0
 data[0] => altsyncram:ram_block.data_a[0]
 data[1] => altsyncram:ram_block.data_a[1]
@@ -3023,7 +5883,7 @@ q[6] <= altsyncram:ram_block.q_a[6]
 q[7] <= altsyncram:ram_block.q_a[7]
 
 
-|singleCycleTopLevel|dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block
+|pipelinedProc|dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block
 wren_a => altsyncram_g1e1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -3072,7 +5932,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|singleCycleTopLevel|dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated
+|pipelinedProc|dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -3179,7 +6039,7 @@ wren_a => ram_block1a6.PORTAWE
 wren_a => ram_block1a7.PORTAWE
 
 
-|singleCycleTopLevel|dataMemory:dataMem|mux8x8:outputMuxSel
+|pipelinedProc|dataMemory:dataMem|mux8x8:outputMuxSel
 sel => mux2x1:msb.sel
 sel => mux2x1:bit7.sel
 sel => mux2x1:bit6.sel
@@ -3214,7 +6074,7 @@ o_m[6] <= mux2x1:bit7.o_m
 o_m[7] <= mux2x1:msb.o_m
 
 
-|singleCycleTopLevel|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:msb
+|pipelinedProc|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:msb
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3222,7 +6082,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit7
+|pipelinedProc|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit7
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3230,7 +6090,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit6
+|pipelinedProc|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit6
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3238,7 +6098,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit5
+|pipelinedProc|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit5
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3246,7 +6106,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit4
+|pipelinedProc|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit4
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3254,7 +6114,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit3
+|pipelinedProc|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit3
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3262,7 +6122,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit2
+|pipelinedProc|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:bit2
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3270,7 +6130,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:lsb
+|pipelinedProc|dataMemory:dataMem|mux8x8:outputMuxSel|mux2x1:lsb
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3278,7 +6138,402 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux8x8:mux8BitData
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer
+reset => twoBitRegister:WBSignalsOut.reset
+reset => eightBitRegister:aluResultOut.reset
+reset => eightBitRegister:readDataMemOut.reset
+reset => fiveBitRegister:instructionMuxResultOut.reset
+en => twoBitRegister:WBSignalsOut.en
+en => eightBitRegister:aluResultOut.en
+en => eightBitRegister:readDataMemOut.en
+en => fiveBitRegister:instructionMuxResultOut.en
+clk => twoBitRegister:WBSignalsOut.clk
+clk => eightBitRegister:aluResultOut.clk
+clk => eightBitRegister:readDataMemOut.clk
+clk => fiveBitRegister:instructionMuxResultOut.clk
+WBSignals[0] => twoBitRegister:WBSignalsOut.values[0]
+WBSignals[1] => twoBitRegister:WBSignalsOut.values[1]
+aluResult[0] => eightBitRegister:aluResultOut.values[0]
+aluResult[1] => eightBitRegister:aluResultOut.values[1]
+aluResult[2] => eightBitRegister:aluResultOut.values[2]
+aluResult[3] => eightBitRegister:aluResultOut.values[3]
+aluResult[4] => eightBitRegister:aluResultOut.values[4]
+aluResult[5] => eightBitRegister:aluResultOut.values[5]
+aluResult[6] => eightBitRegister:aluResultOut.values[6]
+aluResult[7] => eightBitRegister:aluResultOut.values[7]
+readDataMem[0] => eightBitRegister:readDataMemOut.values[0]
+readDataMem[1] => eightBitRegister:readDataMemOut.values[1]
+readDataMem[2] => eightBitRegister:readDataMemOut.values[2]
+readDataMem[3] => eightBitRegister:readDataMemOut.values[3]
+readDataMem[4] => eightBitRegister:readDataMemOut.values[4]
+readDataMem[5] => eightBitRegister:readDataMemOut.values[5]
+readDataMem[6] => eightBitRegister:readDataMemOut.values[6]
+readDataMem[7] => eightBitRegister:readDataMemOut.values[7]
+instructionMuxResult[0] => fiveBitRegister:instructionMuxResultOut.values[0]
+instructionMuxResult[1] => fiveBitRegister:instructionMuxResultOut.values[1]
+instructionMuxResult[2] => fiveBitRegister:instructionMuxResultOut.values[2]
+instructionMuxResult[3] => fiveBitRegister:instructionMuxResultOut.values[3]
+instructionMuxResult[4] => fiveBitRegister:instructionMuxResultOut.values[4]
+WBSignals_o[0] <= twoBitRegister:WBSignalsOut.outputs[0]
+WBSignals_o[1] <= twoBitRegister:WBSignalsOut.outputs[1]
+aluResult_o[0] <= eightBitRegister:aluResultOut.outputs[0]
+aluResult_o[1] <= eightBitRegister:aluResultOut.outputs[1]
+aluResult_o[2] <= eightBitRegister:aluResultOut.outputs[2]
+aluResult_o[3] <= eightBitRegister:aluResultOut.outputs[3]
+aluResult_o[4] <= eightBitRegister:aluResultOut.outputs[4]
+aluResult_o[5] <= eightBitRegister:aluResultOut.outputs[5]
+aluResult_o[6] <= eightBitRegister:aluResultOut.outputs[6]
+aluResult_o[7] <= eightBitRegister:aluResultOut.outputs[7]
+readDataMem_o[0] <= eightBitRegister:readDataMemOut.outputs[0]
+readDataMem_o[1] <= eightBitRegister:readDataMemOut.outputs[1]
+readDataMem_o[2] <= eightBitRegister:readDataMemOut.outputs[2]
+readDataMem_o[3] <= eightBitRegister:readDataMemOut.outputs[3]
+readDataMem_o[4] <= eightBitRegister:readDataMemOut.outputs[4]
+readDataMem_o[5] <= eightBitRegister:readDataMemOut.outputs[5]
+readDataMem_o[6] <= eightBitRegister:readDataMemOut.outputs[6]
+readDataMem_o[7] <= eightBitRegister:readDataMemOut.outputs[7]
+instructionMuxResult_o[0] <= fiveBitRegister:instructionMuxResultOut.outputs[0]
+instructionMuxResult_o[1] <= fiveBitRegister:instructionMuxResultOut.outputs[1]
+instructionMuxResult_o[2] <= fiveBitRegister:instructionMuxResultOut.outputs[2]
+instructionMuxResult_o[3] <= fiveBitRegister:instructionMuxResultOut.outputs[3]
+instructionMuxResult_o[4] <= fiveBitRegister:instructionMuxResultOut.outputs[4]
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|twoBitRegister:WBSignalsOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|twoBitRegister:WBSignalsOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|twoBitRegister:WBSignalsOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:aluResultOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+reset => enARdFF_2:bit5.i_resetBar
+reset => enARdFF_2:bit6.i_resetBar
+reset => enARdFF_2:bit7.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+values[5] => enARdFF_2:bit5.i_d
+values[6] => enARdFF_2:bit6.i_d
+values[7] => enARdFF_2:bit7.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+en => enARdFF_2:bit5.i_enable
+en => enARdFF_2:bit6.i_enable
+en => enARdFF_2:bit7.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+clk => enARdFF_2:bit5.i_clock
+clk => enARdFF_2:bit6.i_clock
+clk => enARdFF_2:bit7.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+outputs[5] <= enARdFF_2:bit5.o_q
+outputs[6] <= enARdFF_2:bit6.o_q
+outputs[7] <= enARdFF_2:bit7.o_q
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit5
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit6
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:aluResultOut|enARdFF_2:bit7
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:readDataMemOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+reset => enARdFF_2:bit5.i_resetBar
+reset => enARdFF_2:bit6.i_resetBar
+reset => enARdFF_2:bit7.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+values[5] => enARdFF_2:bit5.i_d
+values[6] => enARdFF_2:bit6.i_d
+values[7] => enARdFF_2:bit7.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+en => enARdFF_2:bit5.i_enable
+en => enARdFF_2:bit6.i_enable
+en => enARdFF_2:bit7.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+clk => enARdFF_2:bit5.i_clock
+clk => enARdFF_2:bit6.i_clock
+clk => enARdFF_2:bit7.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+outputs[5] <= enARdFF_2:bit5.o_q
+outputs[6] <= enARdFF_2:bit6.o_q
+outputs[7] <= enARdFF_2:bit7.o_q
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:readDataMemOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:readDataMemOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:readDataMemOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:readDataMemOut|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:readDataMemOut|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:readDataMemOut|enARdFF_2:bit5
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:readDataMemOut|enARdFF_2:bit6
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|eightBitRegister:readDataMemOut|enARdFF_2:bit7
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|fiveBitRegister:instructionMuxResultOut
+reset => enARdFF_2:bit0.i_resetBar
+reset => enARdFF_2:bit1.i_resetBar
+reset => enARdFF_2:bit2.i_resetBar
+reset => enARdFF_2:bit3.i_resetBar
+reset => enARdFF_2:bit4.i_resetBar
+values[0] => enARdFF_2:bit0.i_d
+values[1] => enARdFF_2:bit1.i_d
+values[2] => enARdFF_2:bit2.i_d
+values[3] => enARdFF_2:bit3.i_d
+values[4] => enARdFF_2:bit4.i_d
+en => enARdFF_2:bit0.i_enable
+en => enARdFF_2:bit1.i_enable
+en => enARdFF_2:bit2.i_enable
+en => enARdFF_2:bit3.i_enable
+en => enARdFF_2:bit4.i_enable
+clk => enARdFF_2:bit0.i_clock
+clk => enARdFF_2:bit1.i_clock
+clk => enARdFF_2:bit2.i_clock
+clk => enARdFF_2:bit3.i_clock
+clk => enARdFF_2:bit4.i_clock
+outputs[0] <= enARdFF_2:bit0.o_q
+outputs[1] <= enARdFF_2:bit1.o_q
+outputs[2] <= enARdFF_2:bit2.o_q
+outputs[3] <= enARdFF_2:bit3.o_q
+outputs[4] <= enARdFF_2:bit4.o_q
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|fiveBitRegister:instructionMuxResultOut|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|fiveBitRegister:instructionMuxResultOut|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|fiveBitRegister:instructionMuxResultOut|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|fiveBitRegister:instructionMuxResultOut|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|MEM_WBRegister:MEMWBBuffer|fiveBitRegister:instructionMuxResultOut|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|pipelinedProc|mux8x8:MEMWBMuxOut
 sel => mux2x1:msb.sel
 sel => mux2x1:bit7.sel
 sel => mux2x1:bit6.sel
@@ -3313,7 +6568,7 @@ o_m[6] <= mux2x1:bit7.o_m
 o_m[7] <= mux2x1:msb.o_m
 
 
-|singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:msb
+|pipelinedProc|mux8x8:MEMWBMuxOut|mux2x1:msb
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3321,7 +6576,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit7
+|pipelinedProc|mux8x8:MEMWBMuxOut|mux2x1:bit7
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3329,7 +6584,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit6
+|pipelinedProc|mux8x8:MEMWBMuxOut|mux2x1:bit6
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3337,7 +6592,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit5
+|pipelinedProc|mux8x8:MEMWBMuxOut|mux2x1:bit5
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3345,7 +6600,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit4
+|pipelinedProc|mux8x8:MEMWBMuxOut|mux2x1:bit4
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3353,7 +6608,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit3
+|pipelinedProc|mux8x8:MEMWBMuxOut|mux2x1:bit3
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3361,7 +6616,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit2
+|pipelinedProc|mux8x8:MEMWBMuxOut|mux2x1:bit2
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3369,7 +6624,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:lsb
+|pipelinedProc|mux8x8:MEMWBMuxOut|mux2x1:lsb
 a_i => o_m.IN0
 b_i => o_m.IN0
 sel => o_m.IN1
@@ -3377,495 +6632,7 @@ sel => o_m.IN1
 o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|singleCycleTopLevel|controlLogicUnit:controlUnit
-op[0] => lw.IN1
-op[0] => sw.IN1
-op[0] => rFormat.IN1
-op[0] => beq.IN1
-op[0] => bne.IN1
-op[0] => jmp.IN1
-op[1] => lw.IN1
-op[1] => sw.IN1
-op[1] => bne.IN1
-op[1] => jmp.IN1
-op[1] => rFormat.IN1
-op[1] => beq.IN1
-op[2] => beq.IN1
-op[2] => rFormat.IN1
-op[2] => lw.IN1
-op[2] => lw.IN1
-op[2] => sw.IN1
-op[3] => sw.IN1
-op[3] => rFormat.IN1
-op[4] => rFormat.IN0
-op[4] => lw.IN0
-op[5] => lw.IN1
-op[5] => rFormat.IN1
-regDst <= rFormat.DB_MAX_OUTPUT_PORT_TYPE
-aluSrc <= int_aluSrc.DB_MAX_OUTPUT_PORT_TYPE
-memToReg <= lw.DB_MAX_OUTPUT_PORT_TYPE
-regWrite <= int_regWrite.DB_MAX_OUTPUT_PORT_TYPE
-memRead <= lw.DB_MAX_OUTPUT_PORT_TYPE
-memWrite <= sw.DB_MAX_OUTPUT_PORT_TYPE
-branch <= beq.DB_MAX_OUTPUT_PORT_TYPE
-branchNotEqual <= bne.DB_MAX_OUTPUT_PORT_TYPE
-jump <= jmp.DB_MAX_OUTPUT_PORT_TYPE
-aluOp1 <= rFormat.DB_MAX_OUTPUT_PORT_TYPE
-aluOp0 <= int_aluOp0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:pcPlus4Adder
-A_i[0] => oneBitAdder:LSB.i_Ai
-A_i[1] => oneBitAdder:Bit2.i_Ai
-A_i[2] => oneBitAdder:Bit3.i_Ai
-A_i[3] => oneBitAdder:Bit4.i_Ai
-A_i[4] => oneBitAdder:Bit5.i_Ai
-A_i[5] => oneBitAdder:Bit6.i_Ai
-A_i[6] => oneBitAdder:Bit7.i_Ai
-A_i[7] => oneBitAdder:MSB.i_Ai
-B_i[0] => oneBitAdder:LSB.i_Bi
-B_i[1] => oneBitAdder:Bit2.i_Bi
-B_i[2] => oneBitAdder:Bit3.i_Bi
-B_i[3] => oneBitAdder:Bit4.i_Bi
-B_i[4] => oneBitAdder:Bit5.i_Bi
-B_i[5] => oneBitAdder:Bit6.i_Bi
-B_i[6] => oneBitAdder:Bit7.i_Bi
-B_i[7] => oneBitAdder:MSB.i_Bi
-C_i => oneBitAdder:LSB.i_CarryIn
-C_o <= oneBitAdder:MSB.o_CarryOut
-sum[0] <= oneBitAdder:LSB.o_Sum
-sum[1] <= oneBitAdder:Bit2.o_Sum
-sum[2] <= oneBitAdder:Bit3.o_Sum
-sum[3] <= oneBitAdder:Bit4.o_Sum
-sum[4] <= oneBitAdder:Bit5.o_Sum
-sum[5] <= oneBitAdder:Bit6.o_Sum
-sum[6] <= oneBitAdder:Bit7.o_Sum
-sum[7] <= oneBitAdder:MSB.o_Sum
-
-
-|singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:MSB
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit7
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit6
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit5
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit4
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit3
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit2
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:LSB
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|shiftLeft2Unit:shiftLeftBranch
-shift_input[0] => shift_output[2].DATAIN
-shift_input[1] => shift_output[3].DATAIN
-shift_input[2] => shift_output[4].DATAIN
-shift_input[3] => shift_output[5].DATAIN
-shift_input[4] => shift_output[6].DATAIN
-shift_input[5] => shift_output[7].DATAIN
-shift_input[6] => ~NO_FANOUT~
-shift_input[7] => ~NO_FANOUT~
-shift_output[0] <= <GND>
-shift_output[1] <= <GND>
-shift_output[2] <= shift_input[0].DB_MAX_OUTPUT_PORT_TYPE
-shift_output[3] <= shift_input[1].DB_MAX_OUTPUT_PORT_TYPE
-shift_output[4] <= shift_input[2].DB_MAX_OUTPUT_PORT_TYPE
-shift_output[5] <= shift_input[3].DB_MAX_OUTPUT_PORT_TYPE
-shift_output[6] <= shift_input[4].DB_MAX_OUTPUT_PORT_TYPE
-shift_output[7] <= shift_input[5].DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:branchAdder
-A_i[0] => oneBitAdder:LSB.i_Ai
-A_i[1] => oneBitAdder:Bit2.i_Ai
-A_i[2] => oneBitAdder:Bit3.i_Ai
-A_i[3] => oneBitAdder:Bit4.i_Ai
-A_i[4] => oneBitAdder:Bit5.i_Ai
-A_i[5] => oneBitAdder:Bit6.i_Ai
-A_i[6] => oneBitAdder:Bit7.i_Ai
-A_i[7] => oneBitAdder:MSB.i_Ai
-B_i[0] => oneBitAdder:LSB.i_Bi
-B_i[1] => oneBitAdder:Bit2.i_Bi
-B_i[2] => oneBitAdder:Bit3.i_Bi
-B_i[3] => oneBitAdder:Bit4.i_Bi
-B_i[4] => oneBitAdder:Bit5.i_Bi
-B_i[5] => oneBitAdder:Bit6.i_Bi
-B_i[6] => oneBitAdder:Bit7.i_Bi
-B_i[7] => oneBitAdder:MSB.i_Bi
-C_i => oneBitAdder:LSB.i_CarryIn
-C_o <= oneBitAdder:MSB.o_CarryOut
-sum[0] <= oneBitAdder:LSB.o_Sum
-sum[1] <= oneBitAdder:Bit2.o_Sum
-sum[2] <= oneBitAdder:Bit3.o_Sum
-sum[3] <= oneBitAdder:Bit4.o_Sum
-sum[4] <= oneBitAdder:Bit5.o_Sum
-sum[5] <= oneBitAdder:Bit6.o_Sum
-sum[6] <= oneBitAdder:Bit7.o_Sum
-sum[7] <= oneBitAdder:MSB.o_Sum
-
-
-|singleCycleTopLevel|eightBitAdder:branchAdder|oneBitAdder:MSB
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:branchAdder|oneBitAdder:Bit7
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:branchAdder|oneBitAdder:Bit6
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:branchAdder|oneBitAdder:Bit5
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:branchAdder|oneBitAdder:Bit4
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:branchAdder|oneBitAdder:Bit3
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:branchAdder|oneBitAdder:Bit2
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|eightBitAdder:branchAdder|oneBitAdder:LSB
-i_CarryIn => int_CarryOut3.IN0
-i_CarryIn => int_CarryOut1.IN0
-i_Ai => int_CarryOut3.IN1
-i_Ai => int_CarryOut1.IN1
-i_Bi => int_CarryOut2.IN1
-i_Bi => o_Sum.IN1
-o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
-o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:branchMux
-sel => mux2x1:msb.sel
-sel => mux2x1:bit7.sel
-sel => mux2x1:bit6.sel
-sel => mux2x1:bit5.sel
-sel => mux2x1:bit4.sel
-sel => mux2x1:bit3.sel
-sel => mux2x1:bit2.sel
-sel => mux2x1:lsb.sel
-a_i[0] => mux2x1:lsb.a_i
-a_i[1] => mux2x1:bit2.a_i
-a_i[2] => mux2x1:bit3.a_i
-a_i[3] => mux2x1:bit4.a_i
-a_i[4] => mux2x1:bit5.a_i
-a_i[5] => mux2x1:bit6.a_i
-a_i[6] => mux2x1:bit7.a_i
-a_i[7] => mux2x1:msb.a_i
-b_i[0] => mux2x1:lsb.b_i
-b_i[1] => mux2x1:bit2.b_i
-b_i[2] => mux2x1:bit3.b_i
-b_i[3] => mux2x1:bit4.b_i
-b_i[4] => mux2x1:bit5.b_i
-b_i[5] => mux2x1:bit6.b_i
-b_i[6] => mux2x1:bit7.b_i
-b_i[7] => mux2x1:msb.b_i
-o_m[0] <= mux2x1:lsb.o_m
-o_m[1] <= mux2x1:bit2.o_m
-o_m[2] <= mux2x1:bit3.o_m
-o_m[3] <= mux2x1:bit4.o_m
-o_m[4] <= mux2x1:bit5.o_m
-o_m[5] <= mux2x1:bit6.o_m
-o_m[6] <= mux2x1:bit7.o_m
-o_m[7] <= mux2x1:msb.o_m
-
-
-|singleCycleTopLevel|mux8x8:branchMux|mux2x1:msb
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:branchMux|mux2x1:bit7
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:branchMux|mux2x1:bit6
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:branchMux|mux2x1:bit5
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:branchMux|mux2x1:bit4
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:branchMux|mux2x1:bit3
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:branchMux|mux2x1:bit2
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:branchMux|mux2x1:lsb
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:jumpBranchSel
-sel => mux2x1:msb.sel
-sel => mux2x1:bit7.sel
-sel => mux2x1:bit6.sel
-sel => mux2x1:bit5.sel
-sel => mux2x1:bit4.sel
-sel => mux2x1:bit3.sel
-sel => mux2x1:bit2.sel
-sel => mux2x1:lsb.sel
-a_i[0] => mux2x1:lsb.a_i
-a_i[1] => mux2x1:bit2.a_i
-a_i[2] => mux2x1:bit3.a_i
-a_i[3] => mux2x1:bit4.a_i
-a_i[4] => mux2x1:bit5.a_i
-a_i[5] => mux2x1:bit6.a_i
-a_i[6] => mux2x1:bit7.a_i
-a_i[7] => mux2x1:msb.a_i
-b_i[0] => mux2x1:lsb.b_i
-b_i[1] => mux2x1:bit2.b_i
-b_i[2] => mux2x1:bit3.b_i
-b_i[3] => mux2x1:bit4.b_i
-b_i[4] => mux2x1:bit5.b_i
-b_i[5] => mux2x1:bit6.b_i
-b_i[6] => mux2x1:bit7.b_i
-b_i[7] => mux2x1:msb.b_i
-o_m[0] <= mux2x1:lsb.o_m
-o_m[1] <= mux2x1:bit2.o_m
-o_m[2] <= mux2x1:bit3.o_m
-o_m[3] <= mux2x1:bit4.o_m
-o_m[4] <= mux2x1:bit5.o_m
-o_m[5] <= mux2x1:bit6.o_m
-o_m[6] <= mux2x1:bit7.o_m
-o_m[7] <= mux2x1:msb.o_m
-
-
-|singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:msb
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit7
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit6
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit5
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit4
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit3
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit2
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:lsb
-a_i => o_m.IN0
-b_i => o_m.IN0
-sel => o_m.IN1
-sel => o_m.IN1
-o_m <= o_m.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|singleCycleTopLevel|mux8x1EightBit:outputVal
+|pipelinedProc|mux8x1EightBit:outputVal
 a0[0] => o.IN1
 a0[1] => o.IN1
 a0[2] => o.IN1

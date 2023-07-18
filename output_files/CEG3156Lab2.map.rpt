@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CEG3156Lab2
-Sat Jul 15 16:43:54 2023
+Mon Jul 17 21:40:59 2023
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -10,37 +10,7 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis RAM Summary
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Source assignments for instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated
- 12. Source assignments for dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated
- 13. Parameter Settings for User Entity Instance: instructionMemory:instructionMem|LPM_ROM:instructionMem
- 14. Parameter Settings for User Entity Instance: dataMemory:dataMem|LPM_RAM_DQ:dataMem
- 15. Port Connectivity Checks: "eightBitAdder:branchAdder"
- 16. Port Connectivity Checks: "eightBitAdder:pcPlus4Adder"
- 17. Port Connectivity Checks: "dataMemory:dataMem|mux8x8:outputMuxSel"
- 18. Port Connectivity Checks: "ALUmain:alu|mux8x1EightBit:ALUMux"
- 19. Port Connectivity Checks: "ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp0"
- 20. Port Connectivity Checks: "ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp7"
- 21. Port Connectivity Checks: "ALUmain:alu|eightBitSubtractor:subtractor"
- 22. Port Connectivity Checks: "ALUmain:alu|eightBitAdder:adder"
- 23. Port Connectivity Checks: "signExtendUnit:signExt"
- 24. Port Connectivity Checks: "registerFile:regFile"
- 25. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit7"
- 26. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit6"
- 27. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit5"
- 28. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit4"
- 29. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit3"
- 30. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit2"
- 31. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit1"
- 32. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit0"
- 33. Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal"
- 34. Elapsed Time Per Partition
- 35. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Messages
 
 
 
@@ -66,108 +36,108 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Jul 15 16:43:54 2023      ;
+; Analysis & Synthesis Status        ; Failed - Mon Jul 17 21:40:59 2023          ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; CEG3156Lab2                                ;
-; Top-level Entity Name              ; singleCycleTopLevel                        ;
+; Top-level Entity Name              ; pipelinedProc                              ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 333                                        ;
-;     Total combinational functions  ; 277                                        ;
-;     Dedicated logic registers      ; 72                                         ;
-; Total registers                    ; 72                                         ;
-; Total pins                         ; 66                                         ;
-; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 10,240                                     ;
-; Embedded Multiplier 9-bit elements ; 0                                          ;
-; Total PLLs                         ; 0                                          ;
+; Total logic elements               ; N/A until Partition Merge                  ;
+;     Total combinational functions  ; N/A until Partition Merge                  ;
+;     Dedicated logic registers      ; N/A until Partition Merge                  ;
+; Total registers                    ; N/A until Partition Merge                  ;
+; Total pins                         ; N/A until Partition Merge                  ;
+; Total virtual pins                 ; N/A until Partition Merge                  ;
+; Total memory bits                  ; N/A until Partition Merge                  ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                  ;
+; Total PLLs                         ; N/A until Partition Merge                  ;
 +------------------------------------+--------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                                         ;
-+----------------------------------------------------------------------------+---------------------+--------------------+
-; Option                                                                     ; Setting             ; Default Value      ;
-+----------------------------------------------------------------------------+---------------------+--------------------+
-; Device                                                                     ; EP4CE115F29C7       ;                    ;
-; Top-level entity name                                                      ; singleCycleTopLevel ; CEG3156Lab2        ;
-; Family name                                                                ; Cyclone IV E        ; Cyclone IV GX      ;
-; Use smart compilation                                                      ; Off                 ; Off                ;
-; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                  ; On                 ;
-; Enable compact report table                                                ; Off                 ; Off                ;
-; Restructure Multiplexers                                                   ; Auto                ; Auto               ;
-; Create Debugging Nodes for IP Cores                                        ; Off                 ; Off                ;
-; Preserve fewer node names                                                  ; On                  ; On                 ;
-; Disable OpenCore Plus hardware evaluation                                  ; Off                 ; Off                ;
-; Verilog Version                                                            ; Verilog_2001        ; Verilog_2001       ;
-; VHDL Version                                                               ; VHDL_1993           ; VHDL_1993          ;
-; State Machine Processing                                                   ; Auto                ; Auto               ;
-; Safe State Machine                                                         ; Off                 ; Off                ;
-; Extract Verilog State Machines                                             ; On                  ; On                 ;
-; Extract VHDL State Machines                                                ; On                  ; On                 ;
-; Ignore Verilog initial constructs                                          ; Off                 ; Off                ;
-; Iteration limit for constant Verilog loops                                 ; 5000                ; 5000               ;
-; Iteration limit for non-constant Verilog loops                             ; 250                 ; 250                ;
-; Add Pass-Through Logic to Inferred RAMs                                    ; On                  ; On                 ;
-; Infer RAMs from Raw Logic                                                  ; On                  ; On                 ;
-; Parallel Synthesis                                                         ; On                  ; On                 ;
-; DSP Block Balancing                                                        ; Auto                ; Auto               ;
-; NOT Gate Push-Back                                                         ; On                  ; On                 ;
-; Power-Up Don't Care                                                        ; On                  ; On                 ;
-; Remove Redundant Logic Cells                                               ; Off                 ; Off                ;
-; Remove Duplicate Registers                                                 ; On                  ; On                 ;
-; Ignore CARRY Buffers                                                       ; Off                 ; Off                ;
-; Ignore CASCADE Buffers                                                     ; Off                 ; Off                ;
-; Ignore GLOBAL Buffers                                                      ; Off                 ; Off                ;
-; Ignore ROW GLOBAL Buffers                                                  ; Off                 ; Off                ;
-; Ignore LCELL Buffers                                                       ; Off                 ; Off                ;
-; Ignore SOFT Buffers                                                        ; On                  ; On                 ;
-; Limit AHDL Integers to 32 Bits                                             ; Off                 ; Off                ;
-; Optimization Technique                                                     ; Balanced            ; Balanced           ;
-; Carry Chain Length                                                         ; 70                  ; 70                 ;
-; Auto Carry Chains                                                          ; On                  ; On                 ;
-; Auto Open-Drain Pins                                                       ; On                  ; On                 ;
-; Perform WYSIWYG Primitive Resynthesis                                      ; Off                 ; Off                ;
-; Auto ROM Replacement                                                       ; On                  ; On                 ;
-; Auto RAM Replacement                                                       ; On                  ; On                 ;
-; Auto DSP Block Replacement                                                 ; On                  ; On                 ;
-; Auto Shift Register Replacement                                            ; Auto                ; Auto               ;
-; Allow Shift Register Merging across Hierarchies                            ; Auto                ; Auto               ;
-; Auto Clock Enable Replacement                                              ; On                  ; On                 ;
-; Strict RAM Replacement                                                     ; Off                 ; Off                ;
-; Allow Synchronous Control Signals                                          ; On                  ; On                 ;
-; Force Use of Synchronous Clear Signals                                     ; Off                 ; Off                ;
-; Auto RAM Block Balancing                                                   ; On                  ; On                 ;
-; Auto RAM to Logic Cell Conversion                                          ; Off                 ; Off                ;
-; Auto Resource Sharing                                                      ; Off                 ; Off                ;
-; Allow Any RAM Size For Recognition                                         ; Off                 ; Off                ;
-; Allow Any ROM Size For Recognition                                         ; Off                 ; Off                ;
-; Allow Any Shift Register Size For Recognition                              ; Off                 ; Off                ;
-; Use LogicLock Constraints during Resource Balancing                        ; On                  ; On                 ;
-; Ignore translate_off and synthesis_off directives                          ; Off                 ; Off                ;
-; Timing-Driven Synthesis                                                    ; On                  ; On                 ;
-; Report Parameter Settings                                                  ; On                  ; On                 ;
-; Report Source Assignments                                                  ; On                  ; On                 ;
-; Report Connectivity Checks                                                 ; On                  ; On                 ;
-; Ignore Maximum Fan-Out Assignments                                         ; Off                 ; Off                ;
-; Synchronization Register Chain Length                                      ; 2                   ; 2                  ;
-; PowerPlay Power Optimization                                               ; Normal compilation  ; Normal compilation ;
-; HDL message level                                                          ; Level2              ; Level2             ;
-; Suppress Register Optimization Related Messages                            ; Off                 ; Off                ;
-; Number of Removed Registers Reported in Synthesis Report                   ; 5000                ; 5000               ;
-; Number of Swept Nodes Reported in Synthesis Report                         ; 5000                ; 5000               ;
-; Number of Inverted Registers Reported in Synthesis Report                  ; 100                 ; 100                ;
-; Clock MUX Protection                                                       ; On                  ; On                 ;
-; Auto Gated Clock Conversion                                                ; Off                 ; Off                ;
-; Block Design Naming                                                        ; Auto                ; Auto               ;
-; SDC constraint protection                                                  ; Off                 ; Off                ;
-; Synthesis Effort                                                           ; Auto                ; Auto               ;
-; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                  ; On                 ;
-; Pre-Mapping Resynthesis Optimization                                       ; Off                 ; Off                ;
-; Analysis & Synthesis Message Level                                         ; Medium              ; Medium             ;
-; Disable Register Merging Across Hierarchies                                ; Auto                ; Auto               ;
-; Resource Aware Inference For Block RAM                                     ; On                  ; On                 ;
-; Synthesis Seed                                                             ; 1                   ; 1                  ;
-+----------------------------------------------------------------------------+---------------------+--------------------+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                                      ; pipelinedProc      ; CEG3156Lab2        ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
 
 
 Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
@@ -181,545 +151,48 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                  ;
-+----------------------------------+-----------------+----------------------------------+-----------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                          ; Library ;
-+----------------------------------+-----------------+----------------------------------+-----------------------------------------------------------------------+---------+
-; dataMemory.mif                   ; yes             ; User Memory Initialization File  ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dataMemory.mif          ;         ;
-; enARdFF_2.vhd                    ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/enARdFF_2.vhd           ;         ;
-; oneBitSubtractor.vhd             ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/oneBitSubtractor.vhd    ;         ;
-; shiftLeft2Unit.vhd               ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/shiftLeft2Unit.vhd      ;         ;
-; signExtendUnit.vhd               ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/signExtendUnit.vhd      ;         ;
-; eightBitRegister.vhd             ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitRegister.vhd    ;         ;
-; registerFile.vhd                 ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/registerFile.vhd        ;         ;
-; eightBitSubtractor.vhd           ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitSubtractor.vhd  ;         ;
-; eightBitAdder.vhd                ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitAdder.vhd       ;         ;
-; mux2x1.vhd                       ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux2x1.vhd              ;         ;
-; aluControlUnit.vhd               ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/aluControlUnit.vhd      ;         ;
-; onebitadder.vhd                  ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd         ;         ;
-; threeToEightDecoder.vhd          ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/threeToEightDecoder.vhd ;         ;
-; mux8x1EightBit.vhd               ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x1EightBit.vhd      ;         ;
-; controlLogicUnit.vhd             ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/controlLogicUnit.vhd    ;         ;
-; instructionMemory.vhd            ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.vhd   ;         ;
-; dataMemory.vhd                   ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dataMemory.vhd          ;         ;
-; mux8x8.vhd                       ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux8x8.vhd              ;         ;
-; mux5x5.vhd                       ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux5x5.vhd              ;         ;
-; ALUmain.vhd                      ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ALUmain.vhd             ;         ;
-; onebitcomparator.vhd             ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitcomparator.vhd    ;         ;
-; eightBitComparator.vhd           ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/eightBitComparator.vhd  ;         ;
-; pcRegister.vhd                   ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pcRegister.vhd          ;         ;
-; singleCycleTopLevel.vhd          ; yes             ; User VHDL File                   ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/singleCycleTopLevel.vhd ;         ;
-; instructionMemory.mif            ; yes             ; User Memory Initialization File  ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.mif   ;         ;
-; lpm_rom.tdf                      ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_rom.tdf            ;         ;
-; altrom.inc                       ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/altrom.inc             ;         ;
-; aglobal131.inc                   ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc         ;         ;
-; altrom.tdf                       ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/altrom.tdf             ;         ;
-; memmodes.inc                     ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/others/maxplus2/memmodes.inc         ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_decode.inc         ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_mux.inc            ;         ;
-; altsyncram.inc                   ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/altsyncram.inc         ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/altsyncram.tdf         ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/stratix_ram_block.inc  ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/a_rdenreg.inc          ;         ;
-; altram.inc                       ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/altram.inc             ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/altdpram.inc           ;         ;
-; db/altsyncram_d951.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/db/altsyncram_d951.tdf  ;         ;
-; lpm_ram_dq.tdf                   ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_ram_dq.tdf         ;         ;
-; altram.tdf                       ; yes             ; Megafunction                     ; c:/altera/13.1/quartus/libraries/megafunctions/altram.tdf             ;         ;
-; db/altsyncram_g1e1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/db/altsyncram_g1e1.tdf  ;         ;
-+----------------------------------+-----------------+----------------------------------+-----------------------------------------------------------------------+---------+
-
-
-+-------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                 ;
-+---------------------------------------------+---------------+
-; Resource                                    ; Usage         ;
-+---------------------------------------------+---------------+
-; Estimated Total logic elements              ; 333           ;
-;                                             ;               ;
-; Total combinational functions               ; 277           ;
-; Logic element usage by number of LUT inputs ;               ;
-;     -- 4 input functions                    ; 215           ;
-;     -- 3 input functions                    ; 58            ;
-;     -- <=2 input functions                  ; 4             ;
-;                                             ;               ;
-; Logic elements by mode                      ;               ;
-;     -- normal mode                          ; 277           ;
-;     -- arithmetic mode                      ; 0             ;
-;                                             ;               ;
-; Total registers                             ; 72            ;
-;     -- Dedicated logic registers            ; 72            ;
-;     -- I/O registers                        ; 0             ;
-;                                             ;               ;
-; I/O pins                                    ; 66            ;
-; Total memory bits                           ; 10240         ;
-; Embedded Multiplier 9-bit elements          ; 0             ;
-; Maximum fan-out node                        ; GClock1~input ;
-; Maximum fan-out                             ; 112           ;
-; Total fan-out                               ; 1864          ;
-; Average fan-out                             ; 3.58          ;
-+---------------------------------------------+---------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                       ;
-+-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node                      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                          ; Library Name ;
-+-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |singleCycleTopLevel                            ; 277 (0)           ; 72 (0)       ; 10240       ; 0            ; 0       ; 0         ; 66   ; 0            ; |singleCycleTopLevel                                                                                                                         ; work         ;
-;    |ALUmain:alu|                                ; 69 (3)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu                                                                                                             ; work         ;
-;       |eighBitComparator:stl|                   ; 14 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl                                                                                       ; work         ;
-;          |oneBitComparator:comp1|               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp1                                                                ; work         ;
-;          |oneBitComparator:comp2|               ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp2                                                                ; work         ;
-;          |oneBitComparator:comp4|               ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp4                                                                ; work         ;
-;          |oneBitComparator:comp5|               ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp5                                                                ; work         ;
-;          |oneBitComparator:comp6|               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp6                                                                ; work         ;
-;       |eightBitAdder:adder|                     ; 7 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder                                                                                         ; work         ;
-;          |oneBitAdder:Bit2|                     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit2                                                                        ; work         ;
-;          |oneBitAdder:Bit3|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit3                                                                        ; work         ;
-;          |oneBitAdder:Bit4|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit4                                                                        ; work         ;
-;          |oneBitAdder:Bit5|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit5                                                                        ; work         ;
-;          |oneBitAdder:Bit6|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit6                                                                        ; work         ;
-;          |oneBitAdder:Bit7|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitAdder:adder|oneBitAdder:Bit7                                                                        ; work         ;
-;       |eightBitSubtractor:subtractor|           ; 11 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor                                                                               ; work         ;
-;          |oneBitSubtractor:Bit2|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit2                                                         ; work         ;
-;          |oneBitSubtractor:Bit3|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit3                                                         ; work         ;
-;          |oneBitSubtractor:Bit4|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit4                                                         ; work         ;
-;          |oneBitSubtractor:Bit5|                ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit5                                                         ; work         ;
-;          |oneBitSubtractor:Bit6|                ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit6                                                         ; work         ;
-;          |oneBitSubtractor:Bit7|                ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:Bit7                                                         ; work         ;
-;          |oneBitSubtractor:LSB|                 ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:LSB                                                          ; work         ;
-;       |mux8x1EightBit:ALUMux|                   ; 34 (34)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|ALUmain:alu|mux8x1EightBit:ALUMux                                                                                       ; work         ;
-;    |aluControlUnit:aluCont|                     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|aluControlUnit:aluCont                                                                                                  ; work         ;
-;    |controlLogicUnit:controlUnit|               ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|controlLogicUnit:controlUnit                                                                                            ; work         ;
-;    |dataMemory:dataMem|                         ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|dataMemory:dataMem                                                                                                      ; work         ;
-;       |lpm_ram_dq:dataMem|                      ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|dataMemory:dataMem|lpm_ram_dq:dataMem                                                                                   ; work         ;
-;          |altram:sram|                          ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|dataMemory:dataMem|lpm_ram_dq:dataMem|altram:sram                                                                       ; work         ;
-;             |altsyncram:ram_block|              ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|dataMemory:dataMem|lpm_ram_dq:dataMem|altram:sram|altsyncram:ram_block                                                  ; work         ;
-;                |altsyncram_g1e1:auto_generated| ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|dataMemory:dataMem|lpm_ram_dq:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated                   ; work         ;
-;    |eightBitAdder:pcPlus4Adder|                 ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|eightBitAdder:pcPlus4Adder                                                                                              ; work         ;
-;       |oneBitAdder:Bit6|                        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|eightBitAdder:pcPlus4Adder|oneBitAdder:Bit6                                                                             ; work         ;
-;    |instructionMemory:instructionMem|           ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|instructionMemory:instructionMem                                                                                        ; work         ;
-;       |lpm_rom:instructionMem|                  ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|instructionMemory:instructionMem|lpm_rom:instructionMem                                                                 ; work         ;
-;          |altrom:srom|                          ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|instructionMemory:instructionMem|lpm_rom:instructionMem|altrom:srom                                                     ; work         ;
-;             |altsyncram:rom_block|              ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|instructionMemory:instructionMem|lpm_rom:instructionMem|altrom:srom|altsyncram:rom_block                                ; work         ;
-;                |altsyncram_d951:auto_generated| ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|instructionMemory:instructionMem|lpm_rom:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated ; work         ;
-;    |mux8x1EightBit:outputVal|                   ; 37 (37)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x1EightBit:outputVal                                                                                                ; work         ;
-;    |mux8x8:jumpBranchSel|                       ; 23 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel                                                                                                    ; work         ;
-;       |mux2x1:bit2|                             ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit2                                                                                        ; work         ;
-;       |mux2x1:bit3|                             ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit3                                                                                        ; work         ;
-;       |mux2x1:bit4|                             ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit4                                                                                        ; work         ;
-;       |mux2x1:bit5|                             ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit5                                                                                        ; work         ;
-;       |mux2x1:bit6|                             ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit6                                                                                        ; work         ;
-;       |mux2x1:bit7|                             ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:bit7                                                                                        ; work         ;
-;       |mux2x1:lsb|                              ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:lsb                                                                                         ; work         ;
-;       |mux2x1:msb|                              ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:msb                                                                                         ; work         ;
-;    |mux8x8:mux8BitData|                         ; 8 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData                                                                                                      ; work         ;
-;       |mux2x1:bit2|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit2                                                                                          ; work         ;
-;       |mux2x1:bit3|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit3                                                                                          ; work         ;
-;       |mux2x1:bit4|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit4                                                                                          ; work         ;
-;       |mux2x1:bit5|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit5                                                                                          ; work         ;
-;       |mux2x1:bit6|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit6                                                                                          ; work         ;
-;       |mux2x1:bit7|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:bit7                                                                                          ; work         ;
-;       |mux2x1:lsb|                              ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:lsb                                                                                           ; work         ;
-;       |mux2x1:msb|                              ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8BitData|mux2x1:msb                                                                                           ; work         ;
-;    |mux8x8:mux8Bit|                             ; 8 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit                                                                                                          ; work         ;
-;       |mux2x1:bit2|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit2                                                                                              ; work         ;
-;       |mux2x1:bit3|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit3                                                                                              ; work         ;
-;       |mux2x1:bit4|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit4                                                                                              ; work         ;
-;       |mux2x1:bit5|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit5                                                                                              ; work         ;
-;       |mux2x1:bit6|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit6                                                                                              ; work         ;
-;       |mux2x1:bit7|                             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:bit7                                                                                              ; work         ;
-;       |mux2x1:lsb|                              ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:lsb                                                                                               ; work         ;
-;       |mux2x1:msb|                              ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|mux8x8:mux8Bit|mux2x1:msb                                                                                               ; work         ;
-;    |pcRegister:pcRegisterVal|                   ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal                                                                                                ; work         ;
-;       |eightBitRegister:pcVal|                  ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal                                                                         ; work         ;
-;          |enARdFF_2:bit0|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit0                                                          ; work         ;
-;          |enARdFF_2:bit1|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit1                                                          ; work         ;
-;          |enARdFF_2:bit2|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit2                                                          ; work         ;
-;          |enARdFF_2:bit3|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit3                                                          ; work         ;
-;          |enARdFF_2:bit4|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit4                                                          ; work         ;
-;          |enARdFF_2:bit5|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit5                                                          ; work         ;
-;          |enARdFF_2:bit6|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit6                                                          ; work         ;
-;          |enARdFF_2:bit7|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit7                                                          ; work         ;
-;    |registerFile:regFile|                       ; 120 (14)          ; 64 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile                                                                                                    ; work         ;
-;       |eightBitRegister:reg0|                   ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0                                                                              ; work         ;
-;          |enARdFF_2:bit0|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit0                                                               ; work         ;
-;          |enARdFF_2:bit1|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit1                                                               ; work         ;
-;          |enARdFF_2:bit2|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit2                                                               ; work         ;
-;          |enARdFF_2:bit3|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit3                                                               ; work         ;
-;          |enARdFF_2:bit4|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit4                                                               ; work         ;
-;          |enARdFF_2:bit5|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit5                                                               ; work         ;
-;          |enARdFF_2:bit6|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit6                                                               ; work         ;
-;          |enARdFF_2:bit7|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg0|enARdFF_2:bit7                                                               ; work         ;
-;       |eightBitRegister:reg1|                   ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1                                                                              ; work         ;
-;          |enARdFF_2:bit0|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit0                                                               ; work         ;
-;          |enARdFF_2:bit1|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit1                                                               ; work         ;
-;          |enARdFF_2:bit2|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit2                                                               ; work         ;
-;          |enARdFF_2:bit3|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit3                                                               ; work         ;
-;          |enARdFF_2:bit4|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit4                                                               ; work         ;
-;          |enARdFF_2:bit5|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit5                                                               ; work         ;
-;          |enARdFF_2:bit6|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit6                                                               ; work         ;
-;          |enARdFF_2:bit7|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg1|enARdFF_2:bit7                                                               ; work         ;
-;       |eightBitRegister:reg2|                   ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2                                                                              ; work         ;
-;          |enARdFF_2:bit0|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit0                                                               ; work         ;
-;          |enARdFF_2:bit1|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit1                                                               ; work         ;
-;          |enARdFF_2:bit2|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit2                                                               ; work         ;
-;          |enARdFF_2:bit3|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit3                                                               ; work         ;
-;          |enARdFF_2:bit4|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit4                                                               ; work         ;
-;          |enARdFF_2:bit5|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit5                                                               ; work         ;
-;          |enARdFF_2:bit6|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit6                                                               ; work         ;
-;          |enARdFF_2:bit7|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg2|enARdFF_2:bit7                                                               ; work         ;
-;       |eightBitRegister:reg3|                   ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3                                                                              ; work         ;
-;          |enARdFF_2:bit0|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit0                                                               ; work         ;
-;          |enARdFF_2:bit1|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit1                                                               ; work         ;
-;          |enARdFF_2:bit2|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit2                                                               ; work         ;
-;          |enARdFF_2:bit3|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit3                                                               ; work         ;
-;          |enARdFF_2:bit4|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit4                                                               ; work         ;
-;          |enARdFF_2:bit5|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit5                                                               ; work         ;
-;          |enARdFF_2:bit6|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit6                                                               ; work         ;
-;          |enARdFF_2:bit7|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg3|enARdFF_2:bit7                                                               ; work         ;
-;       |eightBitRegister:reg4|                   ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4                                                                              ; work         ;
-;          |enARdFF_2:bit0|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit0                                                               ; work         ;
-;          |enARdFF_2:bit1|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit1                                                               ; work         ;
-;          |enARdFF_2:bit2|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit2                                                               ; work         ;
-;          |enARdFF_2:bit3|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit3                                                               ; work         ;
-;          |enARdFF_2:bit4|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit4                                                               ; work         ;
-;          |enARdFF_2:bit5|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit5                                                               ; work         ;
-;          |enARdFF_2:bit6|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit6                                                               ; work         ;
-;          |enARdFF_2:bit7|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg4|enARdFF_2:bit7                                                               ; work         ;
-;       |eightBitRegister:reg5|                   ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5                                                                              ; work         ;
-;          |enARdFF_2:bit0|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit0                                                               ; work         ;
-;          |enARdFF_2:bit1|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit1                                                               ; work         ;
-;          |enARdFF_2:bit2|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit2                                                               ; work         ;
-;          |enARdFF_2:bit3|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit3                                                               ; work         ;
-;          |enARdFF_2:bit4|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit4                                                               ; work         ;
-;          |enARdFF_2:bit5|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit5                                                               ; work         ;
-;          |enARdFF_2:bit6|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit6                                                               ; work         ;
-;          |enARdFF_2:bit7|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg5|enARdFF_2:bit7                                                               ; work         ;
-;       |eightBitRegister:reg6|                   ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6                                                                              ; work         ;
-;          |enARdFF_2:bit0|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit0                                                               ; work         ;
-;          |enARdFF_2:bit1|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit1                                                               ; work         ;
-;          |enARdFF_2:bit2|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit2                                                               ; work         ;
-;          |enARdFF_2:bit3|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit3                                                               ; work         ;
-;          |enARdFF_2:bit4|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit4                                                               ; work         ;
-;          |enARdFF_2:bit5|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit5                                                               ; work         ;
-;          |enARdFF_2:bit6|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit6                                                               ; work         ;
-;          |enARdFF_2:bit7|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg6|enARdFF_2:bit7                                                               ; work         ;
-;       |eightBitRegister:reg7|                   ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7                                                                              ; work         ;
-;          |enARdFF_2:bit0|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit0                                                               ; work         ;
-;          |enARdFF_2:bit1|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit1                                                               ; work         ;
-;          |enARdFF_2:bit2|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit2                                                               ; work         ;
-;          |enARdFF_2:bit3|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit3                                                               ; work         ;
-;          |enARdFF_2:bit4|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit4                                                               ; work         ;
-;          |enARdFF_2:bit5|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit5                                                               ; work         ;
-;          |enARdFF_2:bit6|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit6                                                               ; work         ;
-;          |enARdFF_2:bit7|                       ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|eightBitRegister:reg7|enARdFF_2:bit7                                                               ; work         ;
-;       |mux8x1EightBit:readRegister1|            ; 58 (58)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|mux8x1EightBit:readRegister1                                                                       ; work         ;
-;       |mux8x1EightBit:readRegister2|            ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleTopLevel|registerFile:regFile|mux8x1EightBit:readRegister2                                                                       ; work         ;
-+-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                                                                 ;
-+------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+---------------------------------------------------------------------+
-; Name                                                                                                                               ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                                                                 ;
-+------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+---------------------------------------------------------------------+
-; dataMemory:dataMem|lpm_ram_dq:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated|ALTSYNCRAM                   ; AUTO ; Single Port ; 256          ; 8            ; --           ; --           ; 2048 ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dataMemory.mif        ;
-; instructionMemory:instructionMem|lpm_rom:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated|ALTSYNCRAM ; AUTO ; ROM         ; 256          ; 32           ; --           ; --           ; 8192 ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.mif ;
-+------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+---------------------------------------------------------------------+
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 72    ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 72    ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 64    ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |singleCycleTopLevel|mux8x8:jumpBranchSel|mux2x1:lsb|o_m ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated ;
-+---------------------------------+--------------------+------+----------------------------------------------------------------------------------+
-; Assignment                      ; Value              ; From ; To                                                                               ;
-+---------------------------------+--------------------+------+----------------------------------------------------------------------------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                ;
-+---------------------------------+--------------------+------+----------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated ;
-+---------------------------------+--------------------+------+----------------------------------------------------------------+
-; Assignment                      ; Value              ; From ; To                                                             ;
-+---------------------------------+--------------------+------+----------------------------------------------------------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                              ;
-+---------------------------------+--------------------+------+----------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instructionMemory:instructionMem|LPM_ROM:instructionMem          ;
-+------------------------+---------------------------------------------------------------------+----------------+
-; Parameter Name         ; Value                                                               ; Type           ;
-+------------------------+---------------------------------------------------------------------+----------------+
-; LPM_WIDTH              ; 32                                                                  ; Signed Integer ;
-; LPM_WIDTHAD            ; 8                                                                   ; Signed Integer ;
-; LPM_NUMWORDS           ; 256                                                                 ; Signed Integer ;
-; LPM_ADDRESS_CONTROL    ; REGISTERED                                                          ; Untyped        ;
-; LPM_OUTDATA            ; REGISTERED                                                          ; Untyped        ;
-; LPM_FILE               ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.mif ; Untyped        ;
-; DEVICE_FAMILY          ; Cyclone IV E                                                        ; Untyped        ;
-; AUTO_CARRY_CHAINS      ; ON                                                                  ; AUTO_CARRY     ;
-; IGNORE_CARRY_BUFFERS   ; OFF                                                                 ; IGNORE_CARRY   ;
-; AUTO_CASCADE_CHAINS    ; ON                                                                  ; AUTO_CASCADE   ;
-; IGNORE_CASCADE_BUFFERS ; OFF                                                                 ; IGNORE_CASCADE ;
-+------------------------+---------------------------------------------------------------------+----------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: dataMemory:dataMem|LPM_RAM_DQ:dataMem                     ;
-+------------------------+--------------------------------------------------------------+----------------+
-; Parameter Name         ; Value                                                        ; Type           ;
-+------------------------+--------------------------------------------------------------+----------------+
-; LPM_WIDTH              ; 8                                                            ; Signed Integer ;
-; LPM_WIDTHAD            ; 8                                                            ; Signed Integer ;
-; LPM_NUMWORDS           ; 256                                                          ; Signed Integer ;
-; LPM_INDATA             ; REGISTERED                                                   ; Untyped        ;
-; LPM_ADDRESS_CONTROL    ; REGISTERED                                                   ; Untyped        ;
-; LPM_OUTDATA            ; REGISTERED                                                   ; Untyped        ;
-; LPM_FILE               ; C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dataMemory.mif ; Untyped        ;
-; USE_EAB                ; ON                                                           ; Untyped        ;
-; DEVICE_FAMILY          ; Cyclone IV E                                                 ; Untyped        ;
-; CBXI_PARAMETER         ; NOTHING                                                      ; Untyped        ;
-; AUTO_CARRY_CHAINS      ; ON                                                           ; AUTO_CARRY     ;
-; IGNORE_CARRY_BUFFERS   ; OFF                                                          ; IGNORE_CARRY   ;
-; AUTO_CASCADE_CHAINS    ; ON                                                           ; AUTO_CASCADE   ;
-; IGNORE_CASCADE_BUFFERS ; OFF                                                          ; IGNORE_CASCADE ;
-+------------------------+--------------------------------------------------------------+----------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "eightBitAdder:branchAdder"                                                          ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; c_i  ; Input  ; Info     ; Stuck at GND                                                                        ;
-; c_o  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; sum  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "eightBitAdder:pcPlus4Adder"                                                              ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-; Port      ; Type   ; Severity ; Details                                                                             ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-; b_i[7..3] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; b_i[1..0] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; b_i[2]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; c_i       ; Input  ; Info     ; Stuck at GND                                                                        ;
-; c_o       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+--------------------------------------------------------------------+
-; Port Connectivity Checks: "dataMemory:dataMem|mux8x8:outputMuxSel" ;
-+------+-------+----------+------------------------------------------+
-; Port ; Type  ; Severity ; Details                                  ;
-+------+-------+----------+------------------------------------------+
-; a_i  ; Input ; Info     ; Stuck at GND                             ;
-+------+-------+----------+------------------------------------------+
-
-
-+---------------------------------------------------------------+
-; Port Connectivity Checks: "ALUmain:alu|mux8x1EightBit:ALUMux" ;
-+----------+-------+----------+---------------------------------+
-; Port     ; Type  ; Severity ; Details                         ;
-+----------+-------+----------+---------------------------------+
-; a4[7..1] ; Input ; Info     ; Stuck at GND                    ;
-; a5       ; Input ; Info     ; Stuck at GND                    ;
-; a6       ; Input ; Info     ; Stuck at GND                    ;
-; a7       ; Input ; Info     ; Stuck at GND                    ;
-+----------+-------+----------+---------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp0"                           ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; o_gt ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+--------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp7" ;
-+--------------+-------+----------+----------------------------------------------------+
-; Port         ; Type  ; Severity ; Details                                            ;
-+--------------+-------+----------+----------------------------------------------------+
-; i_gtprevious ; Input ; Info     ; Stuck at GND                                       ;
-; i_ltprevious ; Input ; Info     ; Stuck at GND                                       ;
-+--------------+-------+----------+----------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ALUmain:alu|eightBitSubtractor:subtractor"                                          ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; c_i  ; Input  ; Info     ; Stuck at GND                                                                        ;
-; c_o  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ALUmain:alu|eightBitAdder:adder"                                                    ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; c_i  ; Input  ; Info     ; Stuck at GND                                                                        ;
-; c_o  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "signExtendUnit:signExt"                                                                           ;
-+--------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port               ; Type   ; Severity ; Details                                                                             ;
-+--------------------+--------+----------+-------------------------------------------------------------------------------------+
-; sign_output[31..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "registerFile:regFile"                                                                                              ;
-+----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port           ; Type   ; Severity ; Details                                                                                                  ;
-+----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; enableregister ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; readregd1      ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; readregd4      ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit7"                       ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                             ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit6"                       ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                             ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit5"                       ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                             ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit4"                       ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                             ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit3"                       ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                             ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit2"                       ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                             ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit1"                       ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                             ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit0"                       ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                             ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------------------------------+
-; Port Connectivity Checks: "pcRegister:pcRegisterVal|eightBitRegister:pcVal" ;
-+------+-------+----------+---------------------------------------------------+
-; Port ; Type  ; Severity ; Details                                           ;
-+------+-------+----------+---------------------------------------------------+
-; en   ; Input ; Info     ; Stuck at VCC                                      ;
-+------+-------+----------+---------------------------------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Sat Jul 15 16:43:51 2023
+    Info: Processing started: Mon Jul 17 21:40:59 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CEG3156Lab2 -c CEG3156Lab2
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file twobitregister.vhd
+    Info (12022): Found design unit 1: twoBitRegister-structural
+    Info (12023): Found entity 1: twoBitRegister
+Info (12021): Found 2 design units, including 1 entities, in source file threebitregister.vhd
+    Info (12022): Found design unit 1: threeBitRegister-structural
+    Info (12023): Found entity 1: threeBitRegister
+Info (12021): Found 2 design units, including 1 entities, in source file thirtytwobitregister.vhd
+    Info (12022): Found design unit 1: thirtyTwoBitRegister-structural
+    Info (12023): Found entity 1: thirtyTwoBitRegister
+Info (12021): Found 2 design units, including 1 entities, in source file processortoplevelentity.vhd
+    Info (12022): Found design unit 1: ProcessorTopLevelEntity-Structural
+    Info (12023): Found entity 1: ProcessorTopLevelEntity
+Info (12021): Found 2 design units, including 1 entities, in source file mem_wbregister.vhd
+    Info (12022): Found design unit 1: MEM_WBRegister-structural
+    Info (12023): Found entity 1: MEM_WBRegister
+Info (12021): Found 2 design units, including 1 entities, in source file if_idregister.vhd
+    Info (12022): Found design unit 1: IF_IDRegister-structural
+    Info (12023): Found entity 1: IF_IDRegister
+Info (12021): Found 2 design units, including 1 entities, in source file id_exregister.vhd
+    Info (12022): Found design unit 1: ID_EXRegister-structural
+    Info (12023): Found entity 1: ID_EXRegister
+Info (12021): Found 2 design units, including 1 entities, in source file fourbitregister.vhd
+    Info (12022): Found design unit 1: fourBitRegister-structural
+    Info (12023): Found entity 1: fourBitRegister
+Info (12021): Found 2 design units, including 1 entities, in source file forwardingunit.vhd
+    Info (12022): Found design unit 1: forwardingUnit-rtl
+    Info (12023): Found entity 1: forwardingUnit
+Info (12021): Found 2 design units, including 1 entities, in source file fivebitregister.vhd
+    Info (12022): Found design unit 1: fiveBitRegister-structural
+    Info (12023): Found entity 1: fiveBitRegister
+Info (12021): Found 2 design units, including 1 entities, in source file ex_memregister.vhd
+    Info (12022): Found design unit 1: EX_MEMRegister-structural
+    Info (12023): Found entity 1: EX_MEMRegister
 Info (12021): Found 2 design units, including 1 entities, in source file clk_div.vhd
     Info (12022): Found design unit 1: clk_div-a
     Info (12023): Found entity 1: clk_div
@@ -801,151 +274,34 @@ Info (12021): Found 2 design units, including 1 entities, in source file eightbi
 Info (12021): Found 2 design units, including 1 entities, in source file pcregister.vhd
     Info (12022): Found design unit 1: pcRegister-structural
     Info (12023): Found entity 1: pcRegister
-Info (12021): Found 2 design units, including 1 entities, in source file singlecycletoplevel.vhd
-    Info (12022): Found design unit 1: singleCycleTopLevel-structural
-    Info (12023): Found entity 1: singleCycleTopLevel
 Info (12021): Found 2 design units, including 1 entities, in source file hazarddetectionunit.vhd
     Info (12022): Found design unit 1: HazardDetectionUnit-structural
     Info (12023): Found entity 1: HazardDetectionUnit
-Info (12127): Elaborating entity "singleCycleTopLevel" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at singleCycleTopLevel.vhd(28): object "aluResultToMux_conn" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at singleCycleTopLevel.vhd(52): object "pcReset" assigned a value but never read
-Warning (10541): VHDL Signal Declaration warning at singleCycleTopLevel.vhd(54): used implicit default value for signal "writeRegisterIn_conn8Bit" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Info (12128): Elaborating entity "pcRegister" for hierarchy "pcRegister:pcRegisterVal"
-Info (12128): Elaborating entity "eightBitRegister" for hierarchy "pcRegister:pcRegisterVal|eightBitRegister:pcVal"
-Warning (10036): Verilog HDL or VHDL warning at eightBitRegister.vhd(16): object "notOutputs" assigned a value but never read
-Info (12128): Elaborating entity "enARdFF_2" for hierarchy "pcRegister:pcRegisterVal|eightBitRegister:pcVal|enARdFF_2:bit0"
-Info (12128): Elaborating entity "instructionMemory" for hierarchy "instructionMemory:instructionMem"
-Info (12128): Elaborating entity "LPM_ROM" for hierarchy "instructionMemory:instructionMem|LPM_ROM:instructionMem"
-Info (12130): Elaborated megafunction instantiation "instructionMemory:instructionMem|LPM_ROM:instructionMem"
-Info (12133): Instantiated megafunction "instructionMemory:instructionMem|LPM_ROM:instructionMem" with the following parameter:
-    Info (12134): Parameter "LPM_WIDTH" = "32"
-    Info (12134): Parameter "LPM_WIDTHAD" = "8"
-    Info (12134): Parameter "LPM_NUMWORDS" = "256"
-    Info (12134): Parameter "LPM_ADDRESS_CONTROL" = "REGISTERED"
-    Info (12134): Parameter "LPM_OUTDATA" = "REGISTERED"
-    Info (12134): Parameter "LPM_FILE" = "C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/instructionMemory.mif"
-    Info (12134): Parameter "LPM_TYPE" = "LPM_ROM"
-    Info (12134): Parameter "INTENDED_DEVICE_FAMILY" = "UNUSED"
-    Info (12134): Parameter "LPM_HINT" = "UNUSED"
-Info (12128): Elaborating entity "altrom" for hierarchy "instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom"
-Info (12131): Elaborated megafunction instantiation "instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom", which is child of megafunction instantiation "instructionMemory:instructionMem|LPM_ROM:instructionMem"
-Info (12128): Elaborating entity "altsyncram" for hierarchy "instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block"
-Info (12131): Elaborated megafunction instantiation "instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block", which is child of megafunction instantiation "instructionMemory:instructionMem|LPM_ROM:instructionMem"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_d951.tdf
-    Info (12023): Found entity 1: altsyncram_d951
-Info (12128): Elaborating entity "altsyncram_d951" for hierarchy "instructionMemory:instructionMem|LPM_ROM:instructionMem|altrom:srom|altsyncram:rom_block|altsyncram_d951:auto_generated"
-Info (12128): Elaborating entity "mux5x5" for hierarchy "mux5x5:mux5x5Out"
-Info (12128): Elaborating entity "mux2x1" for hierarchy "mux5x5:mux5x5Out|mux2x1:msb"
-Info (12128): Elaborating entity "registerFile" for hierarchy "registerFile:regFile"
-Info (12128): Elaborating entity "threeToEightDecoder" for hierarchy "registerFile:regFile|threeToEightDecoder:writeDecoder"
-Info (12128): Elaborating entity "mux8x1EightBit" for hierarchy "registerFile:regFile|mux8x1EightBit:readRegister1"
-Info (12128): Elaborating entity "signExtendUnit" for hierarchy "signExtendUnit:signExt"
-Info (12128): Elaborating entity "aluControlUnit" for hierarchy "aluControlUnit:aluCont"
-Info (12128): Elaborating entity "mux8x8" for hierarchy "mux8x8:mux8Bit"
-Info (12128): Elaborating entity "ALUmain" for hierarchy "ALUmain:alu"
-Warning (10036): Verilog HDL or VHDL warning at ALUmain.vhd(19): object "carryOut" assigned a value but never read
-Info (12128): Elaborating entity "eightBitAdder" for hierarchy "ALUmain:alu|eightBitAdder:adder"
-Info (12128): Elaborating entity "oneBitAdder" for hierarchy "ALUmain:alu|eightBitAdder:adder|oneBitAdder:MSB"
-Info (12128): Elaborating entity "eightBitSubtractor" for hierarchy "ALUmain:alu|eightBitSubtractor:subtractor"
-Info (12128): Elaborating entity "oneBitSubtractor" for hierarchy "ALUmain:alu|eightBitSubtractor:subtractor|oneBitSubtractor:MSB"
-Info (12128): Elaborating entity "eighBitComparator" for hierarchy "ALUmain:alu|eighBitComparator:stl"
-Info (12128): Elaborating entity "oneBitComparator" for hierarchy "ALUmain:alu|eighBitComparator:stl|oneBitComparator:comp7"
-Info (12128): Elaborating entity "dataMemory" for hierarchy "dataMemory:dataMem"
-Info (12128): Elaborating entity "LPM_RAM_DQ" for hierarchy "dataMemory:dataMem|LPM_RAM_DQ:dataMem"
-Info (12130): Elaborated megafunction instantiation "dataMemory:dataMem|LPM_RAM_DQ:dataMem"
-Info (12133): Instantiated megafunction "dataMemory:dataMem|LPM_RAM_DQ:dataMem" with the following parameter:
-    Info (12134): Parameter "LPM_WIDTH" = "8"
-    Info (12134): Parameter "LPM_WIDTHAD" = "8"
-    Info (12134): Parameter "LPM_NUMWORDS" = "256"
-    Info (12134): Parameter "LPM_INDATA" = "REGISTERED"
-    Info (12134): Parameter "LPM_ADDRESS_CONTROL" = "REGISTERED"
-    Info (12134): Parameter "LPM_OUTDATA" = "REGISTERED"
-    Info (12134): Parameter "LPM_FILE" = "C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dataMemory.mif"
-    Info (12134): Parameter "LPM_TYPE" = "LPM_RAM_DQ"
-    Info (12134): Parameter "USE_EAB" = "ON"
-    Info (12134): Parameter "INTENDED_DEVICE_FAMILY" = "UNUSED"
-    Info (12134): Parameter "LPM_HINT" = "UNUSED"
-Info (12128): Elaborating entity "altram" for hierarchy "dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram"
-Warning (287001): Assertion warning: altram does not support Cyclone IV E device family -- attempting best-case memory conversions, but power-up states and read during write behavior will be different for Cyclone IV E devices
-Info (12131): Elaborated megafunction instantiation "dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram", which is child of megafunction instantiation "dataMemory:dataMem|LPM_RAM_DQ:dataMem"
-Info (12128): Elaborating entity "altsyncram" for hierarchy "dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block"
-Info (12131): Elaborated megafunction instantiation "dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block", which is child of megafunction instantiation "dataMemory:dataMem|LPM_RAM_DQ:dataMem"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_g1e1.tdf
-    Info (12023): Found entity 1: altsyncram_g1e1
-Info (12128): Elaborating entity "altsyncram_g1e1" for hierarchy "dataMemory:dataMem|LPM_RAM_DQ:dataMem|altram:sram|altsyncram:ram_block|altsyncram_g1e1:auto_generated"
-Info (12128): Elaborating entity "controlLogicUnit" for hierarchy "controlLogicUnit:controlUnit"
-Info (12128): Elaborating entity "shiftLeft2Unit" for hierarchy "shiftLeft2Unit:shiftLeftBranch"
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Warning (13044): Always-enabled tri-state buffer(s) removed
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[8]" to the node "instructionOut[8]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[9]" to the node "instructionOut[9]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[10]" to the node "instructionOut[10]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[14]" to the node "instructionOut[14]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[15]" to the node "instructionOut[15]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[19]" to the node "instructionOut[19]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[20]" to the node "instructionOut[20]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[24]" to the node "instructionOut[24]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[25]" to the node "instructionOut[25]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[2]" to the node "instructionOut[2]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[26]" to the node "instructionOut[26]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[27]" to the node "instructionOut[27]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[28]" to the node "instructionOut[28]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[31]" to the node "instructionOut[31]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[30]" to the node "instructionOut[30]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[29]" to the node "instructionOut[29]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[3]" to the node "instructionOut[3]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[0]" to the node "instructionOut[0]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[21]" to the node "instructionOut[21]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[23]" to the node "instructionOut[23]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[22]" to the node "instructionOut[22]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[16]" to the node "instructionOut[16]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[18]" to the node "instructionOut[18]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[17]" to the node "instructionOut[17]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[1]" to the node "instructionOut[1]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[4]" to the node "instructionOut[4]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[7]" to the node "instructionOut[7]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[6]" to the node "instructionOut[6]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[5]" to the node "instructionOut[5]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[11]" to the node "instructionOut[11]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[12]" to the node "instructionOut[12]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[13]" to the node "instructionOut[13]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[11]" to the node "mux5x5:mux5x5Out|mux2x1:lsb|o_m" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[12]" to the node "mux5x5:mux5x5Out|mux2x1:bit2|o_m" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[13]" to the node "mux5x5:mux5x5Out|mux2x1:bit3|o_m" into a wire
-Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[2]" to the node "aluControlUnit:aluCont|aluCntrlOut[1]" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[26]" to the node "controlLogicUnit:controlUnit|memRead" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[27]" to the node "controlLogicUnit:controlUnit|lw" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[28]" to the node "controlLogicUnit:controlUnit|beq" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[31]" to the node "controlLogicUnit:controlUnit|lw" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[30]" to the node "controlLogicUnit:controlUnit|lw" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[29]" to the node "controlLogicUnit:controlUnit|rFormat" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[3]" to the node "aluControlUnit:aluCont|sig1" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[0]" to the node "aluControlUnit:aluCont|sig1" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[21]" to the node "registerFile:regFile|mux8x1EightBit:readRegister1|o" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[23]" to the node "registerFile:regFile|mux8x1EightBit:readRegister1|o" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[22]" to the node "registerFile:regFile|mux8x1EightBit:readRegister1|o" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[16]" to the node "registerFile:regFile|mux8x1EightBit:readRegister2|o" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[18]" to the node "registerFile:regFile|mux8x1EightBit:readRegister2|o" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[17]" to the node "registerFile:regFile|mux8x1EightBit:readRegister2|o" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[1]" to the node "aluControlUnit:aluCont|sig0" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[4]" to the node "mux8x8:mux8Bit|mux2x1:bit5|o_m" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[7]" to the node "mux8x8:mux8Bit|mux2x1:msb|o_m" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[6]" to the node "mux8x8:mux8Bit|mux2x1:bit7|o_m" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "instructionMemory:instructionMem|lpm_rom:instructionMem|otri[5]" to the node "mux8x8:mux8Bit|mux2x1:bit6|o_m" into an OR gate
-Info (286030): Timing-Driven Synthesis is running
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 455 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 6 input pins
-    Info (21059): Implemented 60 output pins
-    Info (21061): Implemented 349 logic cells
-    Info (21064): Implemented 40 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 65 warnings
-    Info: Peak virtual memory: 4688 megabytes
-    Info: Processing ended: Sat Jul 15 16:43:54 2023
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:02
+Info (12021): Found 2 design units, including 1 entities, in source file pipelinedproc.vhd
+    Info (12022): Found design unit 1: pipelinedProc-structural
+    Info (12023): Found entity 1: pipelinedProc
+Info (12021): Found 2 design units, including 1 entities, in source file mux9bit2x1.vhd
+    Info (12022): Found design unit 1: mux9bit2x1-structural
+    Info (12023): Found entity 1: mux9bit2x1
+Info (12021): Found 2 design units, including 1 entities, in source file mux8bit3x1.vhd
+    Info (12022): Found design unit 1: mux8bit3x1-structural
+    Info (12023): Found entity 1: mux8bit3x1
+Info (12021): Found 2 design units, including 1 entities, in source file mux3x1.vhd
+    Info (12022): Found design unit 1: mux3x1-rtl
+    Info (12023): Found entity 1: mux3x1
+Info (12127): Elaborating entity "pipelinedProc" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at pipelinedProc.vhd(31): object "pcWrite" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at pipelinedProc.vhd(38): object "branchNE_conn" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at pipelinedProc.vhd(50): used implicit default value for signal "exMem_regMuxOut" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at pipelinedProc.vhd(86): object "IDEX_EX" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at pipelinedProc.vhd(97): object "EXMEM_M" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at pipelinedProc.vhd(100): object "EXMEM_aluZero" assigned a value but never read
+Error (10344): VHDL expression error at pipelinedProc.vhd(436): expression has 8 elements, but must have 32 elements File: C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pipelinedProc.vhd Line: 436
+Error (12153): Can't elaborate top-level user hierarchy
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 7 warnings
+    Error: Peak virtual memory: 4646 megabytes
+    Error: Processing ended: Mon Jul 17 21:40:59 2023
+    Error: Elapsed time: 00:00:00
+    Error: Total CPU time (on all processors): 00:00:01
 
 
