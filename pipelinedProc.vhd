@@ -216,10 +216,7 @@ end component;
 component HazardDetectionUnit is 
 	port(
 		idExMemRead : in std_logic;
-		isBranchEqual : in std_logic;
-		
-		memWbWriteReg : in std_logic_vector(4 downto 0);
-		memWbRegWrite : in std_logic; 
+		isBranchAndDataEqual : in std_logic;
 		
 		idExRegRt : in std_logic_vector(4 downto 0);
 		ifIdRegRs : in std_logic_vector(4 downto 0);
@@ -451,7 +448,8 @@ IDEXBuffer: ID_EXRegister port map (GReset, '1', GClock1, WBControl_IDEX, MContr
 												IDEX_WB, IDEX_M, IDEX_EX, IDEX_pcPlusFour, IDEX_readData1, IDEX_readData2, IDEX_instrEXT, IDEX_instrRS, IDEX_instrRT, IDEX_instrRD);
 												
 -- ISSUES WITH HAZARD DETECTION UNIT, MISSING CONNECTION FROM IFID INSTR OP, 
-hazardDection : HazardDetectionUnit port map (IDEX_M(1), IDEX_instrRT, ifId_instrOut(25 downto 21), ifId_instrOut(20 downto 16), ifIdEnable, pcWrite, ctrlMuxSel);
+hazardDection : HazardDetectionUnit port map (IDEX_M(1), isBEQ, IDEX_instrRT, ifId_instrOut(25 downto 21), ifId_instrOut(20 downto 16), ifIdEnable, pcWrite, ctrlMuxSel);
+
 
 shiftLeftBranch: shiftLeft2Unit port map(ifId_instrOut(7 downto 0), shiftLeftTwoOutput_conn);
 branchAdder: eightBitAdder port map(IDEX_pcPlusFour, shiftLeftTwoOutput_conn, '0', open, aluResultToMux_conn);
