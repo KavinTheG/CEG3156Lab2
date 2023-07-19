@@ -26,13 +26,13 @@ architecture structural of eightBitRegister is
 
 begin
 
-	bit0: enARdFF_2 port map( reset, values(0), en, clk, outputs(0), notOutputs(0) );
-	bit1: enARdFF_2 port map( reset, values(1), en, clk, outputs(1), notOutputs(1) );
-	bit2: enARdFF_2 port map( reset, values(2), en, clk, outputs(2), notOutputs(2) );
-	bit3: enARdFF_2 port map( reset, values(3), en, clk, outputs(3), notOutputs(3) );
-	bit4: enARdFF_2 port map( reset, values(4), en, clk, outputs(4), notOutputs(4) );
-	bit5: enARdFF_2 port map( reset, values(5), en, clk, outputs(5), notOutputs(5) );
-	bit6: enARdFF_2 port map( reset, values(6), en, clk, outputs(6), notOutputs(6) );
-	bit7: enARdFF_2 port map( reset, values(7), en, clk, outputs(7), notOutputs(7) );
+	bit0 : enARdFF_2 port map( reset, values(0) , en, clk, outputs(0) , notOutputs(0)  );
+	bit1 : enARdFF_2 port map( reset, values(1) , en, clk, outputs(1) , notOutputs(1)  );
+	bit2 : enARdFF_2 port map( reset, values(2) , en, clk, outputs(2) , notOutputs(2)  );
+	bit3 : enARdFF_2 port map( reset, values(3) , en, clk, outputs(3) , notOutputs(3)  );
+	bit4 : enARdFF_2 port map( reset, values(4) , en, clk, outputs(4) , notOutputs(4)  );
+	bit5 : enARdFF_2 port map( reset, values(5) , en, clk, outputs(5) , notOutputs(5)  );
+	bit6 : enARdFF_2 port map( reset, values(6) , en, clk, outputs(6) , notOutputs(6)  );
+	bit7 : enARdFF_2 port map( reset, values(7) , en, clk, outputs(7) , notOutputs(7)  );
 
 end structural;

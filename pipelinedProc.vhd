@@ -158,7 +158,7 @@ component ID_EXRegister is
 	pcPlusFour_o: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 	readData1_o: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 	readData2_o: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-	instructionExt_o: OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+	instructionExt_o: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 	instruction25To21_o: OUT STD_LOGIC_VECTOR(4 DOWNTO 0); --rs
 	instruction20To16_o: OUT STD_LOGIC_VECTOR(4 DOWNTO 0); --rt
 	instruction15To11_o: OUT STD_LOGIC_VECTOR(4 DOWNTO 0) --rd
@@ -346,26 +346,28 @@ end component;
 component controlLogicUnit is
 	port(
 		op: in std_logic_vector (5 downto 0);
-		regDst: out std_logic;
-		aluSrc: out std_logic;
-		memToReg: out std_logic;
-		regWrite: out std_logic;
-		memRead: out std_logic;
-		memWrite: out std_logic;
+		
+		-- if BEQ will occur (if branch is 1 and data is equal)
+		isBEQ : in std_logic;
+		
+		regDst: buffer std_logic;
+		aluSrc: buffer std_logic;
+		memToReg: buffer std_logic;
+		--regWrite: out std_logic;
+		memRead: buffer std_logic;
+		memWrite: buffer std_logic;
 		branch: out std_logic;
 		branchNotEqual: out std_logic;
-		jump: out std_logic;
-		aluOp1: out std_logic;
-		aluOp0: out std_logic;
 		
+		jump: buffer std_logic;
+		aluOp1: buffer std_logic;
+		aluOp0: buffer std_logic;
+
 		--pipeline 
 		flush: out std_logic:='0';
 		EX: out std_logic_vector(3 downto 0);
 		M: out std_logic_vector(2 downto 0);
-		WB: out std_logic_vector(1 downto 0);
-		
-		-- if BEQ will occur (if branch is 1 and data is equal)
-		isBEQ : in std_logic:='0'
+		WB: out std_logic_vector(1 downto 0)
 	);
 end component;
 
@@ -426,7 +428,7 @@ regFile: registerFile port map(GReset, GClock1, instrMem_output(25 downto 21), i
 ctrlMux: mux9bit2x1 port map (ctrlMuxSel, controlValue, "000000000", ctrlMuxOut);
 
 
-controlUnit: controlLogicUnit port map(instrMem_output(31 downto 26), regDst_conn, aluSrc_conn, memtoReg_conn, regWrite_conn, memRead_conn, memWrite_conn, branch_conn, branchNE_conn, jump_conn, aluOp_conn(1), aluOp_conn(0), flush, controlValue(3 downto 0), controlValue(6 downto 4), controlValue(8 downto 7) );
+controlUnit: controlLogicUnit port map(instrMem_output(31 downto 26), isBEQ, regDst_conn, aluSrc_conn, memtoReg_conn, memRead_conn, memWrite_conn, branch_conn, branchNE_conn, jump_conn, aluOp_conn(1), aluOp_conn(0), flush, controlValue(3 downto 0), controlValue(6 downto 4), controlValue(8 downto 7) );
 
 WBControl_IDEX <= ctrlMuxOut(8 downto 7);
 MControl_IDEX <= ctrlMuxOut(6 downto 4);

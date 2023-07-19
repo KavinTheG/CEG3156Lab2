@@ -64,7 +64,7 @@ instructionOut[31] << instructionMemory:instructionMem.instruction_out[31]
 branchOut << controlLogicUnit:controlUnit.branch
 zeroOut << ALUmain:alu.zero
 memWriteOut << controlLogicUnit:controlUnit.memWrite
-regWriteOut << controlLogicUnit:controlUnit.regWrite
+regWriteOut << <GND>
 
 
 |pipelinedProc|pcRegister:pcReg
@@ -3103,6 +3103,7 @@ op[4] => rFormat.IN0
 op[4] => lw.IN0
 op[5] => lw.IN1
 op[5] => rFormat.IN1
+isBEQ => flush.DATAIN
 regDst <= rFormat.DB_MAX_OUTPUT_PORT_TYPE
 aluSrc <= int_aluSrc.DB_MAX_OUTPUT_PORT_TYPE
 memToReg <= lw.DB_MAX_OUTPUT_PORT_TYPE
@@ -3123,7 +3124,6 @@ M[1] <= lw.DB_MAX_OUTPUT_PORT_TYPE
 M[2] <= beq.DB_MAX_OUTPUT_PORT_TYPE
 WB[0] <= lw.DB_MAX_OUTPUT_PORT_TYPE
 WB[1] <= regWrite.DB_MAX_OUTPUT_PORT_TYPE
-isBEQ => flush.DATAIN
 
 
 |pipelinedProc|ID_EXRegister:IDEXBuffer
@@ -3198,14 +3198,6 @@ instructionExt[4] => eightBitRegister:instructionExtOut.values[4]
 instructionExt[5] => eightBitRegister:instructionExtOut.values[5]
 instructionExt[6] => eightBitRegister:instructionExtOut.values[6]
 instructionExt[7] => eightBitRegister:instructionExtOut.values[7]
-instructionExt[8] => ~NO_FANOUT~
-instructionExt[9] => ~NO_FANOUT~
-instructionExt[10] => ~NO_FANOUT~
-instructionExt[11] => ~NO_FANOUT~
-instructionExt[12] => ~NO_FANOUT~
-instructionExt[13] => ~NO_FANOUT~
-instructionExt[14] => ~NO_FANOUT~
-instructionExt[15] => ~NO_FANOUT~
 instruction25To21[0] => fiveBitRegister:instruction25To21Out.values[0]
 instruction25To21[1] => fiveBitRegister:instruction25To21Out.values[1]
 instruction25To21[2] => fiveBitRegister:instruction25To21Out.values[2]
@@ -3262,30 +3254,6 @@ instructionExt_o[4] <= eightBitRegister:instructionExtOut.outputs[4]
 instructionExt_o[5] <= eightBitRegister:instructionExtOut.outputs[5]
 instructionExt_o[6] <= eightBitRegister:instructionExtOut.outputs[6]
 instructionExt_o[7] <= eightBitRegister:instructionExtOut.outputs[7]
-instructionExt_o[8] <= <GND>
-instructionExt_o[9] <= <GND>
-instructionExt_o[10] <= <GND>
-instructionExt_o[11] <= <GND>
-instructionExt_o[12] <= <GND>
-instructionExt_o[13] <= <GND>
-instructionExt_o[14] <= <GND>
-instructionExt_o[15] <= <GND>
-instructionExt_o[16] <= <GND>
-instructionExt_o[17] <= <GND>
-instructionExt_o[18] <= <GND>
-instructionExt_o[19] <= <GND>
-instructionExt_o[20] <= <GND>
-instructionExt_o[21] <= <GND>
-instructionExt_o[22] <= <GND>
-instructionExt_o[23] <= <GND>
-instructionExt_o[24] <= <GND>
-instructionExt_o[25] <= <GND>
-instructionExt_o[26] <= <GND>
-instructionExt_o[27] <= <GND>
-instructionExt_o[28] <= <GND>
-instructionExt_o[29] <= <GND>
-instructionExt_o[30] <= <GND>
-instructionExt_o[31] <= <GND>
 instruction25To21_o[0] <= fiveBitRegister:instruction25To21Out.outputs[0]
 instruction25To21_o[1] <= fiveBitRegister:instruction25To21Out.outputs[1]
 instruction25To21_o[2] <= fiveBitRegister:instruction25To21Out.outputs[2]

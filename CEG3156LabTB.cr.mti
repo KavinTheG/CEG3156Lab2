@@ -194,14 +194,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity eightBitRegister
 -- Compiling architecture structural of eightBitRegister
 
-} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/controlLogicUnit.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/controlLogicUnit.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity controlLogicUnit
--- Compiling architecture rtl of controlLogicUnit
-
 } {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ALUmain.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ALUmain.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD

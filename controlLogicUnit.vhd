@@ -4,6 +4,10 @@ use ieee.std_logic_1164.all;
 entity controlLogicUnit is
 	port(
 		op: in std_logic_vector (5 downto 0);
+		
+		-- if BEQ will occur (if branch is 1 and data is equal)
+		isBEQ : in std_logic;
+		
 		regDst: buffer std_logic;
 		aluSrc: buffer std_logic;
 		memToReg: buffer std_logic;
@@ -12,18 +16,17 @@ entity controlLogicUnit is
 		memWrite: buffer std_logic;
 		branch: out std_logic;
 		branchNotEqual: out std_logic;
+		
 		jump: buffer std_logic;
 		aluOp1: buffer std_logic;
 		aluOp0: buffer std_logic;
-		
+
 		--pipeline 
 		flush: out std_logic:='0';
 		EX: out std_logic_vector(3 downto 0);
 		M: out std_logic_vector(2 downto 0);
-		WB: out std_logic_vector(1 downto 0);
+		WB: out std_logic_vector(1 downto 0)
 		
-		-- if BEQ will occur (if branch is 1 and data is equal)
-		isBEQ : in std_logic
 	);
 end entity;
 
