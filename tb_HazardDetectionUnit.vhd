@@ -1,0 +1,80 @@
+--1. If (ID/EX.MemRead & ((ID/EX.RegisterRt = IF/ID.RegisterRs) or (ID/EX.RegisterRt = IF/ID.RegisterRt))) <-- lw stall (hazard detected)
+--2  If (IF/ID.op = 000100 AND data1 == data2) <--branch stall
+--3  If (MEM/WB.WriteRegister = IF/ID.rt OR MEM/WB.WriteRegister = IF/ID.rs) AND (MEM/WB.RegWrite)	<-- lw stall
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+entity tb_HazardDetectionUnit is 
+end entity;
+
+
+architecture behavioral of tb_HazardDetectionUnit is 
+
+  signal tb_idExMemRead : std_logic;
+  signal tb_isBranchAndDataEqual : std_logic;
+	
+		
+  signal tb_idExRegRt : std_logic_vector(4 downto 0);
+  signal tb_ifIdRegRs : std_logic_vector(4 downto 0);
+  signal tb_ifIdRegRt : std_logic_vector(4 downto 0); 
+		
+  signal tb_ifIdWrite : std_logic:='0';
+  signal tb_PCwrite : std_logic:='0';
+  signal tb_ctrlMux : std_logic:='0';
+  
+ signal tb_h1, tb_h2 : std_logic; 
+ signal tb_RtEqRs, tb_RtEqRt : std_logic;
+
+  component HazardDetectionUnit is 
+	 port(
+		idExMemRead : in std_logic;
+		isBranchAndDataEqual : in std_logic;
+		
+		idExRegRt : in std_logic_vector(4 downto 0);
+		ifIdRegRs : in std_logic_vector(4 downto 0);
+		ifIdRegRt : in std_logic_vector(4 downto 0); 
+		
+		ifIdWrite : out std_logic:='0';
+		PCwrite : out std_logic:='0';
+		ctrlMux : out std_logic:='0';
+		
+		--testing 
+		h1 : out std_logic:='0';
+		h2 : out std_logic:='0';
+		
+		RtEqRs : out std_logic:='0';
+		RtEqRt : out std_logic:='0'
+	 );
+  end component;
+
+begin
+  
+  hdu : HazardDetectionUnit port map(tb_idExMemRead, tb_isBranchAndDataEqual, tb_idExRegRt, tb_ifIdRegRs, tb_ifIdRegRt, tb_ifIdWrite, tb_PCwrite, tb_ctrlMux, tb_h1, tb_h2, tb_RtEqRs, tb_RtEqRt);
+  
+  process 
+    
+  begin 
+  -- testing lw stall IDEX.rt == IFID.rs
+  tb_idExRegRt <= "00100";
+  tb_ifIdRegRs <= "00100";
+  tb_ifIdRegRt <= "00001";
+  tb_isBranchAndDataEqual <= '0';
+  tb_idExMemRead <= '1';
+
+  wait for 100ps;
+    -- testing lw stall IDEX.rt == IFID.rs
+  tb_idExRegRt <= "00100";
+  tb_ifIdRegRs <= "10000";
+  tb_ifIdRegRt <= "00100";
+  tb_isBranchAndDataEqual <= '0';
+  tb_idExMemRead <= '1';
+
+  wait for 100ps;
+  -- testing branch stall
+  tb_isBranchAndDataEqual <= '1';
+  
+  wait for 100ps;
+  end process; 
+  
+end architecture behavioral; 

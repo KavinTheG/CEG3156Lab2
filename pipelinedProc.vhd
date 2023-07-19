@@ -62,6 +62,8 @@ signal ctrlMuxOut : std_logic_vector(8 downto 0);
 -- indicates to if/id that BEQ is occuring
 signal isBEQ : std_logic;
 
+-- bit to display if data is equal
+signal dataEquality : std_logic;
 
 -- branch
 signal shiftLeftTwoOutput_conn, aluResultToMux_conn : std_logic_vector(7 downto 0);
@@ -214,11 +216,18 @@ end component;
 component HazardDetectionUnit is 
 	port(
 		idExMemRead : in std_logic;
+		isBranchEqual : in std_logic;
+		
+		memWbWriteReg : in std_logic_vector(4 downto 0);
+		memWbRegWrite : in std_logic; 
+		
 		idExRegRt : in std_logic_vector(4 downto 0);
 		ifIdRegRs : in std_logic_vector(4 downto 0);
 		ifIdRegRt : in std_logic_vector(4 downto 0); 
 		
-		ifIdWrite,PCwrite,ctrlMux : out std_logic:='0'
+		ifIdWrite : out std_logic:='0';
+		PCwrite : out std_logic:='0';
+		ctrlMux : out std_logic:='0'
 	);
 end component;
 
@@ -418,9 +427,13 @@ muxPC: mux8x8 port map (isBEQ ,aluResultToMux_conn, pcAdder_output, pcInput_conn
 
 
 --IF/ID to ID/EX
-isBEQ <= zero_conn and branch_conn; 
 
 regFile: registerFile port map(GReset, GClock1, instrMem_output(25 downto 21), instrMem_output(20 downto 16), exMem_regMuxOut, memWB_dataOut, readDataOne_conn, readDataTwo_conn);
+
+dataEquality <= ( readDataOne_conn(0) XNOR readDataTwo_conn(0) ) and ( readDataOne_conn(1) XNOR readDataTwo_conn(1) ) and ( readDataOne_conn(2) XNOR readDataTwo_conn(2) ) and ( readDataOne_conn(3) XNOR readDataTwo_conn(3) ) and
+                ( readDataOne_conn(4) XNOR readDataTwo_conn(4) ) and ( readDataOne_conn(5) XNOR readDataTwo_conn(5) ) and ( readDataOne_conn(6) XNOR readDataTwo_conn(6) ) and ( readDataOne_conn(7) XNOR readDataTwo_conn(7) );
+
+isBEQ <= dataEquality and branch_conn;
 
 -- value to send to the mux in between control and ID/EX
 --controlValue <= WBControl_IDEX & MControl_IDEX  & EXControl_IDEX;

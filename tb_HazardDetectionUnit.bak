@@ -1,0 +1,30 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+entity tb_HazardDetectionUnit is 
+end entity;
+
+
+architecture structural of HazardDetectionUnit is 
+
+        component HazardDetectionUnit is 
+	port(
+		idExMemRead : in std_logic;
+		isBranchEqual : in std_logic;
+		
+		memWbWriteReg : in std_logic_vector(4 downto 0);
+		memWbRegWrite : in std_logic; 
+		
+		idExRegRt : in std_logic_vector(4 downto 0);
+		ifIdRegRs : in std_logic_vector(4 downto 0);
+		ifIdRegRt : in std_logic_vector(4 downto 0); 
+		
+		ifIdWrite : out std_logic:='0';
+		PCwrite : out std_logic:='0';
+		ctrlMux : out std_logic:='0'
+	);
+end entity;
+
+begin
+  
+end; 
