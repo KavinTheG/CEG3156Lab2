@@ -68,8 +68,9 @@ architecture rtl of controlLogicUnit is
 		
 		
 		
-		EX(0) <= aluOp0;
-		EX(1) <= aluOp1;
+		EX(0) <= aluSrc;
+		EX(1) <= aluOp0;
+		EX(2) <= aluOp1;
 		EX(3) <= regDst;
 		
 		M(0) <= MemWrite;

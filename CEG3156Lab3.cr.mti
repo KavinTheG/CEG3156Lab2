@@ -1,20 +1,4 @@
-C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ID_EXRegister.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ID_EXRegister.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity ID_EXRegister
--- Compiling architecture structural of ID_EXRegister
-
-} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux3x1.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux3x1.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity mux3x1
--- Compiling architecture rtl of mux3x1
-
-} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_pcReg.vhd {2 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_pcReg.vhd
+C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_pcReg.vhd {2 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_pcReg.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -29,6 +13,22 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 ** Warning: [4] C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_pcReg.vhd(63): (vcom-1207) An abstract literal and an identifier must have a separator between them.
 ** Warning: [4] C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_pcReg.vhd(73): (vcom-1207) An abstract literal and an identifier must have a separator between them.
 
+} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux3x1.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux3x1.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity mux3x1
+-- Compiling architecture rtl of mux3x1
+
+} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ID_EXRegister.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/ID_EXRegister.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ID_EXRegister
+-- Compiling architecture structural of ID_EXRegister
+
 } {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/enASdFF.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/enASdFF.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
@@ -36,14 +36,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package std_logic_1164
 -- Compiling entity enASdFF
 -- Compiling architecture rtl of enASdFF
-
-} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/EX_MEMRegister.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/EX_MEMRegister.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity EX_MEMRegister
--- Compiling architecture structural of EX_MEMRegister
 
 } {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/IF_IDRegister.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/IF_IDRegister.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -53,13 +45,13 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity IF_IDRegister
 -- Compiling architecture structural of IF_IDRegister
 
-} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/thirtyTwoBitRegister.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/thirtyTwoBitRegister.vhd
+} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/EX_MEMRegister.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/EX_MEMRegister.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity thirtyTwoBitRegister
--- Compiling architecture structural of thirtyTwoBitRegister
+-- Compiling entity EX_MEMRegister
+-- Compiling architecture structural of EX_MEMRegister
 
 } {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd {2 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -74,6 +66,14 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 ** Warning: [4] C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd(77): (vcom-1207) An abstract literal and an identifier must have a separator between them.
 ** Warning: [4] C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd(83): (vcom-1207) An abstract literal and an identifier must have a separator between them.
 ** Warning: [4] C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_registerFile.vhd(88): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+
+} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/thirtyTwoBitRegister.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/thirtyTwoBitRegister.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity thirtyTwoBitRegister
+-- Compiling architecture structural of thirtyTwoBitRegister
 
 } {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux9bit2x1.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/mux9bit2x1.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -203,21 +203,15 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity controlLogicUnit_tb
 -- Compiling architecture behavior of controlLogicUnit_tb
 
-} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pipelinedProc.vhd {0 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pipelinedProc.vhd
+} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pipelinedProc.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pipelinedProc.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity pipelinedProc
 -- Compiling architecture structural of pipelinedProc
-** Error: C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pipelinedProc.vhd(454): Signal "IDEX_instrRT" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pipelinedProc.vhd(454): Cannot resolve slice name as type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pipelinedProc.vhd(454): Signal "ifIdEnable" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pipelinedProc.vhd(454): Signal "pcWrite" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pipelinedProc.vhd(454): Signal "ctrlMuxSel" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/pipelinedProc.vhd(511): VHDL Compiler exiting
 
-} {8.0 14.0} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dFF_2.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dFF_2.vhd
+} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dFF_2.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/dFF_2.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -362,6 +356,17 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity clk_div
 -- Compiling architecture a of clk_div
 
+} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_HazardDetectionUnit.vhd {2 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_HazardDetectionUnit.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity tb_HazardDetectionUnit
+-- Compiling architecture behavioral of tb_HazardDetectionUnit
+** Warning: [4] C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_HazardDetectionUnit.vhd(65): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+** Warning: [4] C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_HazardDetectionUnit.vhd(73): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+** Warning: [4] C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_HazardDetectionUnit.vhd(77): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+
 } {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_threeToEightDecoder.vhd {2 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/tb_threeToEightDecoder.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
@@ -438,14 +443,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity ALUmain
 -- Compiling architecture structural of ALUmain
 
-} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity oneBitAdder
--- Compiling architecture rtl of oneBitAdder
-
 } {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitcomparator.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitcomparator.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
@@ -453,6 +450,14 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package std_logic_1164
 -- Compiling entity oneBitComparator
 -- Compiling architecture rtl of oneBitComparator
+
+} {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/onebitadder.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity oneBitAdder
+-- Compiling architecture rtl of oneBitAdder
 
 } {} {}} C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/oneBitSubtractor.vhd {1 {vcom -work work -2002 -explicit C:/Users/KG/Documents/CEG3156Labs/CEG3156Lab2/oneBitSubtractor.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
