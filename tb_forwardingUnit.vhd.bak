@@ -1,0 +1,88 @@
+--1. If (EX/MEM.RegWrite & (EX/MEM.RegisterRd != 0) & (EX/MEM.RegisterRd = ID/EX.RegisterRs)) ForwardA= 10 <-- (type 1 r-type  hazard)
+--2. If (EX/MEM.RegWrite & (EX/MEM.RegisterRd != 0) & (EX/MEM.RegisterRd = ID/EX.RegisterRt)) ForwardB= 10 <-- (type 2 r-type  hazard)
+--3. If (MEM/WB.RegWrite & (MEM/WB.RegisterRd != 0) & (MEM/WB.RegisterRd = ID/EX.RegisterRs)) ForwardA= 01 <-- (type 3 r-type  hazard)
+--4. If (MEM/WB.RegWrite & (MEM/WB.RegisterRd != 0) & (MEM/WB.RegisterRd = ID/EX.RegisterRt)) ForwardB= 01 <-- (type 4 r-type  hazard)
+
+--5. If (EX/MEM.RegWrite & (EX/MEM.RegisterRd != 0) & ID/EX.MemWrite & (EX/MEM.RegisterRd = ID/EX.RegisterRt)) <-- (type1 sw hazard) (not implemented)
+--6. If (EX/MEM.RegWrite & (EX/MEM.RegisterRd != 0) & ID/EX.MemWrite & (EX/MEM.RegisterRd = ID/EX.RegisterRs)) <-- (type2 sw hazard) (not implemented)
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+entity tb_forwardingUnit is 
+end entity;
+
+
+architecture behavioral of tb_forwardingUnit is 
+
+	signal tb_EX_MEM_regWrite: std_logic;--
+	signal tb_MEM_WB_regWrite: std_logic;--
+	signal tb_EX_MEM_regRead: std_logic_vector(4 downto 0);--
+	signal tb_MEM_WB_regRead: std_logic_vector(4 downto 0);--
+	signal tb_ID_EX_regRs: std_logic_vector(4 downto 0);--
+	signal tb_ID_EX_regRt: in std_logic_vector(4 downto 0);--
+	signal tb_forwardA: out std_logic_vector(1 downto 0);
+	signal tb_forwardB: out std_logic_vector(1 downto 0)
+
+component forwardingUnit is
+	port(
+	EX_MEM_regWrite: in std_logic;
+	MEM_WB_regWrite: in std_logic;
+	EX_MEM_regRead: in std_logic_vector(4 downto 0);
+	MEM_WB_regRead: in std_logic_vector(4 downto 0);
+	ID_EX_regRs: in std_logic_vector(4 downto 0);
+	ID_EX_regRt: in std_logic_vector(4 downto 0);
+	forwardA: out std_logic_vector(1 downto 0);
+	forwardB: out std_logic_vector(1 downto 0)
+	);
+end component;
+
+begin
+  
+  forwardUnit : forwardingUnit port map(tb_EX_MEM_regWrite, tb_MEM_WB_regWrite, tb_EX_MEM_regRead, tb_MEM_WB_regRead, tb_ID_EX_regRs, tb_ID_EX_regRt, tb_forwardA, tb_forwardB);
+  
+  process 
+    
+  begin 
+  -- testing case 1
+  tb_EX_MEM_regWrite <= '1';
+  tb_MEM_WB_regWrite <= '1';
+  tb_EX_MEM_regRead <= "00100";
+  tb_MEM_WB_regRead <= "00000";
+  tb_ID_EX_regRs <= "00100";
+  tb_ID_EX_regRt <= "00001";
+ 
+
+  wait for 100ps;
+    -- testing case 2
+  tb_EX_MEM_regWrite <= '1';
+  tb_MEM_WB_regWrite <= '1';
+  tb_EX_MEM_regRead <= "00100";
+  tb_MEM_WB_regRead <= "00000";
+  tb_ID_EX_regRs <= "00001";
+  tb_ID_EX_regRt <= "00100";
+
+
+  wait for 100ps;
+    -- testing case 3
+  tb_EX_MEM_regWrite <= '1';
+  tb_MEM_WB_regWrite <= '1';
+  tb_EX_MEM_regRead <= "00000";
+  tb_MEM_WB_regRead <= "00100";
+  tb_ID_EX_regRs <= "00100";
+  tb_ID_EX_regRt <= "00000";
+  
+  wait for 100ps;
+	 -- testing case 4
+  tb_EX_MEM_regWrite <= '1';
+  tb_MEM_WB_regWrite <= '1';
+  tb_EX_MEM_regRead <= "00000";
+  tb_MEM_WB_regRead <= "00100";
+  tb_ID_EX_regRs <= "00000";
+  tb_ID_EX_regRt <= "00100";
+  
+ 
+  wait for 100ps;
+  end process; 
+  
+end architecture behavioral; 
