@@ -1,0 +1,84 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+entity tb_MEMWB is
+end entity;
+
+architecture Testbench of tb_MEMWB is
+	
+	signal tb_reset	:	STD_LOGIC;
+	signal tb_en    :  STD_LOGIC;
+	signal tb_clk   :  STD_LOGIC;
+	
+	signal tb_WBSignals : STD_LOGIC_VECTOR(1 DOWNTO 0);
+	signal tb_aluResult: STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal tb_readDataMem: STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal tb_instructionMuxResult: STD_LOGIC_VECTOR(4 DOWNTO 0);
+
+
+	
+	signal tb_WBSignals_o : STD_LOGIC_VECTOR(1 DOWNTO 0);
+	signal tb_aluResult_o: STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal tb_readDataMem_o: STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal tb_instructionMuxResult_o: STD_LOGIC_VECTOR(4 DOWNTO 0);
+
+
+	
+	signal sim_end : boolean := false;
+
+component MEM_WBRegister is
+	port(
+	reset	:	IN STD_LOGIC;
+	en    :  IN STD_LOGIC;
+	clk   :  IN STD_LOGIC;
+	
+	WBSignals : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+	aluResult: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	readDataMem: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	instructionMuxResult: IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+
+	
+	WBSignals_o : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+	aluResult_o : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	readDataMem_o: OUT STD_LOGIC_VECTOR(7 DOWNTO 0); --data memory output
+	instructionMuxResult_o: OUT STD_LOGIC_VECTOR(4 DOWNTO 0) --rs or rt
+	);
+end component;
+
+begin
+
+MEMWB: MEM_WBRegister port map(tb_reset, tb_en, tb_clk,tb_WBSignals,tb_aluResult, tb_readDataMem, tb_instructionMuxResult, tb_WBSignals_o, 
+										tb_aluResult_o, tb_readDataMem_o, tb_instructionMuxResult_o);
+
+clock_process : process
+begin
+while (not sim_end) loop
+tb_clk <= '1';
+wait for 10ns;
+tb_clk <= '0';
+wait for 10ns;
+end loop;
+wait;
+end process;
+
+process 
+begin
+
+	tb_en <= '1';
+	tb_WBSignals <= "10";
+	tb_aluResult <= "10100011";
+	tb_readDataMem <= "10101000";
+	tb_instructionMuxResult <= "11001";
+
+
+	
+	wait for 100ns;
+	
+	--tb_en <= '0';
+	--sim_end <= true;
+	wait;
+	
+end process;
+
+end Testbench;
+

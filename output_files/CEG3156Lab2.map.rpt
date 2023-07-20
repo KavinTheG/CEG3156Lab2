@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CEG3156Lab2
-Wed Jul 19 20:34:44 2023
+Thu Jul 20 18:23:58 2023
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -36,10 +36,10 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Wed Jul 19 20:34:44 2023          ;
+; Analysis & Synthesis Status        ; Failed - Thu Jul 20 18:23:58 2023          ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; CEG3156Lab2                                ;
-; Top-level Entity Name              ; tb_forwardingUnit                          ;
+; Top-level Entity Name              ; tb_IFID                                    ;
 ; Family                             ; Cyclone IV E                               ;
 ; Total logic elements               ; N/A until Partition Merge                  ;
 ;     Total combinational functions  ; N/A until Partition Merge                  ;
@@ -59,7 +59,7 @@ applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                                      ; tb_forwardingUnit  ; CEG3156Lab2        ;
+; Top-level entity name                                                      ; tb_IFID            ; CEG3156Lab2        ;
 ; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -157,7 +157,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Wed Jul 19 20:34:43 2023
+    Info: Processing started: Thu Jul 20 18:23:57 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CEG3156Lab2 -c CEG3156Lab2
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file twobitregister.vhd
@@ -287,17 +287,19 @@ Info (12021): Found 2 design units, including 1 entities, in source file mux8bit
 Info (12021): Found 2 design units, including 1 entities, in source file mux3x1.vhd
     Info (12022): Found design unit 1: mux3x1-rtl
     Info (12023): Found entity 1: mux3x1
-Info (12021): Found 2 design units, including 1 entities, in source file tb_forwardingunit.vhd
-    Info (12022): Found design unit 1: tb_forwardingUnit-behavioral
-    Info (12023): Found entity 1: tb_forwardingUnit
-Info (12127): Elaborating entity "tb_forwardingUnit" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at tb_forwardingUnit.vhd(24): object "tb_forwardA" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at tb_forwardingUnit.vhd(25): object "tb_forwardB" assigned a value but never read
-Error (10533): VHDL Wait Statement error at tb_forwardingUnit.vhd(56): Wait Statement must contain condition clause with UNTIL keyword File: C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/tb_forwardingUnit.vhd Line: 56
+Info (12021): Found 2 design units, including 1 entities, in source file tb_ifid.vhd
+    Info (12022): Found design unit 1: tb_IFID-Testbench
+    Info (12023): Found entity 1: tb_IFID
+Info (12127): Elaborating entity "tb_IFID" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at tb_IFID.vhd(9): used implicit default value for signal "tb_reset" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at tb_IFID.vhd(16): object "tb_pcPlusFour_o" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at tb_IFID.vhd(17): object "tb_instruction_o" assigned a value but never read
+Warning (10540): VHDL Signal Declaration warning at tb_IFID.vhd(20): used explicit default value for signal "sim_end" because signal was never assigned a value
+Error (10533): VHDL Wait Statement error at tb_IFID.vhd(42): Wait Statement must contain condition clause with UNTIL keyword File: C:/Users/kuruvil/Documents/GitHub/CEG3156Lab2/tb_IFID.vhd Line: 42
 Error (12153): Can't elaborate top-level user hierarchy
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 4 warnings
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 6 warnings
     Error: Peak virtual memory: 4647 megabytes
-    Error: Processing ended: Wed Jul 19 20:34:44 2023
+    Error: Processing ended: Thu Jul 20 18:23:58 2023
     Error: Elapsed time: 00:00:01
     Error: Total CPU time (on all processors): 00:00:01
 
